@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 20</title>
+</head>
+
+<body>
+
+    <h1>Divisibilidade</h1>
+    Entre com um número que deve estar entre 10 e 500:<br>
+    <input id="ipt_numero" placeholder="Número (10 a 500)"><br>
+    <button onclick="pares()">Somar Pares</button><br>
+
+    <div id="saida"></div>
+</body>
+
+</html>
+
+
+<script>
+    function pares() {
+        let n = Number(ipt_numero.value);
+
+        if (n < 10 || n > 500) {
+            alert("Número inválido!");
+        }
+
+        let soma = 0;
+        let texto = "";
+
+        for (let i = 1; i <= n; i++) {
+            if (i % 2 === 0) {
+                texto += i + "<br>";
+                soma += i;
+            }
+        }
+
+        saida.innerHTML = texto + `<br>Soma dos pares: ${soma}`;
+    }
+</script>

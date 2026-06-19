@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Campanha do Time</title>
+</head>
+<body>
+
+  <h2>Campanha do Time</h2>
+
+  <!-- Seleção de resultado -->
+  <select id="select_resultado">
+    <option>Vitória</option>
+    <option>Empate</option>
+    <option>Derrota</option>
+  </select>
+
+  <button onclick="registrar()">Registrar jogo</button>
+
+  <br><br>
+
+  <!-- Resumo -->
+  <div id="resumo"></div>
+
+  <br>
+
+  <!-- Pesquisa de jogo -->
+  <input id="input_jogo" placeholder="Qual jogo deseja saber?">
+  <div id="pesquisa"></div>
+
+</body>
+</html>
+
+<script>
+  let jogos = [];
+
+  function registrar() {
+    let resultado = select_resultado.value;
+    jogos.push(resultado);
+
+    atualizarResumo();
+  }
+
+  function atualizarResumo() {
+    let v = 0, e = 0, d = 0;
+
+    for (let i = 0; i < jogos.length; i++) {
+      if (jogos[i] === "Vitória") v++;
+      else if (jogos[i] === "Empate") e++;
+      else d++;
+    }
+
+    let pontos = (v * 3) + (e * 1);
+    let maxPontos = jogos.length * 3;
+    let aproveitamento = jogos.length > 0 
+      ? (pontos / maxPontos) * 100 
+      : 0;
+
+    resumo.innerHTML = `
+      O time teve: ${v} vitórias, ${e} empates, ${d} derrotas<br>
+      Pontuação total: ${pontos} pontos<br>
+      Aproveitamento: ${aproveitamento.toFixed(2)}%
+    `;
+  }
+
+  // Evento ao digitar
+  input_jogo.addEventListener("input", function () {
+    let pos = Number(input_jogo.value);
+
+    if (pos <= 0 || pos > jogos.length) {
+      pesquisa.innerHTML = `Não foi cadastrado um ${pos}º jogo`;
+      return;
+    }
+
+    let resultado = jogos[pos - 1];
+
+    if (resultado === "Vitória") {
+      pesquisa.innerHTML = `No ${pos}º jogo, o time Ganhou`;
+    } else if (resultado === "Empate") {
+      pesquisa.innerHTML = `No ${pos}º jogo, o time Empatou`;
+    } else {
+      pesquisa.innerHTML = `No ${pos}º jogo, o time Perdeu`;
+    }
+  });
+</script>
+
+
+
+---------------------------------------------------------------------------------
+
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Histórico de Números</title>
+</head>
+<body>
+
+  <h2>Registro de Números</h2>
+
+  <!-- Entrada -->
+  <input id="input_numero" placeholder="Digite um número">
+  <button onclick="analisar()">Analisar histórico</button>
+
+  <!-- Resultado -->
+  <div id="resultado"></div>
+
+</body>
+</html>
+
+<script>
+  let numeros = [];
+
+  function analisar() {
+    let num = Number(input_numero.value);
+
+    if (input_numero.value === "" || isNaN(num)) {
+      alert("Digite um número válido!");
+      return;
+    }
+
+    numeros.push(num);
+
+    let texto = "";
+    let maior = numeros[0];
+    let menor = numeros[0];
+
+    // Montar histórico + descobrir maior e menor
+    for (let i = 0; i < numeros.length; i++) {
+      texto += `${i + 1}º Número: ${numeros[i]}<br>`;
+
+      if (numeros[i] > maior) {
+        maior = numeros[i];
+      }
+
+      if (numeros[i] < menor) {
+        menor = numeros[i];
+      }
+    }
+
+    texto += `<br>Maior: ${maior}<br>`;
+    texto += `Menor: ${menor}`;
+
+    resultado.innerHTML = texto;
+
+    input_numero.value = "";
+  }
+</script>
+
+
+
+
+links: http://www2.ic.uff.br/~aconci/CG-Aula12-2017.pdf
+
+https://web.tecgraf.puc-rio.br/~mgattass/fcg/Cores18.pdf

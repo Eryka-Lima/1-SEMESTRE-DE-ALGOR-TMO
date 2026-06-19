@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EXERCÍCIO 02</title>
+</head>
+
+<body>
+    <h1 style="background-color: rgb(186, 247, 247);">Diário de Viagens: Do Primeiro ao Último Destino</h1>
+    Destino da Viagem: <input id="ipt_destino"><br>
+    <button style="background-color: rgb(144, 166, 206);" onclick="analise()">Adicionar</button><br><br>
+
+    <button style="background-color: rgb(186, 247, 247);" onclick="escolher('primeira')">PRIMEIRA VIAGEM</button>
+    <button style="background-color: rgb(186, 247, 247);" onclick="escolher('terceiro')">TERCEIRA VIAGEM</button>
+    <button style="background-color: rgb(186, 247, 247);" onclick="escolher('ultimo')">ULTIMA VIAGEM</button> <br><br>
+
+    <div id="div_msg"></div>
+
+</body>
+
+<script>
+
+    let vetor = ['Inglaterra'];
+
+    function analise() {
+        vetor.push(ipt_destino.value);
+    }
+
+
+    function escolher(primeira) {
+
+        let destino = ipt_destino.value;
+
+        if (destino.trim()) {
+            div_msg.innerHTML = `Sua primeira viagem vai ser para ${vetor[0]}. <br>`;
+        } else {
+            div_msg.innerHTML = `Não tem viagem registrada!!`;
+        }
+
+        function escolher(terceiro) {
+
+            let destino = ipt_destino.value;
+
+            if (destino.trim()) {
+                div_msg.innerHTML = `Sua terceira viagem vai ser para ${vetor[3]}. <br>`;
+            } else {
+                div_msg.innerHTML = `Você não fez nem 3 viagens ainda`;
+            }
+
+            function escolher(ultimo) {
+
+                let destino = ipt_destino.value;
+
+                if (destino.trim()) {
+                    div_msg.innerHTML = `Sua ultima viagem vai ser para ${destino}. <br>`;
+                } else {
+                    div_msg.innerHTML = `Você Não quer viajar??`;
+                }
+            }
+        }
+    }
+</script>
+</html>

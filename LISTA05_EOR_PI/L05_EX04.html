@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EXERECICIO 04</title>
+</head>
+<body>
+    <h2>Melhor Horário para Assistir Netflix: Evite Travamentos!</h2>
+     Qual horário você costuma assisti netflix? <input id="ipt_hora"> <br><br>
+     <button onclick="analise()">VER RECOMENDAÇÃO</button><br><br>
+     <div id="div_msg"></div>
+</body>
+
+<script>
+    function analise() {
+        if( ipt_hora.value >= 19 && ipt_hora.value <=21) {
+            div_msg.innerHTML = `Não é recomendável que você assista sua série favorita no horário ${ipt_hora.value}.`;
+        }else {
+            div_msg.innerHTML = `O horário ${ipt_hora.value} é adequado para assistir sua série favorita!`;
+        }
+    }
+</script>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt_br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 05</title>
+</head>
+<body style="background-color:#9a83ee;">
+    <h2 style="background-color: #20cdec; color: rgb(252, 248, 248);" >ECONOMIA DO BILHETE ÚNICO</h2>
+    Você é estudante e precisa economizar!!!<br>
+    Valor da Passagem: <input  id= "ipt_passagem"> <br>
+    Quantidade de viagens por mês: <input id="ipt_viagens"> <br><br>
+
+    <button style="background-color: #20cdec; color: rgb(252, 248, 248);" 
+    onclick="mostrar('mutiplica')">VER ECONOMIA</button>
+    <div id="div_mutiplica"></div> <br>
+
+</body>
+
+<Script>
+    function mostrar(operacoes) {
+
+        document.getElementById("div_mutiplica").innerHTML = "";
+
+    
+        if (operacoes === "mutiplica") {
+            let num1 = Number(ipt_passagem.value);
+            let num2 = Number(ipt_viagens.value);
+            let num3 = 2
+
+            let resultado = num1 * num2;
+            let resultado2 = resultado * num3;
+        
+            document.getElementById("div_mutiplica").innerHTML =
+             "Você deveria gastar R$ " + resultado2 + " por mês, mas, você gasta " +
+              + ipt_passagem.value + " em cada passagem, e faz " + ipt_viagens.value + " por dia, "
+              + " seu gasto mensal é R$ " + resultado + "." ;
+
+        ipt_passagem.value = '';
+        ipt_viagens.value = '';
+        }
+    }
+
+
+</Script>
+</html>

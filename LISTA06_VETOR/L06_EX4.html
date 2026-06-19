@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EXERCICIO 04</title>
+</head>
+
+<body>
+    <h1>Top Filmes Favoritos: Do Mais Amado ao Menos</h1>
+    Qual seu filme favorito?: <input id="ipt_favorito"><br>
+    Qual seu segundo filme favorito?: <input id="ipt_segundo"><br>
+
+    <button onclick="cadastro()">CADASTRAR FILME</button><br><br>
+    <div id="msg"></div>
+    <button onclick="favorito()">VER FAVORITOS</button><br><br>
+    <div id="div_msg"></div>
+
+</body>
+
+<script>
+
+
+    let vetor = [];
+    let vetor2 = [];
+
+    function cadastro() {
+        vetor.push(ipt_favorito.value);
+        vetor2.push(ipt_segundo.value);
+    }
+
+
+    function favorito() {
+        let favorito = ipt_favorito.value;
+        let segundo = ipt_segundo.value;
+
+        div_msg.innerHTML = "Temos esses filmes cadastrados: " + vetor + " , " + vetor2 + "<br>";
+        div_msg.innerHTML += `A quantidade de filmes favoritos é: ${vetor.length}<br>`;
+        div_msg.innerHTML += `A quantidade de filmes secundarios é: ${vetor2.length}<br>`;
+        div_msg.innerHTML += `O Filme que mais gosta é: ${vetor[0]}<br>`;
+        div_msg.innerHTML += `E o filme que menos gosta é: ${vetor2[0]}<br>`;
+    }
+</script>
+
+</html>

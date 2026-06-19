@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EXERCICIO 04</title>
+
+    <!-- Crie um programa que:  
+
+a) Solicite duas palavras ao usuário.  
+
+b) Ao clicar num botão "Analisar Palavras": 
+
+   b1) Caso as palavras sejam exatamente iguais em conteúdo e digitação (letras maiúsculas e minúsculas), exiba "As palavras AAA e BBB são exatamente iguais!".
+
+   b2) Caso a digitação das palavras não seja exatamente igual, verifique se o conteúdo das palavras é igual, para exibir "As palavras AAA e BBB possuem o mesmo conteúdo, mas a digitação é diferente (maiúsculas e minúsculas)".
+
+   b3) Caso a digitação das palavras não seja igual e nem o conteúdo, exiba "As palavras AAA e BBB são completamente diferentes!".
+
+OBS: utilize .toLowerCase() e .toUpperCase() para manipular os textos em um tipo padrão de digitação.
+
+OBS2: exemplo de funcionamento com base nas inserções:
+
+ "morango" e "morango": deve exibir a primeira mensagem (b1)
+"morango" e "MorAngO", deve exibir a segunda mensagem (b2)
+"uva" e "morango": deve exibir a terceira mensagem (b3)
+-->
+</head>
+<body>
+    <h1>Comparador de Palavras</h1>
+
+    Digite duas apalavras a abaixo 
+    Plavra 1: <input id="ipt_palavra1">
+    Palavra 2: <input id="ipt_palavra2"> <br> <br>
+
+    <button onclick="analisar()">ANALISAR PALAVRAS</button> <br>
+    <div id="div_msg"></div>
+    
+</body>
+
+<script>
+
+    function analisar(){
+        let palavra1 = ipt_palavra1.value.toUpperCase();
+        let palavra2 = ipt_palavra2.value.toUpperCase();
+
+        if(palavra1 == palavra2){
+            div_msg.innerHTML += `As apalvras são EXATAMENTE IGUAIS!!<br>`;
+        }
+        if(palavra1 != palavra2){
+            div_msg.innerHTML += ` As palavras são COMPLETAMENTE diferentes!!<br>`;
+    }
+     }
+</script>
+</html>

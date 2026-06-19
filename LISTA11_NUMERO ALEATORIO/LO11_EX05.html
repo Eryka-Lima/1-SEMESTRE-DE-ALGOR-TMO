@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulação</title>
+</head>
+
+<body>
+
+    <h1>Simulação: JO KEN PO</h1>
+    <br>
+
+    <button onclick="jogar()">Jogador 1</button>
+    <button onclick="jogou()">Jogador 2</button>
+    <button onclick="resultado()">Resultado</button>
+
+    <div id="output"></div>
+
+</body>
+
+</html>
+
+<script>
+
+
+    function jogar(jogador1) {
+
+        let numero = Math.random();
+
+        let resultado = (numero * (3 - 1) + 1).toFixed();
+
+
+        if (resultado == 1) {
+            output.innerHTML += `Pedra<br>`;
+        } else if (resultado == 2) {
+            output.innerHTML += `Papel<br>`;
+        } else if (resultado == 3) {
+            output.innerHTML += `Tesoura<br>`;
+        } else {
+             output.innerHTML += ``;
+        }
+    }
+
+    
+    function jogou(jogador2) {
+
+        let numero = Math.random();
+
+        let resultado = (numero * (3 - 1) + 1).toFixed();
+
+
+        if (resultado == 1) {
+            output.innerHTML += `Pedra<br>`;
+        } else if (resultado == 2) {
+            output.innerHTML += `Papel<br>`;
+        } else if (resultado == 3) {
+            output.innerHTML += `Tesoura<br>`;
+        } else {
+             output.innerHTML += ``;
+        }
+    }
+
+
+    function resultado(jogador1, jogador2){
+
+    }
+</script>

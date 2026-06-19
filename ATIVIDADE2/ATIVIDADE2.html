@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ATIVIDADE 02</title>
+</head>
+
+<body>
+
+    <h1> ATIVIDADE AVALIATIVA 2</h1>
+
+
+    Insira sua senha Para sua melhor vizualização dos dados e carctesres: <br>
+    <input id="simbolo"><br>
+    Insira o valor da peça:
+    <input id="preco"><br>
+
+    <hr>
+
+
+    <button onclick="incluir()">INCLUIR</button><br>
+
+    <button onclick="excluir()">EXCLUIR</button><br><br>
+
+
+    <button onclick="listarDe()">LISTAR DE</button><br><br>
+
+
+    Liste DE onde ATÉ você quer vizualizar:<br>
+    DE: <input id="de"> ATÉ: <input id="ate"><br>
+    <button onclick="listarAte()">LISTAR ATÉ</button><br><br>
+
+
+    <button onclick="alterar()">ALTERAR</button><br><br>
+
+    <hr>
+
+    <div id="output"></div>
+
+</body>
+
+</html>
+
+
+<script>
+
+    let dados = [];
+    let simbolo = simbolo.value.trim();
+    let valor = Number(preco.value);
+    let preco = [];
+
+
+    function incluir() {
+
+        if (simbolo.length < 3) {
+            alert = ("Cadastrar algo que tenha mais de 3 letras!!");
+        } else if (simbolo.length > 3) {
+            alert = (" Ter um dos caracteres @, $, & ou *");
+        } else if (simbolo.length(1) == A) {
+            dados.push = simbulo.value;
+        } else if (simbolo.length(1) == C) {
+            dados.push = simbulo.value;
+        } else if (simbolo.length(1) == S) {
+            dados.push = simbulo.value;
+        } else {
+            alert = ("Entre com a primeira letra sendo A, C ou S!!");
+        }
+
+
+        if(valor.length < 0){
+            alert("Cadastrar um número válido!!")
+        }else if(valor != Number){
+            alert("Precisa ser um número");
+        }else {
+             preco.push = valor.value;
+        }
+
+    }
+
+
+    function alterar() {
+
+
+        for (let i = 0; i < simbolo.length; i++) {
+            let altere = 0;
+
+            output.innerHTML += `Nomes cadastradados, faremos alteração ${dados[i] == simbolo.value}`
+            altere += dados[i];
+        }
+
+        output.innerHTML += `<br> Seu nome alterado foi ${dados[i] == simbolo.value} `;
+    }
+
+
+
+    function listarDe() {
+        let de = Number(de.value);
+
+        if (dados.length == 0) {
+            alert("Nenhum nome cadastrado!");
+        } else {
+            output.innerHTML = "";
+
+            for (let i = 0; i < dados.length; i++) {
+                if (dados.length >= 0)
+                    output.innerHTML += "Você tem " + dados.length + " cadastrados<br><br>";
+            }
+
+        }
+    }
+
+
+
+    function listarAte() {
+
+        let de = Number(de.value);
+        let ate = Number(ate.value);
+
+        if (dados.length == 0) {
+            alert("Nenhum nome cadastrado!");
+        } else {
+            output.innerHTML = "";
+
+            for (let i = 0; i < dados.length; i++) {
+                if (dados.length >= 0) {
+                    let lista = de;
+                    let lista2 = ate;
+
+                    let resultado = lista;
+                }
+                output.innerHTML += "Você tem " + dados.length + " cadastrados<br><br>";
+            }
+
+        }
+    }
+
+
+    function excluir() {
+
+
+        output.innerHTML = "";
+
+    }
+
+
+    function list_ate(){
+
+
+
+        var ax_ate = vt_cod.indexOf(ipt_codigo.value);
+        if(ax_ate != -1) {
+            output.innerHTML = "";
+            for (i =0; i <= ax_ate; i++) {
+                div_msginnerHTML += `${i + 1}* peça é a ${vt_cod[i]} <br>`
+            }
+        }else{
+            alert('Código depeça inexistente no cadastro')
+        }
+    }
+
+
+    function listarate2(){
+     output.innerHTML = "";
+     for (i = 0; i< vt_cod.length; i++) {
+         output.innerHTML = `${i + i } PECA É A ${vt_cod[i]} <br>`
+         if (vt_cod[i] == ipt_codigo.value){
+            break;
+         }
+     }
+ 
+
+     function list_de(){
+         var ax_de = vt_cod.indexOf(ipt_codigo.value);
+        if(ax_ate != -1) {
+            output.innerHTML = "";
+            for (i =0; i <= ax_de; i++) {
+                div_msginnerHTML += `${i + 1}* peça é a ${vt_cod[i]} <br>`
+            }
+        }else{
+            alert('Código depeça inexistente no cadastro')
+        }
+     }
+
+
+     function alterar(){
+        let i = vt_cod.indexOf(ipt_codigo.value);
+        if (i != -1) {
+            vt_cod[i] = ipt_codigo_novo.value;
+        }else{
+            alert('Código depeça inexistente no cadastro')
+        }
+     }
+}
+</script>

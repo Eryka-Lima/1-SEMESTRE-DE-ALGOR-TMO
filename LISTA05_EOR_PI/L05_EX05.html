@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EXERCICIO 05</title>
+</head>
+<body>
+    <h2>Desempenho Escolar: Como Está Sua Nota?</h2>
+        Qual sua foi sua nota? <input id="ipt_nota"> <br><br>
+
+        <button onclick="analise()">AVALIAR ALUNO</button>
+        <div id="div_msg"></div>
+</body>
+<script>
+        function analise() {
+            if (ipt_nota.value >= 6 && ipt_nota.value <= 8.5) {
+                alert ("Aluno comum e aprovado!!");
+            }else if(ipt_nota.value > 8.5 && ipt_nota.value <=10) {
+                alert ("Aluno Exemplar!!!");
+            }else {
+                alert ();
+            }
+        }
+</script>
+</html>

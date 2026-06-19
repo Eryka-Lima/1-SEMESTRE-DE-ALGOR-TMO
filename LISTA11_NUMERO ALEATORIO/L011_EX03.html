@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EXERCICIO</title>
+</head>
+
+<body>
+
+    <h1>Crie um programa o qual: </h1>
+    <br>
+
+    <button onclick="sortear()">Sortear</button><br><br>
+    <div id="output"></div>
+
+</body>
+</html>
+
+
+<script>
+
+
+    function sortear() {
+
+        let numero = Math.random();
+        let resultado = (numero * (20 - 1) + 1).toFixed();
+        output.innerHTML += `Seu número sorteado é ${resultado}<br>`;
+
+
+    }
+
+</script>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EXERCICIO 04</title>
+</head>
+
+<body>
+
+    <h1>Top Filmes Favoritos: Do Mais Amado ao Menos</h1>
+
+    Qual fime mais gosta e na sequencia o que menos gosta<br>
+    <input id="input_filme"><br>
+
+    <button onclick="cadastrar()">Cadastrar Filme</button><br><br>
+    <button onclick="favoritos()">Ver Filmes Favoritos</button><br><br>
+
+    <div id="output"></div>
+
+</body>
+
+</html>
+
+<script>
+
+    let filmes = [];
+
+    function cadastrar() {
+        let filme = input_filme.value.trim();
+
+        if (filme !== "") {
+            filmes.push(filme);
+            input_filme.value = "";
+        }
+    }
+
+    function favoritos(){
+
+        if(filmes.length === 0){
+            output.innerHTML = "Nenhum filme cadastrado.";
+        }
+
+        let lista = "";
+
+        for(let i = 0; i < filmes.length; i++){
+            lista += `${i + 1}. ${filmes[i]}<br>`;
+        }
+
+        lista += `<br>Total: ${filmes.length}<br>`;
+        lista += `O filme que mais gosta é ${filmes[0]}.<br>`;
+        lista += `E desses, o que menos gosta é ${filmes[filmes.length - 1]}.`;
+
+        output.innerHTML = lista;
+    }
+
+</script>

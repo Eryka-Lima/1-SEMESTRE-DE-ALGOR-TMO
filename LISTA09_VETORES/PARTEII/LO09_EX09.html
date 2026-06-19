@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EXERCICIO 09</title>
+</head>
+
+<body>
+
+    <h1>Cadastro de Projetos e Classificação de Experiência Profissional</h1>
+
+    Quantos Projetos você criou na vida:<br>
+    <input id="input_projeto"><br>
+
+    <button onclick="cadastrar()">Registrar Projetos</button><br><br>
+    <button onclick="mostrar()">Mostrar Projetos</button>
+    
+    <div id="output"></div>
+
+</body>
+
+</html>
+
+<script>
+
+    let projetos = [];
+
+    function cadastrar() {
+
+        let projeto = input_projeto.value.trim();
+
+        if (projeto !== "") {
+            projetos.push(projeto);
+            input_projeto.value = "";
+
+            status();
+        }
+    }
+
+    function experiencia(qtd) {
+
+        if (qtd <= 4) {
+            return "Júnior";
+        } else if (qtd <= 12) {
+            return "Pleno";
+        } else {
+            return "Sênior";
+        }
+    }
+
+    function status() {
+
+        let qtd = projetos.length;
+        let nivel = experiencia(qtd);
+
+        output.innerHTML = `Você já fez ${qtd} projetos. Por isso você é um profissional ${nivel}`;
+    }
+
+    function mostrar() {
+
+        let lista = "";
+
+        for (let i = projetos.length - 1; i >= 0; i--) {
+            lista += `${projetos[i]}<br>`;
+        }
+
+        output.innerHTML = lista;
+    }
+
+</script>

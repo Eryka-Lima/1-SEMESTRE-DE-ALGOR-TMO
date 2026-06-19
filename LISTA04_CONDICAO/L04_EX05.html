@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><h1>EXERCICIO 05</h1></title>
+
+</head>
+<body>
+    <h2>ROLA A PIZZA</h2>
+    Qual o valor da Pizza?: <input id="ipt_valor"><br>
+    Quantos amigos reunidos?: <input id="ipt_amigos"> <br> <br>
+
+    <button onclick="analisar()">ROLA PIZZA</button>
+    <div id="div_msg"></div>
+</body>
+
+<script>
+
+
+    function analisar() {
+        let resultado = ipt_valor.value / ipt_amigos.value;
+        
+        if(resultado > 20) {
+            div_msg.innerHTML = `Deu ruim!!! Pizza Cara!! está dando R$ ${resultado} pra cada um.`
+        } else {
+             div_msg.innerHTML = `Cada amigo vai pagar R$ ${resultado} pela pizza.`
+
+        }
+    }
+</script>
+</html>

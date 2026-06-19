@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt_br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 04</title>
+</head>
+<body>
+    <h2>ROLA UMA PIZZA?</h2>
+    Vamos Calcular quanto vai custar a Pizza<br>
+    Qual o valor da Pizza? <input id="ipt_pizza"> <br>
+    Quantos amigos vão comer?:  <input id="ipt_amigos"> <br>
+    <button style="background-color: #6b35ce; color: rgb(252, 248, 248);" onclick="analisar()">ROLA A PIZZA?</button> <br>
+    <div id="div_msg"></div>
+   
+</body>
+</html>
+
+<script>
+    function analisar() {
+
+        let n1 = Number(ipt_pizza.value);
+        let n2 = Number(ipt_amigos.value);
+        
+        let pagar = n1 / n2;
+
+        div_msg.innerHTML = '';
+
+
+        if (pagar >= 20) {
+           div_msg.innerHTML = `"Deu ruim! Pizza muito cara!" Vai ser mais de ${pagar} para cada um`;
+        } else {
+            div_msg.innerHTML = ` "Cada amigo vai pagar R$${pagar} pela pizza" `;
+        }
+    }
+</script>

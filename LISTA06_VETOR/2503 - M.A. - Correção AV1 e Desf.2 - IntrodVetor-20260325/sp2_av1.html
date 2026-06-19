@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt_br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AtivAval-1</title>
+</head>
+
+<body>
+    <h2>Agostinho Taxista</h2>
+    Nome do passageiro: <input id="ipt_nome"> <br>
+    Distancia viagem : <input id="ipt_dist"> <br>
+    Bandadeira (1,2,3): <input id="ipt_band"> <br>
+    Horário da Corrida: <input id="ipt_hora"> <br>
+    <button onclick="calcular()">Calcular Corrida</button> <br><br>
+    <div id="div_msg"></div>
+</body>
+
+</html>
+<script>
+    function calcular() {
+        let ax_nome = ipt_nome.value;
+        let ax_distancia = Number(ipt_dist.value);
+        let ax_bandeira = Number(ipt_band.value);
+        let ax_horario = Number(ipt_hora.value);
+        let ax_valor_corrida = 0;
+
+        if (ax_nome.trim().length < 3) {
+            alert('entre com o nome do passageiro com pelo menos 3 digitos');
+        } else if (ax_distancia <= 0) {
+            alert('na distancia entre com um número maior que zero');
+        } else if (ax_bandeira != 1 && ax_bandeira != 2 && ax_bandeira != 3) {
+            alert('bandeira tem que ser 1, 2 ou 3');
+        } else if (ax_horario < 0 || ax_horario > 23) {
+            alert('horário tem que estar entre 0 e 23')
+        } else {
+
+            if (ax_bandeira == 1) {
+                if (ax_horario <= 6) {
+                    ax_valor_corrida = ax_distancia * 1.25 * 1.05;
+                } else {
+                    if (ax_horario > 13) {
+                        ax_valor_corrida = ax_distancia * 1.25 * 1.15;
+                    } else {
+                        ax_valor_corrida = ax_distancia * 1.25 * 1.10;
+                    }
+                }
+            } else {
+                if (ax_bandeira == 2) {
+                    if (ax_horario <= 6) {
+                        ax_valor_corrida = ax_distancia * 1.25 * 1.10;
+                    } else {
+                        if (ax_horario > 13) {
+                            ax_valor_corrida = ax_distancia * 1.25 * 1.30;
+                        } else {
+                            ax_valor_corrida = ax_distancia * 1.25 * 1.20;
+                        }
+                    }
+                } else {
+                    if (ax_horario <= 6) {
+                        ax_valor_corrida = ax_distancia * 1.25 * 1.15;
+                    } else {
+                        if (ax_horario > 13) {
+                            ax_valor_corrida = ax_distancia * 1.25 * 1.45;
+                        } else {
+                            ax_valor_corrida = ax_distancia * 1.25 * 1.30;
+                        }
+                    }
+
+                }
+            }
+        }
+
+        div_msg.innerHTML += `Olá ${ax_nome} Sua corrida, será na bandeira 
+            ${ax_bandeira}, percorrerá ${ax_distancia} km e o total da corrida 
+            será de ${ax_valor_corrida.toFixed(2)} <br>`;
+    }
+</script>

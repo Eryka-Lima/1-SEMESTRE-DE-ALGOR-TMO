@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>EXERCICIO 20</title>
+    </head>
+    <body>
+        <h1>NUMEROS PARES </h1>
+        Insira um número:<br>
+        <input id="ipt_numero"><br><br>
+
+        <button onclick="analise()">SOMAR PARES</button><br>
+        <div id="div_msg"></div>
+
+    </body>
+</html>
+
+<script>
+
+    function analise(){
+        let numero = Number(ipt_numero.value);
+        let cont = 0;
+        let soma = 0;
+
+
+       if (numero < 10  || numero % 1 != 0) {
+            alert(`Entre com um valor númerico ENTRE 10 e 500!!`);
+        }
+
+    while(cont < numero ){
+        if(numero % cont == 0){
+            soma = 
+            div_msg.innerHTML += `<br> ${cont}<br>`;
+    }
+       cont ++;
+ }
+}
+
+</script>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EXERCICIO 01</title>
+</head>
+<body>
+    <h1>Contador de Caracteres</h1>
+    Insira sua frase: 
+     <input oninput="analisar()" type="text" id="input_frase">
+
+    <button onclick="analise()">ANALISAR FRASE</button><br><br>
+    <div id="div_msg"></div><br>
+</body>
+        <script>
+            function analisar() {
+                let frase = input_frase.value;
+                let tamanhofrase = frase.length;
+
+        div_mensagem.innerHTML = `
+         Tamanho da Frase: ${tamanhoFrase} <br>`
+            }
+
+         function analise(){
+
+                if(tamanhofrase < 10){
+                    div_msg.innerHTML = `Frase Curta.! <br>`
+
+                }else{
+                    div_msg.innerHTML = `Frase Curta!! <br>`
+                }
+            }
+        </script>
+</html>

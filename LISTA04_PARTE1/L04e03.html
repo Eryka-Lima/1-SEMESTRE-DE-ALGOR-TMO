@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt_br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 03</title>
+</head>
+<body>
+    <h2>CONTROLE DE NOTAS</h2>
+    Vamos Calcular sua nota<br>
+    Nota A: <input id="ipt_notaa"> <br>
+    Nota B:  <input id="ipt_notab"> <br>
+    Nota C:  <input id="ipt_notac"> <br>
+    <button style="background-color: #6b35ce; color: rgb(252, 248, 248);" onclick="analisar()">ANÁLIZAR DESEMPENHO</button> <br>
+    <div id="div_msg"></div>
+   
+</body>
+</html>
+
+<script>
+    function analisar() {
+
+        let n1 = Number(ipt_notaa.value);
+        let n2 = Number(ipt_notab.value);
+        let n3 = Number(ipt_notac.value);
+        let soma = n1 + n2 + n3;
+        let div = 3;
+        let media = soma / div;
+
+        div_msg.innerHTML = '';
+
+
+        if (media >= 9.4) {
+           div_msg.innerHTML = `Sua média foi de ${media} !! PARABENS você é fora de série`;
+        } else {
+            div_msg.innerHTML = `Sua média foi de ${media} !! onde ${media} é a média das 3 notas`;
+        }
+    }
+</script>

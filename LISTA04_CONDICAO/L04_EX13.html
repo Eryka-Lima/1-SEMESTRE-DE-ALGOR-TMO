@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EXERCÍCIO 13</title>
+</head>
+<body>
+    <h2>VERIFICAÇÃO DE FINANÇAS</h2>
+    Qual seu saldo na conta? <input id="ipt_saldo"> <br>
+
+    <button onclick="analisar()">VERIFICAR FINANÇAS</button> <br><br>
+    <div id="div_msg"></div>
+    
+</body>
+
+<script>
+     
+    function analisar() {
+
+        if(ipt_saldo.value == 0){
+            div_msg.innerHTML = `Conta zerada;`
+        } else if(ipt_saldo.value >0) {
+            div_msg.innerHTML = `Saldo Positivo! Sorrriso :).`;
+        }else{
+            div_msg.innerHTML = `Está devendo.`;
+        }
+    }
+
+</script>
+</html>

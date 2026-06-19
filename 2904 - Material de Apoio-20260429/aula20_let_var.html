@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt_br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Let</title>
+</head>
+<body>
+    <h2>Aula de Let</h2>
+<!-- type="number" em uma tag de input faz com que a entrada de dados
+     seja somente de caracteres numéricos, ponto, virgula e a letra e
+
+     CUIDADO - ISSO NÃO ELIMINA TOTALMENTE A NECESSIDADE DA FUNÇÃO 
+     Number()
+-->
+
+    Entre com um número: <input type="number" id="ipt_num">
+    <button onclick="analisar()">Analisar</button>
+    <div id="div_msg"></div> 
+</body>
+<script>
+/*  LET é uma outra forma de criar variáveis. 
+    As variáveis criadas com LET tem abrangência mais reduzida, sendo 
+    que, se a variável foi criada em uma estrutura ela só é válida 
+    naquela estrutura.
+    
+    Por exemplo, quando eu crio uma variável com LET dentro de um IF, 
+    essa variável só é válida e só pode ser manipulada nesse IF. Quando 
+    o IF é encerrado a variável deixa de existir.
+
+    A variável criada com 'let' só existe a partir da linha de código 
+    que é criada.
+*/
+    function analisar() {
+        let resto=0;
+        alert (dividendo);
+        var dividendo=Number(ipt_num.value);
+/*      CURIOSIDADE....
+        O alert da linha 36 mostra o valor undefined, pois a variável
+        já existe, mas seu valor será definido na linha seguinte 
+        (linha 37), agora, se você mudar para let na linha 37 o código 
+        estará com erro..... (com let a variável só existe a partir da
+        linha de sua criação)
+*/        
+        resto = dividendo % 1;
+        if (resto == 0){
+            let x = resto
+            div_msg.innerHTML = 'inteiro ' + x;
+        } 
+        div_msg.innerHTML += '<br>o x vale '+ x;
+    }
+</script>
+</html>

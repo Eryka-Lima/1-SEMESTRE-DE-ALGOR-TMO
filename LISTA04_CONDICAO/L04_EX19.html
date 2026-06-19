@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EXERCÍCIO 19</title>
+</head>
+<body>
+    <h2>MERCADO BOM DOCE</h2>
+    Quantidade de chocolate comprada: <input id="ipt_chocolate"> <br>
+
+    <button onclick="analise()">COMPRA</button>
+    <div id="div_msg"></div>
+</body>
+
+<script> 
+     function analise() {
+
+        if (ipt_chocolate.value > 6) {
+            let resultado = ipt_chocolate.value * 2.50;
+            div_msg.innerHTML = `O  valor da sua compra foi de ${resultado}.`;
+            
+        }else{
+            let resultado = ipt_chocolate.value * 3;
+            div_msg.innerHTML = `O  valor da sua compra foi de ${resultado}.`;
+        }
+     }
+
+</script>
+</html>

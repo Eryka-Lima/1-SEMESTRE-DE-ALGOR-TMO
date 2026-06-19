@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 01</title>
+</head>
+
+<body>
+
+    <h2>1. Contagem Simples</h2>
+    <button onclick="contar()">Contar</button>
+    <div id="res1"></div>
+
+</body>
+
+</html>
+
+<script>
+
+    function contar() {
+        let i = 1, txt = "";
+        while (i <= 15) {
+            txt += i + "<br>";
+            i++;
+        }
+        res1.innerHTML = txt;
+    }
+
+</script>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EXERCIO 02</title>
+</head>
+
+<body>
+    <H1>2. Alterando e Eliminando elementos do vetor</H1>
+    2- Cadastrar e Alterar Fruta (primeira)
+
+    <hr>
+    Insira o nome da Fruta:<br>
+    <input id="input_fruta"><br>
+    <button onclick="cadastrar()">CADASTRAR</button><br><br>
+    <hr>
+
+    Insira o nome da Fruta para ALTERAR:<br>
+    <input id="input_alterar"><br>
+    Insira o nome para ALTERAR:<br>
+    <input id="input_newfruta"><br>
+    <button onclick="alterar()">ALTERAR</button><br><br>
+
+    <hr>
+    <div id="output"></div>
+</body>
+
+</html>
+
+
+
+<script>
+
+
+    let nomes = [];
+
+    function cadastrar() {
+        nomes.push(input_fruta.value);
+        input_fruta.value = '';
+
+        output.innerHTML = `Lista de frutas cadastradas ${nomes}.<br>`;
+    }
+
+    function alterar() {
+
+        for (var i = 0; i < nomes.length; i++) {
+            if (nomes[i] == input_alterar.value) {
+                nomes[i] = input_newfruta.value;
+                break;
+            }
+        }
+        if (i == nomes.length) {
+            alert(input_alterar.value + ' não foi encontrado na lista')
+        } else {
+            output.innerHTML = `Lista de frutas cadastradas ${nomes}.<br>`;
+        }
+    }
+</script>

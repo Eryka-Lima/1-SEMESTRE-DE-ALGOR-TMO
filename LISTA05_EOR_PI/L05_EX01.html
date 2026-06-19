@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EXERCICIO 01</title>
+</head>
+<body>
+    <h2>CONFORTO TÉRMICO: A temperatura está ideal?</h2>
+    Qual a temperatura atual? <input id="ipt_temperatura"> <br>
+
+    <button onclick="analise()">VER SITUAÇÃO</button>
+    <div id="div_msg"></div>
+</body>
+<script>
+
+    function analise() {
+        if(ipt_temperatura.value >= 21 && ipt_temperatura.value <= 24) {
+            alert ("Temperatura confortável :D");
+        }else {
+            alert ("Temperatura DESCONFORTÁVEL :C");
+        }
+    }
+    
+</script>
+</html>

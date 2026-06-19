@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exeercicio 11</title>
+</head>
+
+<body>
+    <h2>11. Tabuada</h2>
+
+    Informe Como você quer sua taboada.<br>
+    <hr>
+
+    Quero ver a tabuada do:<br>
+    <input id="tab" type="number"><br>
+    Até o número:<br>
+    <input id="ate" type="number"><br>
+    <br>
+    <button onclick="tabuada()">Ver Tabuada</button>
+    <br><hr>
+    <div id="res11"></div>
+
+
+
+</body>
+
+</html>
+
+<script>
+    function tabuada() {
+        let t = Number(tab.value);
+        let a = Number(ate.value);
+        let i = 1, txt = "";
+
+        if(t== "" ||t <=0 ){
+            alert("O numero deve ser Inteiro maior que 0(Zero)");
+        }else{
+        while (i <= a) {
+            let cor = (i % 2 == 0) ? "blue" : "red";
+            txt += `<span style="color:${cor}">${t} x ${i} = ${t * i}</span><br>`;
+            i++;
+        }
+        res11.innerHTML = txt;
+        }
+    }
+
+
+</script>

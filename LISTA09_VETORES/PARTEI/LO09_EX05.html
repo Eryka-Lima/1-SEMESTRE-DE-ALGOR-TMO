@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EXERCICIO 05</title>
+</head>
+
+<body>
+
+    <h1>Painel de Favoritos: Seus Filmes em Destaque</h1>
+
+    Qual fime mais gosta e na sequencia o que menos gosta<br>
+    <input id="input_filme"><br>
+
+    <button onclick="cadastrar()">Cadastrar Filme</button><br><br>
+    <button onclick="painel()">Ver Painel de Filmes Favoritos</button><br><br>
+
+    <div id="output"></div>
+
+</body>
+
+</html>
+
+<script>
+
+    let filmes = [];
+
+    function cadastrar() {
+
+        let filme = input_filme.value.trim();
+
+        if (filme !== "") {
+            filmes.push(filme);
+            input_filme.value = "";
+            painel();
+        }
+    }
+
+    function painel() {
+
+        let painel = "";
+
+        if (filmes.length >= 1) {
+            painel += `Seu filme favorito: ${filmes[0]}<br>`;
+        } else {
+            painel += `Seu filme favorito: Ainda não existe<br>`;
+        }
+
+        // 3º filme favorito
+        if (filmes.length >= 3) {
+            painel += `Seu 3º filme favorito: ${filmes[2]}<br>`;
+        } else {
+            painel += `Seu 3º filme favorito: Ainda não existe<br>`;
+        }
+
+        // Total
+        painel += `Total de filmes cadastrados: ${filmes.length}`;
+
+        output.innerHTML = painel;
+    }
+
+</script>

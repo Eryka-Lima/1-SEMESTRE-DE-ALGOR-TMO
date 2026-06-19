@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 10</title>
+</head>
+
+<body>
+
+    <h2>10. Pares no Intervalo</h2>
+    DE:
+    <input id="ini" type="number">
+    ATÉ:
+    <input id="fim" type="number">
+    <button onclick="paresInt()">S2 Pares</button>
+    <div id="res10"></div>
+
+
+</body>
+
+</html>
+
+<script>
+
+    function paresInt() {
+        let i = Number(ini.value);
+        let f = Number(fim.value);
+        let txt = "";
+        while (i <= f) {
+            if (i % 2 == 0) {
+                txt += i + "<br>";
+            }
+            i++;
+        }
+        res10.innerHTML = txt;
+    }
+
+</script>

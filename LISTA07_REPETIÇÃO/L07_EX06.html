@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 06</title>
+</head>
+
+<body>
+
+    <h2>6. Cabalísticos</h2>
+    <button onclick="cabalistico()">Filtrar</button>
+    <div id="res6"></div>
+
+
+</body>
+
+</html>
+
+<script>
+
+    function cabalistico() {
+        let i = 1, txt = "";
+        while (i <= 30) {
+            if (i != 3 && i != 4 && i != 7 && i != 10 && i != 12) {
+                txt += i + "<br>";
+            }
+            i++;
+        }
+        res6.innerHTML = txt;
+    }
+
+</script>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EXERCICIO 01</title>
+</head>
+<body>
+    <H1>CARONA COMPARTILHADA</H1>
+
+    Quantas pessoas vão pegar carona no carro: <br>
+    <input id="ipt_corrida"><br>
+
+
+    <button onclick="analise()">#PARTIU CARONA</button><br>
+    <div id="div"></div>
+    
+</body>
+</html>
+
+<script>
+
+    function analise(){
+        let carro = ipt_corrida.value.trim();
+
+        for(let cont = 0; cont < carro; cont++){
+            if(cont == 1){
+                div.innerHTML += `Entrou o motorista.<br>`;
+            }else if (cont > 1 && cont <6){
+                div.innerHTML += `Entrou o ${cont} passageiro<br>`;
+            }else if (cont >= 6){
+                div.innerHTML += `Entrou o ${cont} passageiro tem que esperar<br>`;
+        }
+
+    }
+    }
+</script>

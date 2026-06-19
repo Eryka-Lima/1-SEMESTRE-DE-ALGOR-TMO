@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EXERCÍCIO 15</title>
+</head>
+<body>
+    <h2>ANALISE MÉDIA DAS NOTAS</h2>
+    Qual sua nota 01? <input id="ipt_nota1"> <br>
+    Qual sua nota 02? <input id="ipt_nota2"> <br><br>
+
+    <button onclick="analise()">VERIFICAR SITUAÇÃO</button>
+    <div id="div_msg"></div>
+</body>
+
+<script>
+
+        function analise() {
+
+            let media = (ipt_nota1.value + ipt_nota2.value) / 2;
+
+            if(media >=6) {
+                div_msg.innerHTML = `Parabens!! Aprovado!!`;
+            }else{
+                div_msg.innerHTML = `Desculpe tente outra vez!!.`;
+            }
+        }
+
+</script>
+</html>

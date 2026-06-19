@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EXERCICIO 04</title>
+</head>
+<body>
+
+    <h1>Café com Leite na Medida Certa</h1>
+
+    Quantas xícaras com café com leite você já tomou na vida:<br>
+    <input id="ipt_xicara"><br><br>
+
+    <button onclick="analise()">Ver quantidade</button><br>
+    <div id="msg"></div>
+    
+</body>
+</html>
+
+<script>
+
+    function analise(){
+
+        let qtd = Number(ipt_xicara.value);
+
+        for(let cont = 0; cont <= qtd; cont++){
+
+            msg.innerHTML += ``;
+        }
+    }
+</script>

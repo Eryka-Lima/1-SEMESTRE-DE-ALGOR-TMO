@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aula TESTE  FRO</title>
+</head>
+<body>
+
+    <h1>REPETIÇÃO DE FRASE</h1>
+    
+    Insira uma frase:<br>
+    <input id="ipt_fra"><br>
+
+    Quantas vezes quer repetir:<br>
+    <input id="ipt_qtd"><br>
+
+    <button id="analise()">VERIFICA</button>
+
+    <div id="div"></div>
+
+</body>
+</html>
+
+<script>
+    function analise(){
+        let f = ipt_fra.value.tim();
+        let q = ipt_qtd.value.trim();
+
+        div.innerHTML = ``;
+
+        FOR (let ind = 0; ind < q; ind++; ){
+            div.innerHTML += ` ${f}`;
+        }
+
+    }
+</script>

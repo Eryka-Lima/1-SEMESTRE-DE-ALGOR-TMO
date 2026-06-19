@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt_br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 05</title>
+</head>
+
+<body>
+    <h2>Opinião da Família</h2>
+    Insira a sua nota na escola: <input id="ipt_nota"> <br>
+     <button onclick="mostrar_avo()">Opinião da Avó</button>
+     <button onclick="mostrar_mae()">Opinião da Mãe</button>
+     <button onclick="mostrar_dois()"> Sua Nota </button>
+</body>
+
+</html>
+<script>
+    function mostrar_avo() {
+        alert("Muito bem, que neto inteligente, porque tirou" + ipt_nota.value);
+    }
+    function mostrar_mae() {
+
+        alert("Não fez mais que tua obrigação com essa nota" + ipt_nota.value);
+    }
+    function mostrar_dois() {
+
+        alert("Sua nota foi" + ipt_nota.value);
+    }
+</script>

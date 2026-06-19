@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt_br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>L06e05</title>
+</head>
+<body>
+    <h2>Seus Filmes em Destaque</h2>
+    Entre com o nome do filme: <input id="ipt_filme">
+    <button onclick="cadastrar()">Cadastrar</button><br>
+    <div id="div_msg"></div>
+</body>
+</html>
+<script>
+
+    let ax_filmes = [];
+
+    function cadastrar() {
+        let ax_nome_filme = ipt_filme.value.trim();
+        if (ax_nome_filme.length == 0) {
+            alert ('Por favor digite o nome do filme')
+        } else {
+            ax_filmes.push(ax_nome_filme);
+            div_msg.innerHTML = `Seu filme favorito é: ${ax_filmes[0]}`;
+            if (ax_filmes.length < 3) {
+                div_msg.innerHTML += `<br>Seu 3º filme favorito AINDA NÃO EXISTE`;
+            } else {
+                div_msg.innerHTML += `<br>Seu 3º filme favorito é: ${ax_filmes[2]}`;  
+            }
+            div_msg.innerHTML += `<br>Total de Filmes cadastrados ${ax_filmes.length}`;  
+        }
+    }
+
+
+
+</script>

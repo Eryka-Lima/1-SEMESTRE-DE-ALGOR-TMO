@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <title>EXERCICIO 11</title>
+</head>
+
+<body>
+
+    <h2>Controle de Estoque</h2>
+
+    <!-- Entrada de preço -->
+    <input id="input_preco" placeholder="Digite o preço do produto">
+    <button onclick="cadastrar()">Cadastrar</button>
+
+    <br><br>
+
+    <button onclick="atualizar()">Atualizar Estoque</button>
+
+    <!-- Exibição -->
+    <div id="lista"></div>
+    <div id="resumo"></div>
+
+</body>
+
+</html>
+
+<script>
+    let precos = [];
+
+    function cadastrar() {
+        let preco = Number(input_preco.value);
+
+        if (input_preco.value === "" || preco <= 0) {
+            alert("Digite um preço válido!");
+            return;
+        }
+
+        precos.push(preco);
+        input_preco.value = "";
+    }
+
+    function atualizar() {
+        lista.innerHTML = "";
+        let soma = 0;
+
+        // Exibir em ordem inversa
+        for (let i = precos.length - 1; i >= 0; i--) {
+            lista.innerHTML += `R$ ${precos[i].toFixed(2)}<br>`;
+            soma += precos[i];
+        }
+
+        resumo.innerHTML = `
+      Você tem ${precos.length} produtos cadastrados em estoque<br>
+      Seu estoque vale R$ ${soma.toFixed(2)}
+    `;
+    }
+</script>

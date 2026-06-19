@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EXERCICIO 02</title>
+</head>
+<body>
+    <h1>Simulador de Preferências de Compras: Será que Robervaldo Gostaria?</h1>
+     Qual o tamanho da tela do celular? <input id="ipt_polegada"><br>
+     Qual a cor encontrada? <input id="ipt_cor"><br>
+
+    <button onclick="analise()">SERÁ QUE ELE VAI GOSTAR?</button><br>
+    <div id="div_msg"></div>
+</body>
+
+    <script>
+
+        function analise(){
+            let polegada = ipt_polegada.value;
+            let cor = ipt_cor.value;
+
+            if((cor == 'Preto' ||  cor == 'Prata' ||  cor == 'Azul' ||  cor =='Vermelho') && polegada == '6.5' ){
+                div_msg.innerHTML = `<img src="Feliz.jfif"><br><br>`;
+            }else{
+                div_msg.innerHTML = `<img src="triste.jfif"><br><br>`;
+            }
+        }
+    </script>
+</html>

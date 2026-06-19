@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt_br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 01</title>
+</head>
+<body style="background-color:#bfdbe0;">
+    <h2>ATUALIZAR DADOS BANCÁRIOS</h2>
+    Vamos atualizar o seu saldo. <br>
+
+    <button style="background-color: #87b1ce; color: rgb(252, 248, 248);" 
+    onclick="mostrar('pagar1')">RECEBER 100</button>
+    <div id="div_pg1"></div> <br>
+
+    <button style="background-color: #3589ce; color: rgb(252, 248, 248);" 
+    onclick="mostrar('pagar2')">PAGAR 50</button>
+    <div id="div_pg2"></div> <br>
+
+</body>
+
+<Script>
+    function mostrar(receber) {
+
+        document.getElementById("div_pg1").innerHTML = "";
+        document.getElementById("div_pg2").innerHTML = "";
+
+         if (receber === "pagar1") {
+            let num1 = 100;
+            let saldo = 0;
+            let resultado = saldo + num1;
+            
+            document.getElementById("div_pg1").innerHTML = "Transferência de R$100 recebida! Saldo atual: R$ "  + resultado + " . ";
+        }
+
+        if (receber === "pagar2") {
+             let num3 = 60;
+            let num4 = Number(ipt_idade.value);
+
+            let resultado = num3 - num4;
+            document.getElementById("div_mul").innerHTML = "Olá,  " + ipt_nome.value + "você tem " + ipt_idade.value + 
+            " anos, e Falta " + resultado + " anos, para você se aposentar!";
+        }
+    }
+
+
+</Script>
+</html>

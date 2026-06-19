@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EXERCICIO 03</title>
+</head>
+
+<body>
+    <h1>Relembrando Moradias: Onde Você Já Viveu?</h1>
+    Nome do lugar em que viveu: <input id="ipt_lugar"><br>
+    Ondem da moradia: <input id="ipt_ordem"> <br><br>
+    <button onclick="cadastro()">CADASTRAR BAIRRO</button><br>
+
+    <button onclick="relembrar()">RELEMBRAR MORADIA</button><br>
+    <div id="div_msg"></div>
+
+</body>
+
+<script>
+
+    let vetor = [];
+
+    function cadastro() {
+        vetor.push(ipt_lugar.value);
+    }
+
+    function relembrar() {
+        let moradia = ipt_lugar.value;
+        let ordem = ipt_ordem.value;
+
+        if (ordem == 1) {
+            div_msg.innerHTML += `A Primeira MORADIA é: ${vetor[0]}<br>`;
+        } else if(ordem == 2){
+            div_msg.innerHTML += `A Segunda MORADIA é: ${vetor[1]}<br>`;
+
+        }
+    }
+
+</script>
+</html>

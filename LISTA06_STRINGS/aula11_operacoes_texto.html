@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+</head>
+
+<body>
+
+   Digite uma frase:
+   <input oninput="analisar()" type="text" id="input_frase"> <br>
+   <div id="div_mensagem"></div>
+   <!-- <button onclick="analisar()">Analisar Frase</button> <br> -->
+</body>
+
+</html>
+<script>
+   
+  /*
+     EXPLICAÇÃO DO CONCEITO!
+
+     Em JavaScript, uma "string" é uma cadeia de caracteres, ou seja, um texto.
+     Sempre que trabalhamos com frases ou palavras, podemos utilizar diversos MÉTODOS e PROPRIEDADES para manipular essas strings.
+
+     Alguns exemplos comuns do dia a dia:
+        - "SE a senha tiver pelo menos 8 caracteres, É VÁLIDA"
+        - "SE o e-mail terminar com '.com', É ACEITO"
+        - "SE a palavra incluir '@', É UM ENDEREÇO DE E-MAIL"
+
+     Ou seja: analisamos o conteúdo do texto, aplicamos regras e, a partir disso, tomamos decisões no programa.
+
+     Principais recursos utilizados aqui:
+     - length → retorna o tamanho da string (quantidade de caracteres)
+     - toLowerCase() → transforma tudo em minúsculo
+     - toUpperCase() → transforma tudo em maiúsculo
+     - startsWith("xyz") → verifica se a string começa com "xyz"
+     - endsWith("xyz") → verifica se a string termina com "xyz"
+     - includes("xyz") → verifica se a string contém "xyz"
+     - replace("a","@") → substitui a PRIMEIRA ocorrência de "a" por "@"
+     - replaceAll("a","@") → substitui TODAS as ocorrências de "a" por "@"
+     - [índice] → acessa um caractere específico da string, com base no índice (posição) informada
+
+     Estruturas de decisão (if / else) foram usadas para validar as condições sobre a string e mostrar mensagens formatadas na tela.
+
+     EXEMPLOS PRÁTICOS DE SAÍDA:
+       Entrada: "abacaXI.com"
+       - Frase Original: "abacaXI.com"
+       - Frase Maiúscula: "ABACAXI.COM"
+       - Frase Minúscula: "abacaxi.com"
+       - Tamanho da Frase: 11
+       - Primeiro Caractere: a
+       - Terceiro Caractere: a
+       - Último Caractere: m
+       - Frase começa com 'a'? válido
+       - Frase termina com '.com'? válido
+       - Frase inclui '@'? inválido
+       - Frase inclui 'abc' ou 'ABC'? inválido
+       - Frase substituindo o primeiro 'a' por '@': "@bacaXI.com"
+       - Frase substituída: "@b@c@XI.com"
+  */
+
+   function analisar() {
+      var frase = input_frase.value;
+
+      // frase = frase.trim(); // limpa os espaços no começo e fim do texto, mas mantém os espaços no meio do texto
+      // acima, o texto "    teste   123    " se tornaria em "teste   123" 
+      //                 ↑↑↑↑           ↑↑↑↑  espaços a serem removidos no início e final do texto
+      
+      var tamanhoFrase = frase.length;
+      
+      var fraseMinuscula = frase.toLowerCase();
+      var fraseMaiuscula = frase.toUpperCase();
+
+      div_mensagem.innerHTML = `
+         Frase Original: ${frase} <br>
+         Frase Maiúscula: ${fraseMaiuscula} <br>
+         Frase Minúscula: ${fraseMinuscula} <br>
+         Tamanho da Frase: ${tamanhoFrase} <br>
+         Primeira Letra: ${frase[0]} <br>
+         Quinta Letra: ${frase[4]} <br>
+         Última Letra: ${frase[tamanhoFrase - 1]} <br>
+      `;
+
+      if (frase.startsWith("a") || frase.startsWith('A')) {
+         div_mensagem.innerHTML += `Frase começa com 'a' ou "A"? <b style="color: green">VÁLIDO</b> <br>`;
+      } else {
+         div_mensagem.innerHTML += `Frase começa com 'a' ou "A"? <b style="color: red">INVÁLIDO</b> <br>`;
+      }
+
+      if (frase.endsWith('.com') || frase.endsWith('.com.br') || frase.endsWith("sptech.school")) {
+         div_mensagem.innerHTML += `Frase termina com ".com", ".com.br" ou ".sptech.school"? <b style="color: green">VÁLIDO</b> <br>`;
+      } else {
+         div_mensagem.innerHTML += `Frase termina com ".com", ".com.br" ou ".sptech.school"? <b style="color: red">INVÁLIDO</b> <br>`;
+      }
+
+      // if (frase.includes('@') || frase.includes('#') || frase.includes('$')) {
+      if (frase.includes('@')) {
+         div_mensagem.innerHTML += `Frase inclui '@'? <b style="color: green">VÁLIDO</b> <br>`;
+      } else {
+         div_mensagem.innerHTML += `Frase inclui '@'? <b style="color: red">INVÁLIDO</b> <br>`;
+      }
+
+      // "aAaAbC" original -> não consigo validar com "abc" ou "ABC", não funcionaria
+      // "aaaabc" minuscula -> podemos validar com "abc" minúsculo
+      // "AAAABC" maiscula -> podemos validar com "ABC" MAIÚSCULO
+
+      // if (fraseMinuscula.includes('abc')) {
+      if (fraseMaiuscula.includes('ABC')) {
+         div_mensagem.innerHTML += `Frase inclui 'abc'? <b style="color: green">VÁLIDO</b> <br>`;
+      } else {
+         div_mensagem.innerHTML += `Frase inclui 'abc'? <b style="color: red">INVÁLIDO</b> <br>`;
+      }
+
+      div_mensagem.innerHTML += `
+         Frase substituindo o primeiro 'a' por '@': ${frase.replace("t", '7')} <br>
+         Frase toda substituída: ${frase.replaceAll("t", '7').replaceAll('a', '@').replaceAll("T", '7').replaceAll('A', '@')} <br>
+      `
+   }
+</script> 

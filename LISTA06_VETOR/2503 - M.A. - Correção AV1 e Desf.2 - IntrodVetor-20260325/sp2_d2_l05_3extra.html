@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt_br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desafio 2</title>
+</head>
+
+<body>
+    <h2>Sistema de Recompensas e Descontos</h2>
+    Quantidade de Produtos Comprados: <input id="ipt_quantidade_produtos" type="number"> <br>
+    Valor Total: <input id="ipt_valor_total" type="number"><br>
+    Cliente Vip (s/n): <input id="ipt_cliente_vip"> <br>
+    <button onclick="calcular()">Calcular</button>
+    <div id="div_msg"></div>
+</body>
+
+</html>
+<script>
+    function calcular() {
+        let ax_prod = Number(ipt_quantidade_produtos.value);
+        let ax_valor = Number(ipt_valor_total.value);
+        let ax_vip = ipt_cliente_vip.value;
+        let ax_desconto = 0;
+        let ax_pontos = 0;
+
+        if (ax_prod == 0 || ax_prod % 1 != 0) {
+            alert('Entre com uma quantidade inteira e positiva')
+        } else if (ax_valor == 0) {
+            alert('Entre com um valor maior que zero')
+        } else if (ax_vip != 's' && ax_vip != 'n') {
+            alert('Entre com "s" para cliente VIP e com "n" para cliente não VIP')
+        } else {
+
+            if (ax_prod > 10 && ax_valor > 1000 && ax_vip == 's') {
+                ax_desconto = ax_desconto + 15;
+            }
+            if ((ax_prod > 10 && ax_valor > 500) || ax_vip == 's') {
+                ax_desconto = ax_desconto + 10;
+            }
+            if ((ax_prod > 5 && ax_prod < 11 && ax_valor > 200) || ax_vip == 's') {
+                ax_desconto = ax_desconto + 5;
+            }
+
+            if ((ax_prod > 5 && ax_valor > 200) || ax_vip == 's') {
+                ax_pontos = ax_pontos + 50;
+            }
+            if (ax_prod > 10 && ax_valor > 500) {
+                ax_pontos = ax_pontos + 100;
+            }
+
+            div_msg.innerHTML = `
+            O valor do desconto que o cliente pode receber é: ${ax_desconto}%. <br>
+            O número de pontos de recompensa que o cliente vai acumular é: ${ax_pontos}`;
+        }
+    }
+</script>

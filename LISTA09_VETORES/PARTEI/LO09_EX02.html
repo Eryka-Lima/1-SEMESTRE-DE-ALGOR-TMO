@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EXERCICIO 02</title>
+</head>
+
+<body>
+
+    <h1>Diário de Viagens: Do Primeiro ao Último Destino</h1>
+
+    Destino da Viagem:<br>
+    <input id="input_destino"><br>
+
+    <button onclick="adicionar()">Adicionar</button><br><br>
+    <div id="output"></div>
+
+    <button onclick="priemira()">Primeira Viagem</button>
+    <button onclick="terceira()">Terceira Viagem</button>
+    <button onclick="ultima()">Última Viagem</button>
+
+</body>
+</html>
+
+
+<script>
+
+    let viagens = [];
+
+    function adicionar(){
+        let destino = input_destino.value.trim();
+
+        if(destino !== ""){
+            viagens.push(destino);
+            input_destino.value = "";
+        }
+    }
+
+    function primeira(){
+
+        if(viagens.length === 0){
+            output.innerHTML = "Ainda não viajou";
+        } else {
+            output.innerHTML = viagens[0];
+        }
+    }
+
+    function terceira(){
+
+        if(viagens.length < 3){
+            output.innerHTML = "Ainda não fez a terceira viagem";
+        } else {
+            output.innerHTML = viagens[2];
+        }
+    }
+
+    function ultima(){
+
+        if(viagens.length === 0){
+            output.innerHTML = "Ainda não viajou";
+        } else {
+            output.innerHTML = viagens[viagens.length - 1];
+        }
+    }
+
+</script>

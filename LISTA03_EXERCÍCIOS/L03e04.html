@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt_br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 04</title>
+</head>
+<body style="background-color:#eee783;">
+    <h2 style="background-color: #ec9b20; color: rgb(252, 248, 248);" >DIVIDINDO A PIZZA</h2>
+    Todo mundo adora pizza! Existem para todos os gostos! <br>
+    Valor da Pizza: <input  id= "ipt_num1"> <br>
+    Quantidade de Amigos: <input id="ipt_num2"> <br><br>
+
+    <button style="background-color: #ec9b20; color: rgb(252, 248, 248);" 
+    onclick="mostrar('divisao')">#LOVEPIZZA</button>
+    <div id="div_divisao"></div> <br>
+
+</body>
+
+<Script>
+    function mostrar(operacoes) {
+
+        document.getElementById("div_divisao").innerHTML = "";
+
+    
+        if (operacoes === "divisao") {
+            let num1 = Number(ipt_num1.value);
+            let num2 = Number(ipt_num2.value);
+
+            let resultado = num1 / num2;
+            document.getElementById("div_divisao").innerHTML =
+             "Cada um dos " + ipt_num2.value + " amigos vai pagar R$" + resultado + "." ;
+
+        ipt_num1.value = '';
+        ipt_num2.value = '';
+        }
+    }
+
+
+</Script>
+</html>

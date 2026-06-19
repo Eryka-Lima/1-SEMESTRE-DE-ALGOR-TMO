@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EXERCICIO 2</title>
+</head>
+
+<body>
+
+    <h1>Crie um programa o qual: </h1>
+    <br>
+
+    <button onclick="sortear()">Sortear Time</button><br><br>
+    <div id="output"></div>
+
+</body>
+
+</html>
+
+<script>
+
+
+    function sortear() {
+
+        let numero = Math.random();
+
+        let resultado = (numero * (4 - 1) + 1).toFixed();
+
+        if (resultado == 1) {
+            output.innerHTML += `Time Sorteado São Paulo! <br>`;
+        } else if (resultado == 2) {
+            output.innerHTML += `Time Sorteado Santos! <br>`;
+        } else if (resultado == 3) {
+            output.innerHTML += `Time Sorteado Corinthians!<br>`;
+        } else {
+            output.innerHTML += `Time Sorteado Juventos! <br>`;
+        }
+
+
+
+    }
+
+</script>

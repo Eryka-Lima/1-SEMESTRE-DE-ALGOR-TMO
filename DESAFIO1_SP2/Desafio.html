@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DESAFIO SPRINT 02</title>
+</head>
+
+<body>
+    <h1 style="color: rgb(93, 152, 175);">ANIL OSAG</h1>
+    <img src="Posto_ANILOSAG.png"><br><br>
+
+    <h2>Faturamento criado para controle de vendas do posto da Familia Osag.</h2>
+    Qual a quantidade vendida (L)? <input id="ipt_vendas">
+    Horário da venda (formato 24 horas): <input id="ipt_horario"><br><br>
+    Qual combustível vendido?<br>
+    <button style="background-color: rgb(186, 247, 247);" onclick="escolher('gasolina')">GASOLINA</button>
+    <button style="background-color:pink ;" onclick="escolher('etanol')">ETANOL</button>
+    <button style="background-color: rgb(223, 231, 153);" onclick="escolher('diesel')">DIESEL</button><br><br>
+
+    <button style="background-color: rgb(165, 231, 187);" onclick="analise()">ANALISE VENDAS</button><br>
+    <div id="div_msg"></div>
+
+    <br>
+    <button onclick="faturamento()">FATURAMENTO</button><br>
+    Total do Faturamento Diário:<br><br>
+    <div id="faturamento"></div>
+
+    <button style="background-color: rgb(223, 202, 179);" onclick="encerrar()">ENCERRAR O DIA</button><br>
+</body>
+<script>
+
+    let combustivel = "";
+    let ordem = 0;
+    let desconto = 0;
+    let total = 0;
+
+    function escolher(tipo) {
+        combustivel = tipo;
+    }
+
+    function analise() {
+        ordem++;
+
+        let litros = Number(ipt_vendas.value);
+        let hora = Number(ipt_horario.value);
+        let valorVenda = 0;
+        desconto = 0;
+
+        if (combustivel == "gasolina") {
+            if (litros >= 20 && (hora >= 21 || hora <= 6)) {
+                let resultado = litros * 6.49;
+                desconto = (valorVenda * 5.05) / 100;
+                valorVenda -= desconto;
+
+                div_msg.innerHTML += `${ordem}º Compra, foi realizada a venda de ${litros} litros de GASOLINA no valor 
+             de ${total.toFixed(2)} às ${hora} horas. Com desconto de ${desconto.toFixed}<br>`;
+            } else {
+                let resultado = ipt_vendas.value * 6.49;
+                total = resultado;
+                div_msg.innerHTML += `${ordem} Compra, foi realizada a venda de ${ipt_vendas.value} litos de GASOLINA no valor 
+             de ${total.toFixed(2)} às ${ipt_horario.value} horas. Com desconto de ${desconto}<br>`;
+            }
+        }
+        else if (combustivel == "etanol") {
+            if (ipt_vendas.value >= 20 && (ipt_horario.value >= 21 || ipt_horario.value <= 6)) {
+                let resultado = ipt_vendas.value * 4.44;
+                let desconto = (resultado * 4.80) / 100;
+                let total = resultado - desconto;
+                div_msg.innerHTML += `Foi realizada a venda de ${ipt_vendas.value} litros de ETANOL no valor 
+             de ${total.toFixed(2)} às ${ipt_horario.value} horas. <br>`;
+            } else {
+                let resultado = ipt_vendas.value * 4.44;
+                div_msg.innerHTML += `Foi realizada a venda de ${ipt_vendas.value} litros de ETANOL no valor 
+             de ${resultado.toFixed(2)} às ${ipt_horario.value} horas. <br>`;
+            }
+        }
+        else if (combustivel == "diesel") {
+            if (ipt_vendas.value >= 20 && (ipt_horario.value >= 21 || ipt_horario.value <= 6)) {
+                let resultado = ipt_vendas.value * 4.39;
+                let desconto = (resultado * 4.39) / 100;
+                let total = resultado - desconto;
+                div_msg.innerHTML += `Foi realizada a venda de ${ipt_vendas.value} litros de DIESEL no valor 
+             de ${total.toFixed(2)} às ${ipt_horario.value} horas. <br>`;
+            } else {
+                let resultado = ipt_vendas.value * 4.39;
+                div_msg.innerHTML += `Foi realizada a venda de ${ipt_vendas.value} litros de DIESEL no valor 
+             de ${resultado.toFixed(2)} às ${ipt_horario.value} horas. <br>`;
+            }
+
+            total += valorVenda;
+
+            div_msg.innerHTML += `
+           ${ordem}º venda: ${litros}L de ${combustivel} <br>
+            Valor da venda: R$ ${valorVenda.toFixed(2)} <br>
+             Total acumulado: R$ ${total.toFixed(2)} <br><br>
+             `;
+        }
+
+        function faturamento() {
+            faturamento.innerHTML += `Valor total recebido foi de ${total}. <br>
+                                  Valor total dos Descontos foi de ${total}. <br>`
+        }
+
+        function encerrar() {
+            ipt_vendas.innerHTML = '';
+            ipt_horario.innerHTML = '';
+            div_msg.innerHTML = ``;
+        }
+    }
+</script>
+
+</html>

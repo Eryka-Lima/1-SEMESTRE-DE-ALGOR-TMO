@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EXERCICIO 08</title>
+<!--b) Ao clicar no botão, essa fruta deve ser adicionada a uma lista (que não aparece para o usuário). 
+
+Obs: Não cadastrar frutas repetidas repetidos (ver método indexOf).
+
+ 
+c) Tenha um botão "Pesquisar" que quando clicado, o programa busca a fruta digitada, na lista gerada pelo item b
+
+c.1) Se achar, exibe um texto abaixo com a frase:
+
+    A fruta X existe na lista.
+
+c.2) Caso a fruta pesquisada não exista, exiba: 
+
+    Não existe a fruta X na lista. -->
+</head>
+<body>
+    <h1>Caça às Frutas (Top): Descubra se está na Lista</h1>
+    Fruta que você gosta: <input id="ipt_fruta"><br>
+
+    <button onclick="adiciona()">ADICIONAR</button><br><br>
+    <div id="div_msg"></div>
+
+    <button onclick="pesquisar()">PESQUISA</button><br><br>
+    <div id="div_pesquisa"></div>
+    
+</body>
+
+<script>
+    let vetor = []
+
+    function adiciona() {
+         vetor.push(ipt_fruta.value);
+         ipt_fruta.value = '';
+    }
+
+    function pesquisar(){
+
+        let fruta = ipt_fruta.value;
+
+        if(vetor.includes(fruta)) {
+            div_msg.innerHTML = `A fruta ${fruta} existe na lista.`;
+        } else {
+            div_msg.innerHTML = `A fruta ${fruta} não existe na lista.`;
+        }
+        div_pesquisa.innerHTML += `Existe na lista: ${vetor}<br>`;
+    }
+</script>
+<script>
+
+     
+
+</script>
+</html>

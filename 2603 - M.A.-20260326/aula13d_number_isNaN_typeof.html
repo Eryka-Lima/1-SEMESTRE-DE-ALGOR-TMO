@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt_br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A.Av.1-SP2</title>
+</head>
+<body>
+    <h2>AtivAval-1 - SP-2</h2>
+    Este é um campo com type = text: <input id="ipt_text" >
+    <button onclick="ver_text()">Analisar</button> <br>    
+
+    Este é um campo com type=number: <input id="ipt_number" type="number">
+    <button onclick="ver_number()">Analisar</button> <br>
+
+    <div id="div_msg"></div>
+</body>
+</html>
+<script>
+    function ver_text() {
+        let ax_text = ipt_text.value.trim();
+        div_msg.innerHTML = `
+        Como está a input = ${ipt_text.value} <br>
+        Como está ax_text = ${ax_text} <br>
+        Length da input = ${ipt_text.value.length} <br>
+        Length  ax_text = ${ax_text.length} <br>
+        input não numérica = ${isNaN(ipt_text.value)} <br>
+        ax_text não numero = ${isNaN(ax_text)} <br>
+        input * 12 = ${ipt_text.value*12} <br>
+        ax_text*12 = ${ax_text*12} <br>        
+        input + 12 = ${ipt_text.value+12} <br>
+        ax_text+12 = ${ax_text+12} <br> 
+        tipo da input = ${typeof ipt_text.value} <br>
+        tipo  ax_text = ${typeof ax_text} <br> 
+        `
+        ipt_text.value = '';
+        ipt_number.value = '';
+    }
+
+    function ver_number() {
+        let ax_number = ipt_number.value.trim();
+        div_msg.innerHTML = `
+        Como está a input = ${ipt_number.value} <br>
+        Como está ax_number = ${ax_number} <br>
+        Length da input = ${ipt_number.value.length} <br>
+        Length  ax_number = ${ax_number.length} <br>
+        input não numérica = ${isNaN(ipt_number.value)} <br>
+        ax_number não numero = ${isNaN(ax_number)} <br>
+        input * 12 = ${ipt_number.value*12} <br>
+        ax_number*12 = ${ax_number*12} <br>        
+        input + 12 = ${ipt_number.value+12} <br>
+        ax_number+12 = ${ax_number+12} <br> 
+        tipo da input = ${typeof ipt_number.value} <br>
+        tipo  ax_number = ${typeof ax_number} <br> 
+        `
+        ipt_text.value = '';
+        ipt_number.value = '';
+    }
+</script>

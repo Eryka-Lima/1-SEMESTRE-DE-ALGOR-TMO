@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EXERCICIO 03</title>
+</head>
+<body>
+    <h2>Validação de Notas: Seu Resultado é Aceitável?</h2>
+        Qual sua nota? <input id="ipt_nota"> <br><br>
+    <button onclick="analise()">AVALIAR ALUNO</button> <br><br>
+    <div id="div_msg"></div>
+</body>
+    <script>
+        function analise() {
+            if(ipt_nota.value >=0 && ipt_nota.value <=10) {
+                alert ("NOTA VÁLIDA");
+            }else {
+                alert ("Onde ja se viu, nota maio que 10 e menos que 0?");
+            }
+        }
+    </script>
+</html>

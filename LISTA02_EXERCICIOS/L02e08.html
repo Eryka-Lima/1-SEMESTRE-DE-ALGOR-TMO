@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="pt_br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 08</title>
+</head>
+<body style="background-color:#ecd159;">
+    <h2 style="background-color: #db7522; color: rgb(252, 249, 249);"> SISTEMA DE CINEMA</h2>
+    Nome do Filme: <input  id= "ipt_filme"> <br>
+    Horário da Sessão: <input id="ipt_ses"> <br><br>
+    <button style="background-color: #db7522; color: rgb(252, 249, 249);" onclick="mostra()">CONFIRMAR INGRESSO</button>
+    
+</body>
+
+<script>
+    function mostra() {
+
+        alert ("Ingresso confirmado para o filme " + ipt_filme.value +  "no horário " + ipt_ses.value);
+    }
+</script> 
+</html>

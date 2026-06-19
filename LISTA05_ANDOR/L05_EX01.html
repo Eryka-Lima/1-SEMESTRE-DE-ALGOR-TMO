@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EXERCÍCIO 01</title>
+</head>
+<body>
+    <h1>Sistema de Avaliação de Atendimento: Dê Sua Nota!</h1>
+    Qual a nota do atendimento <input id="ipt_nota"><br>
+
+    <button onclick="analise()">Avaliar Atendimento</button><br><br>
+    <div id="div_msg"></div>
+</body>
+<script>
+    function analise(){
+        if(ipt_nota.value < 0 || ipt_nota.value > 10){
+            div_msg.innerHTML = `Nota Inválida.`;
+        }else if(ipt_nota.value >= 0 && ipt_nota.value <=5 ){
+            div_msg.innerHTML = `Não aprovado`;
+        }else if(ipt_nota.value > 5 && ipt_nota.value <6 ){
+            div_msg.innerHTML = `Neutro`;
+        }else{
+            div_msg.innerHTML = `Aprovado!!`;
+        }
+    }
+</script>
+</html>

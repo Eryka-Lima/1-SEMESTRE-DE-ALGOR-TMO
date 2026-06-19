@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EXERCICIO 01</title>
+</head>
+
+<body>
+
+    <h1>CAÇA AS FRUTAS: Descubra se está na Lista</h1>
+
+    Insira o nome de uma fruta:<br>
+    <input id="input_fruta"><br>
+
+    <button onclick="pesquisa()">Pesquisar</button><br>
+    <div id="output"></div>
+
+
+</body>
+</html>
+
+<script>
+
+    let frutas = ['Morango', 'Banana', 'Goiaba', 'Laranja'];
+
+    function pesquisa(){
+
+        let fruta = input_fruta.value.trim();
+        let encontrado = false;
+
+        for(let i = 0; i < frutas.length; i++){
+            if(fruta.toLowerCase() === frutas[i].toLowerCase()){
+                encontrado = true;
+                break;
+            }
+        }
+
+        if(encontrado){
+            output.innerHTML = "Fruta encontrada na lista!";
+        } else {
+           output.innerHTML = "Fruta NÃO encontrada.";
+        }
+
+    }
+
+</script>

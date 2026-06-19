@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 21</title>
+</head>
+
+<body>
+
+    <h1>DIVISIBILIDADE</h1>
+
+    Insira um número positivo: <br>
+    <input id="ipt_limite" placeholder="Limite"><br>
+    Insira um número positivo para teste:<br>
+    <input id="ipt_multiplo" placeholder="Divisor"><br><br>
+    <button onclick="multiplos()">Somar Números</button><br><br>
+
+    <div id="resp"></div>
+
+</body>
+
+</html>
+
+
+<script>
+    function multiplos() {
+        let limite = Number(ipt_limite.value);
+        let m = Number(ipt_multiplo.value);
+
+        let soma = 0;
+        let texto = "";
+
+        for (let i = 1; i <= limite; i++) {
+            if (i % m === 0) {
+                texto += i + "<br>";
+                soma += i;
+            }
+        }
+
+        resp.innerHTML = texto + `<br>Soma dos Múltiplos: ${soma}`;
+    }
+</script>

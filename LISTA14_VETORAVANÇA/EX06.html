@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EXERCICIO 06</title>
+</head>
+
+<body>
+
+    <h1>Alterando e Eliminando elementos do vetor</h1>
+    Controle de Receita
+
+    Valor do mês:<br>
+    <input id="input_valor"><br>
+    <button onclick="registrar()">Registrar</button><br><br>
+
+    Mês para alterar:<br>
+    <select id="select_mes">
+        <option value="0">Janeiro</option>
+        <option value="1">Fevereiro</option>
+        <option value="2">Março</option>
+        <option value="3">Abril</option>
+        <option value="4">Maio</option>
+        <option value="5">Junho</option>
+        <option value="6">Julho</option>
+        <option value="7">Agosto</option>
+        <option value="8">Setembro</option>
+        <option value="9">Outubro</option>
+        <option value="10">Novembro</option>
+        <option value="11">Dezembro</option>
+    </select><br>
+
+    Novo valor:<br>
+    <input id="input_novo"><br>
+    <button onclick="alterar()">Alterar</button><br><br>
+
+    <div id="output"></div>
+
+</body>
+
+</html>
+
+<script>
+
+    let receitas = [];
+
+    function registrar() {
+
+        let valor = Number(input_valor.value);
+
+        if (receitas.length < 12) {
+            receitas.push(valor);
+        } else {
+            alert('Todos os 12 meses já foram registrados!');
+        }
+
+        output.innerHTML = `Receitas do ano: ${receitas}`;
+    }
+
+    function alterar() {
+
+        let mes = Number(select_mes.value);
+        let novoValor = Number(input_novo.value);
+
+        if (receitas[mes] == undefined) {
+            alert('Esse mês ainda não foi registrado!');
+        } else {
+            receitas[mes] = novoValor;
+            output.innerHTML = `Receitas do ano: ${receitas}`;
+        }
+    }
+</script>

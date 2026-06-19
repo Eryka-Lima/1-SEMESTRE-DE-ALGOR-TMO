@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atividade</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+
+<h1> PRATICA</h1>
+
+<B> registrar algo </B>
+FRUTA:
+<input id="input_fruta"><br>
+
+<button onclick="registrar()">REGISTRAR</button>
+<div id="output_fruta"></div>
+
+
+<b>CHECAGEM</b>
+<button onclick="checagem()">LISTA</button>
+<div id="output_lista"></div>
+
+
+<script>
+
+    let frutas = [];
+
+
+    function registrar() {
+
+        let fruta = input_fruta.value.trim();
+
+        if (fruta.length < 3) {
+            alert("A fruta tem que ser maior que três sílabas.!");
+            return;
+        }
+
+        if (!isNaN(fruta)) {
+            alert("O nome da fruta não pode ser número.");
+            return
+        }
+
+        if (frutas.includes(fruta)) {
+            alert("Essa fruta ja foi cadastrada.!");
+            return
+        }
+
+
+        frutas.push(fruta);
+
+        output_fruta.innerHTML = `
+         <b> Cadastro Realizado com Sucesso!</b><br>
+         ID da FRUTA: ${frutas.length - 1}
+`;
+
+        input_fruta.value = ";"
+
+    }
+
+
+    function checagem() {
+        let lista = "";
+
+        for (let i = 0; i < frutas.length; i++) {
+            // CORREÇÃO 2: Puxando o nome direto do array de frutas pelo índice i
+            lista += `
+                    <hr>
+                    Fruta: ${frutas[i]} (ID: ${i})<br>
+                `;
+        }
+
+        output_lista.innerHTML = `
+                <h2>LISTA DE FRUTAS</h2>
+                ${lista}
+            `;
+    }
+</script>
+
+</script>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 03</title>
+</head>
+
+<body>
+    <h1>Codificador Maluco</h1>
+
+    Insira uma frase de sua preferência:<br>
+    <input id="ipt_frase3" placeholder="Digite uma frase"><br><br>
+
+    <button onclick="codificar()">Codificar</button><br><br>
+
+    <div id="res3"></div>
+
+</body>
+
+</html>
+
+
+<script>
+    function codificar() {
+        let frase = ipt_frase3.value.toLowerCase();
+        let i = 0;
+        let novaFrase = "";
+
+        while (i < frase.length) {
+            let letra = frase[i];
+
+            if (letra === "a") {
+                novaFrase += "1";
+            } else if (letra === "e") {
+                novaFrase += "1";
+            } else if (letra === "i") {
+                novaFrase += "3";
+            } else if (letra === "o") {
+                novaFrase += "4";
+            } else if (letra === "u") {
+                novaFrase += "5";
+            } else {
+                novaFrase += letra;
+            }
+
+            i++;
+        }
+
+        let tamanho = frase.length;
+
+        if (tamanho % 2 === 0) {
+            novaFrase += "#par";
+        } else {
+            novaFrase += "#impar";
+        }
+
+        res3.innerHTML = novaFrase;
+    }
+</script>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EXERCICIO 01</title>
+</head>
+<body>
+    <h2>Juliane Joada e Suas Frutas Preferidas</h2>
+    Qual o nome da fruta que você gosta? <input id="ipt_fruta"> <br><br>
+
+    <button onclick="analise()">VAI COMER?</button><br><br>
+    <div id="div_msg"></div>
+</body>
+
+    <script>
+        function analise() {
+            if(ipt_fruta.value == 'uva' || ipt_fruta.value == 'abacaxi') { 
+                alert ("Sim, vai comer" + ipt_fruta.value);
+            }else {
+                alert ("A fruta " + ipt_fruta.value + " ela não come");
+            }
+        }
+    </script>
+</html>

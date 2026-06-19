@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EXERCICIO 07</title>
+</head>
+
+<body>
+
+    <h1>Filmes em Cores: Azul e Vermelho Alternados</h1>
+
+    Qual fime mais gosta:<br>
+    <input id="input_filme"><br>
+
+    <button onclick="cadastrar()">Cadastrar Filme</button><br><br>
+    <div id="output"></div>
+
+</body>
+
+</html>
+
+<script>
+
+    let filmes = [];
+
+    function cadastrar() {
+        let filme = input_filme.value.trim();
+
+        if (filme !== ""); {
+            filmes.push(filme);
+            input_filme.value = "";
+
+            lista();
+        }
+    }
+
+
+    function lista() {
+
+        let lista = "";
+
+        for(let i = 0; i < filmes.length; i++){
+
+            if(i % 2 == 0){
+                lista += `<span style="color:blue">${filmes[i]}</span><br>`;
+            } else {
+                lista += `<span style="color:red">${filmes[i]}</span><br>`;
+            }
+
+        }
+
+        output.innerHTML = lista;
+    }
+
+</script>

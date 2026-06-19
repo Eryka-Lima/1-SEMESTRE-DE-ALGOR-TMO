@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt_br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Exercício 03</title>
+</head>
+
+<body>
+    <h2 style="background-color: #472d6b; color: rgb(252, 248, 248);">Análizar Saldo Bancário</h2>
+    
+    <button style="background-color: #681ec9; color: rgb(252, 248, 248);" 
+    onclick="depositar()">Receber R$100,00</button> <br><br>
+    <button style="background-color: #681ec9; color: rgb(252, 248, 248);" 
+    onclick="pagar()">Pagar R$50,00</button> <br><br>
+
+    <b>Extrato dos Depósitos</b> <br>
+    <div id="div_msg"></div>
+    
+</body>
+
+</html>
+<script>
+
+
+    let ax_qtde = 100;
+    let ax_total = 0;
+
+    function depositar() {
+            ax_qtde = ax_qtde + 1;
+            ax_total = ax_total + 100;
+
+            div_msg.innerHTML += `${ax_qtde}º depósito no valor de R$ 100,00
+                a economia total é de R$ ${ax_total.toFixed(0)}<br>`;
+            ipt_valor.value = '';
+        }
+
+    
+    function pagar() {
+            ax_qtde = ax_qtde - 1;
+            ax_total = ax_total - 50;
+
+            div_msg.innerHTML += `${ax_qtde}º depósito no valor de R$ 100,00
+                a economia total é de R$ ${ax_total.toFixed(0)}<br>`;
+            ipt_valor.value = '';
+        }
+
+</script>

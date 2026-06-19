@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="TELA01">
+
+        <h2>Manutenção de Notas - Prof. Alice</h2>
+
+        R.A:
+        <input id="ra">
+
+        NOTA:
+        <input id="nota">
+
+        NOVA NOTA:
+        <input id="novaNota"><br><br>
+
+        <button onclick="incluir()">Incluir</button>
+        <button onclick="excluir()">Excluir</button>
+        <button onclick="alterar()">Alterar</button>
+
+
+        <br><br>
+        <button onclick="ajustar()">Ajustar Notas</button>
+        <button onclick="consultar()">Consultar</button><br><br>
+
+        <h3>Lista</h3>
+        <div id="saida"></div>
+
+    </div>
+
+    <div id="TELA2" style="display:none">
+
+        <h2>Consulta de Notas</h2>
+
+        Tipo de consulta:
+        <select id="tipo">
+            <option value="ra">R.A</option>
+            <option value="nota">Nota</option>
+        </select><br><br>
+
+        DE:
+        <input id="de">
+
+        ATÉ:
+        <input id="ate"><br><br>
+
+        <button onclick="consultar()">Consultar</button>
+        <button onclick="voltar()">Voltar</button>
+
+        <h3>Resultado</h3>
+        <div id="saida2"></div>
+
+    </div>
+</body>
+
+</html>
+
+<script>
+    let alunos = [];
+
+    // ================= MOSTRAR (INVERSO) =================
+    function mostrar() {
+
+        let texto = "";
+
+        for (let i = alunos.length - 1; i >= 0; i--) {
+            texto += alunos[i][0] + " - " + alunos[i][1] + "<br>";
+        }
+
+        saida.innerHTML = texto;
+    }
+
+    // ================= INCLUIR =================
+    function incluir() {
+
+        let r = Number(ra.value);
+        let n = Number(nota.value);
+
+        if (r < 2000 || r > 3000) {
+            alert("R.A inválido (2000 a 3000)");
+        } else if (n < 0 || n > 10) {
+            alert("Nota inválida (0 a 10)");
+        } else {
+
+            alunos[alunos.length] = [r, n];
+            mostrar();
+        }
+    }
+
+    // ================= EXCLUIR =================
+    function excluir() {
+
+        let r = Number(ra.value);
+        let achou = 0;
+
+        for (let i = 0; i < alunos.length; i++) {
+
+            if (alunos[i][0] == r) {
+
+                alunos.splice(i, 1);
+                achou = 1;
+                break;
+            }
+        }
+
+        if (achou == 0) {
+            alert("R.A não encontrado");
+        }
+
+        mostrar();
+    }
+
+    // ================= ALTERAR =================
+    function alterar() {
+
+        let r = Number(ra.value);
+        let n = Number(novaNota.value);
+        let achou = 0;
+
+        if (n < 0 || n > 10) {
+            alert("Nota inválida (0 a 10)");
+            return;
+        }
+
+        for (let i = 0; i < alunos.length; i++) {
+
+            if (alunos[i][0] == r) {
+
+                alunos[i][1] = n;
+                achou = 1;
+                break;
+            }
+        }
+
+        if (achou == 0) {
+            alert("R.A não encontrado");
+        }
+
+        mostrar();
+    }
+
+
+
+
+    // ================= CONSULTAR =================
+    function consultar() {
+
+        let tipo = tipo.value;
+        let de = Number(de.value);
+        let ate = Number(ate.value);
+
+        let texto = "";
+        let cont = 0;
+        let soma = 0;
+
+        if (ate < de) {
+            alert("Intervalo inválido: o 'até' deve ser maior ou igual ao 'de'");
+        } else {
+
+            for (let i = 0; i < alunos.length; i++) {
+
+                let ra = alunos[i][0];
+                let nota = alunos[i][1];
+
+                if (tipo == "ra") {
+
+                    if (ra >= de && ra <= ate) {
+
+                        texto += ra + " - " + nota + "<br>";
+                        cont++;
+                        soma += nota;
+                    }
+
+                } else {
+
+                    if (nota >= de && nota <= ate) {
+
+                        texto += ra + " - " + nota + "<br>";
+                        cont++;
+                        soma += nota;
+                    }
+                }
+            }
+
+            if (cont == 0) {
+                alert("Nenhuma ocorrência encontrada no intervalo");
+            }
+
+            let media = 0;
+
+            if (cont > 0) {
+                media = soma / cont;
+            }
+
+            texto += "<br>Resumo Final:<br>";
+            texto += "Quantidade: " + cont + "<br>";
+            texto += "Média: " + media + "<br>";
+
+            saida2.innerHTML = texto;
+        }
+    }
+</script>

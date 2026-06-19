@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EXERCICIO 09</title>
+</head>
+<body>
+    <h2>INDICE DE MASSA CORPORAL</h2>
+    Informe seu peso atual: <input id="ipt_peso"> <br><br>
+    Informe a sua altura: <input id="ipt_altura"> <br><br>
+
+    <button onclick="analise()">CALCULAR IMC</button>
+    <div id="div_msg"></div>
+    
+</body>
+<script>
+
+    function analise() {
+        let imc = (ipt_peso.value / ipt_altura.value) *2;
+
+        if (imc < 18.5) {
+            div_msg.innerHTML = `Abaixo do peso.`;           
+        }
+        else if (imc == 19) {
+
+        }
+    }
+</script>
+</html>

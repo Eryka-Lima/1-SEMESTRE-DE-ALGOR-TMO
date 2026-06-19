@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>CONTAGEM SIMPLES</h1>
+
+    Insira o limite inferior da amostragem.:<br>
+    <input id="ipt_inf" placeholder="Limite inferior"><br>
+    Insira o limite superior da amostragem.:<br>
+    <input id="ipt_sup" placeholder="Limite superior"><br>
+    Insira o número para testar a divisibilidade.:<br>
+    <input id="ipt_div" placeholder="Divisor (3 a 10)"><br><br>
+
+
+    <button onclick="contar()">Contar</button><br><br>
+
+    <div id="out"></div>
+</body>
+
+</html>
+
+
+
+<script>
+    function contar() {
+        let inf = Number(ipt_inf.value);
+        let sup = Number(ipt_sup.value);
+        let d = Number(ipt_div.value);
+
+        if (inf <= 1) {
+            alert("Limite inferior deve ser maior que 1");
+            return;
+        }
+
+        if (sup >= 100 || sup <= inf) {
+            alert("Limite superior inválido");
+            return;
+        }
+
+        if (d < 3 || d > 10) {
+            alert("Divisor inválido");
+            return;
+        }
+
+        let i = inf;
+        let texto = "";
+        let soma = 0;
+        let qtd = 0;
+        let maior = null;
+        let menor = null;
+
+        while (i <= sup) {
+            if (i % d === 0) {
+                texto += i + ", ";
+                soma += i;
+                qtd++;
+
+                if (maior === null || i > maior) maior = i;
+                if (menor === null || i < menor) menor = i;
+            }
+            i++;
+        }
+
+        let media = qtd > 0 ? (soma / qtd).toFixed(2) : 0;
+
+        out.innerHTML = texto +
+            `<br><br>QUANTIDADE TOTAL DE NÚMEROS EXIBIDOS: ${qtd}` +
+            `<br>SOMATÓRIO DOS NÚMEROS EXIBIDOS: ${soma}` +
+            `<br>MÉDIA DOS NÚMEROS EXIBIDOS: ${media}` +
+            `<br>MAIOR NÚMERO EXIBIDO: ${maior}` +
+            `<br>MENOR NÚMERO EXIBIDO: ${menor}`;
+    }
+</script>

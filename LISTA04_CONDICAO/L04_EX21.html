@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EXERCICIO 21</title>
+</head>
+<body>
+    <h2>ANÁLISE DE FREQUENCIA</h2>
+        Qual a sua frequencia? <input id="ipt_frequencia"> <br> <br>
+
+        <button onclick="analise()">ANALISAR FREQUÊNCIA</button>
+        <div id="div_msg"></div>
+</body>
+
+<script>
+
+        function analise() {
+            if (ipt_frequencia.value < 50) {
+                
+                div_msg.innerHTML = `Sua frequência é menor que 50!
+                <br> <img src="turista.jfif"> <br>.`;
+            }else {
+                 div_msg.innerHTML = `Sua frequência é maior que 50! <br>
+                 <img src="estudiosa.jfif"> <br>`;
+
+            }
+        }
+</script>
+</html>

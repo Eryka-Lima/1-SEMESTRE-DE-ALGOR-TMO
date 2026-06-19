@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 07</title>
+</head>
+
+<body>
+    <h1>Contador de Vogais com Emoção</h1>
+
+    <input id="ipt_frase" placeholder="Digite uma frase">
+    <button onclick="contar()">Contar Vogais</button>
+
+    <div id="res"></div>
+
+
+</body>
+
+</html>
+
+
+<script>
+    function contar() {
+        let frase = ipt_frase.value.trim();
+        let fraseMin = frase.toLowerCase();
+        let i = 0;
+        let vogais = 0;
+
+        while (i < fraseMin.length) {
+            let letra = fraseMin[i];
+
+            if ("aeiou".includes(letra)) {
+                vogais++;
+            }
+
+            i++;
+        }
+
+        let total = frase.length;
+
+        let mensagem = `A frase possui um total de ${total} letras e ${vogais} vogais.`;
+
+        // verifica último caractere
+        if (frase.endsWith("!")) {
+            mensagem += "<br>A frase é uma afirmação!";
+        } else if (frase.endsWith("?")) {
+            mensagem += "<br>A frase é uma pergunta!";
+        }
+
+        res.innerHTML = mensagem;
+    }
+</script>

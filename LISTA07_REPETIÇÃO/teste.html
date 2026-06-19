@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora YGP de Estoque</title>
+</head>
+<body>
+
+    <h2>Calculadora YGP de Perda de Estoque</h2>
+    <hr>
+
+    Qual tipo de carne você armazena? <br>
+    <input id="tipoCarne"><br><br>
+    
+    Qual o preço de custo da carne (por Kg)? <br>
+    <input id="precoDeCusto"><br><br>
+    
+    Quantos Kg você compra por mês para compor seu estoque? <br>
+    <input id="quantidadeMensal"><br><br>
+
+    <button onclick="calcularPrejuizo()">CALCULAR TAXA DE DESPERDÍCIO/PREJUÍZO</button><br><br>
+    <hr>
+    
+    <div id="divOutput"></div>
+
+</body>
+<script>
+    function calcularPrejuizo() {
+        let nomeCarne = tipoCarne.value
+        let precoKg = Number(precoDeCusto.value)
+        let quantidadeKgMes = Number(quantidadeMensal.value)
+        
+        let valorEstoqueMensal = precoKg * quantidadeKgMes
+        let prejuizoMensal = valorEstoqueMensal * 0.02
+        let prejuizoDiario = prejuizoMensal / 30
+        let prejuizoAnual = prejuizoMensal * 12
+
+        divOutput.innerHTML = `
+            Atualmente, sem nossos serviços, o seu prejuízo com a perda de estoque da carne ${nomeCarne} é de:
+            <br><br>
+            <strong>Diário:</strong> R$${prejuizoDiario.toFixed(2)}
+            <br>
+            <strong>Mensal:</strong> R$${prejuizoMensal.toFixed(2)}
+            <br>
+            <strong>Anual:</strong> R$${prejuizoAnual.toFixed(2)}
+            <br><br>
+            <small>
+                <strong>Nota sobre o cálculo:</strong> A taxa de 2% utilizada representa uma estimativa baseada em relatórios da ONU sobre índices de perda e desperdício de alimentos no armazenamento.
+            </small>
+        `
+    }
+</script>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Splice</title>
+</head>
+
+<body>
+    <h2>Removendo ocorrências do vetor</h2>
+    <button onclick="tira2()">A partir da posição 1 remover 2 ocorrências</button> <br><br>
+    <button onclick="tira1()">A partir da posição 4 remover 1 ocorrência</button> <br><br>
+    <div id="div_msg"></div>
+</body>
+<script>
+    var nomes = ['tom', 'bob', 'mel', 'dan', 'A', 'bob', 'B', 'C', 'D'];
+    div_msg.innerHTML = `${nomes} - O vetor está assim`
+
+    // O metodo splice() remove elementos de um vetor.
+    // Sintaxe vetor.splice(x,y) onde: 
+    //     x é o indice que o metodo iniciará a deleção, 
+    //     y é a quantidade de elementos que serão deletados
+
+    function tira2() {
+        div_msg.innerHTML = `${nomes} - O vetor está assim `
+        nomes.splice(1, 2)
+        div_msg.innerHTML += `<br>${nomes} - Depois de remover duas ocorrências`;
+    }
+
+    function tira1() {
+        div_msg.innerHTML = `${nomes} - O vetor está assim `
+        nomes.splice(7,0)
+        div_msg.innerHTML += `<br>${nomes} - Depois de remover a posição 4`;
+    }
+
+</script>
+
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EXERCICIO 01</title>
+</head>
+<body>
+    <h2>ALTURA E ESPORTES</h2>
+    Qual altura do usuário? <input id="ipt_altura"> <br> <br>
+
+    <button onclick="analise()">ANALISAR ESTATURA</button>
+    <div id="div_msg"></div>
+</body>
+
+    <script>
+
+        function analise() {
+            if (ipt_altura.value <= 1.65) {
+                div_msg.innerHTML = `VOcê pode ser piloto de corrida.`;                
+            } 
+            
+            else if ( ipt_altura.value < 1.80) {
+                div_msg.innerHTML = `Você pode ser jogador de Futebol.`;
+            }
+
+            else if (ipt_altura.value > 1.80) {
+                div_msg.innerHTML = `Você pode ser jogador de Vôlei ou basquete`;
+            }
+        }
+    </script>
+</html>

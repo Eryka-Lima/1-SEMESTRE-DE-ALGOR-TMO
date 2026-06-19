@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 14</title>
+</head>
+
+<body>
+
+    <h2>14. Dividibilidade</h2>
+    DE:
+    <input id="dIni" type="number">
+    ATE
+    <input id="dFim" type="number"><BR>
+    Insira um número para teste de divisibilidade, 
+    ele tem que estar entre 3 e 13. <br>
+    <input id="div" type="number">
+    <button onclick="divisivel()">Divisível</button>
+    <div id="res14"></div>
+
+
+</body>
+</html>
+
+<script>
+    function divisivel() {
+        let i = Number(dIni.value);
+        let f = Number(dFim.value);
+        let d = Number(div.value);
+        let txt = "";
+        while (i <= f) {
+            if (i % d != 0) {
+                txt += i + "<br>";
+            }
+            i++;
+        }
+        res14.innerHTML = txt;
+    }
+
+</script>

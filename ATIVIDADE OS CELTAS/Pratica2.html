@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PRATICA2</title>
+</head>
+
+<body>
+
+    <h1>TESTE</h1>
+
+    Nome: <input id="input_nome"><br>
+    Idade: <input id="input_idade"><br>
+    Sexo: <input id="input_sexo" placeholder="M ou F"><br><br>
+
+    <button onclick="cadastro()">Cadastrar</button><br><br>
+    <div id="output_cadastro"></div>
+
+    <br><br>
+    <hr>
+
+    <h3>Checagem</h3>
+    <button onclick="lista()">Cadastrados</button><br>
+    <div id="output_lista"></div>
+
+    <script>
+        // Criados os arrays globais (incluindo o de sexos)
+        let nomes = [];
+        let idades = [];
+        let sexos = [];
+
+        function cadastro() {
+            let nome = input_nome.value.trim();
+            let idade = Number(input_idade.value);
+            let S = input_sexo.value.trim().toUpperCase();
+
+            // 1. Validação do Nome
+            if (nome.length < 3) {
+                alert("O nome deve ter pelo menos 3 letras.");
+                return;
+            }
+
+            if (!isNaN(nome)) {
+                alert("O Nome não pode ser número!");
+                return;
+            }
+
+            // 2. Validação da Idade
+            if (input_idade.value.trim() === "" || isNaN(idade)) {
+                alert("A Idade deve ser apenas Números!");
+                return;
+            }
+
+            if (idade >= 1000) {
+                alert("Acredito que ainda não inventaram algo para alguém viver 1000 anos!");
+                return;
+            }
+
+            // 3. Validação do Sexo (Apenas M ou F)
+            if (S !== "F" && S !== "M") {
+                alert("Não é permitido cadastrar algo além de F ou M");
+                return;
+            }
+
+            // --- SALVANDO OS DADOS ---
+            // Só chega aqui se passar por todas as validações acima
+            nomes.push(nome);
+            idades.push(idade);
+            sexos.push(S);
+
+            // Exibindo mensagem de sucesso
+            output_cadastro.innerHTML = `
+                <br><span style="color: green;"><b>Cadastro Realizado com sucesso!</b></span><br>
+                ID nome: ${nomes.length - 1}
+            `;
+
+            // Limpando os campos
+            input_nome.value = "";
+            input_idade.value = "";
+            input_sexo.value = "";
+        }
+
+        function lista() {
+            let exibicao = "";
+
+            if (nomes.length === 0) {
+                output_lista.innerHTML = "<p>Nenhum usuário cadastrado ainda.</p>";
+                return;
+            }
+
+                //(let i = 0; i < nomes.length; i++)
+                //(let i = nomes.length - 1; i >= 0; i--)
+            for (let i = nomes.length - 1; i >= 0; i--) {
+                // Criamos uma variável para guardar a posição visual (1º, 2º, 3º...)
+                let posicao = i + 1;
+
+                exibicao += `
+            <p>
+                <b>${posicao}º Cadastrado:</b><br>
+                Nome: ${nomes[i]} | 
+                Idade: ${idades[i]} anos | 
+                Sexo: ${sexos[i]}
+            </p>
+            <hr>
+        `;
+            }
+
+            output_lista.innerHTML = `<h2>Lista de Usuários</h2> ${exibicao}`;
+        }
+    </script>
+
+</body>
+
+</html>

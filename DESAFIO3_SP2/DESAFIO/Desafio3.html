@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DESAFIO 03 SPRINT 02</title>
+</head>
+
+<body>
+    <h1 style="background-color:powderblue;" style="color: rgb(122, 107, 79);"><b>SARI EDACOS</b></h1>
+    <img src="https://img.freepik.com/fotos-gratis/cadeira-de-couro-de-luxo-em-fundo-de-parede-de-tijolos_74190-337.jpg?t=st=1774914828~exp=1774918428~hmac=e49ff7d21fe352ff440e55a5639e5f181b88b33701c8ca5bf0a96c900853b79a&w=1060"
+        width="500" height="300" alt="Descrição"><br>
+
+    <h2>SARI EDACOS: Cadeiras para você
+        <br>desfrutatar os momentos do seu lazer.
+    </h2>
+
+    <!-- PARTE UM DO DESAFIO -->
+    <div style="background-color:powderblue;" id="parte1">
+        <br>
+        Insira seu nome: <br>
+        <input id="ipt_nome"><br>
+
+        Insira seu salário Inicial: <br><input id="ipt_salarioi"><br>
+        Insira seu salário Final: <br><input id="ipt_salariof"><br><br>
+        Selecione o Mês:<select id="sel_mes">
+            <option value="0">Selecione</option>
+            <option value="1">Janeiro</option>
+            <option value="2">Fevereiro</option>
+            <option value="3">Março</option>
+            <option value="4">Abril</option>
+            <option value="5">Maio</option>
+            <option value="6">Junho</option>
+            <option value="7">Julho</option>
+            <option value="8">Agosto</option>
+            <option value="9">Setembro</option>
+            <option value="10">Outubro</option>
+            <option value="11">Novembro</option>
+            <option value="12">Dezembro</option>
+        </select><br><br>
+
+        <button style="background-color: rgb(179, 164, 134);" onclick="registro()"><b>REGISTRAR</b></button>
+        <div id="erro1"></div>
+        <br><br>
+    </div>
+
+    <br>
+
+    <div style="background-color:rgba(194, 172, 133, 0.664);" id="Parte2">
+        <b>PAGAR SALÁRIO: CADEIRAS</b><br>
+
+        CADEIRA DE PRAIA <select style="background-color: rgb(174, 209, 233);" id="sel_praia">
+            <option value="0">Selecione</option>
+            <option value="1">01</option>
+            <option value="2">02</option>
+            <option value="3">03</option>
+            <option value="4">04</option>
+            <option value="5">05</option>
+            <option value="6">06</option>
+            <option value="7">07</option>
+            <option value="8">08</option>
+            <option value="9">09</option>
+            <option value="10">10</option>
+        </select><br>
+
+        CADEIRA DE JADIM <select style="background-color: rgb(174, 209, 233);" id="sel_jardim">
+            <option value="0">Selecione</option>
+            <option value="1">01</option>
+            <option value="2">02</option>
+            <option value="3">03</option>
+            <option value="4">04</option>
+            <option value="5">05</option>
+            <option value="6">06</option>
+            <option value="7">07</option>
+            <option value="8">08</option>
+            <option value="9">09</option>
+            <option value="10">10</option>
+        </select><br>
+
+
+        CADEIRA DE PESCA <select style="background-color: rgb(174, 209, 233);" id="sel_pesca">
+            <option value="0">Selecione</option>
+            <option value="1">01</option>
+            <option value="2">02</option>
+            <option value="3">03</option>
+            <option value="4">04</option>
+            <option value="5">05</option>
+            <option value="6">06</option>
+            <option value="7">07</option>
+            <option value="8">08</option>
+            <option value="9">09</option>
+            <option value="10">10</option>
+        </select><br><br>
+
+        <button style="background-color: rgb(165, 231, 187);" onclick="analise()">COMPRAR</button>
+        <button style="background-color: rgb(223, 150, 205);" onclick="encerrar()">ENCERRAR O DIA</button>
+    </div>
+
+    <div id="div_msg"></div>
+
+</body>
+<script>
+    let SalarioMax = 0;
+    let SalarioMin = 0;
+    let salarioAtual = 0;
+
+    let totalPraia = 0;
+    let totalJardim = 0;
+    let totalPesca = 0;
+
+    let valorPraia = 0;
+    let valorJardim = 0;
+    let valorPesca = 0;
+
+    let listaClientes = [];
+
+    function registro() {
+        SalarioMin = Number(ipt_salarioi.value);
+        SalarioMax = Number(ipt_salariof.value);
+        let nome = ipt_nome.value.trim();
+        SalarioAtual = SalarioMax;
+
+        listaClientes.push(nome);
+
+        if (nome.length < 3) {
+            alert("Nome deve ter pelo menos 3 caracteres");
+            return;
+        }
+
+        if (!isNaN(nome)) {
+            alert("Nome não pode ser número");
+            return;
+        }
+
+
+        if (SalarioMin <= 3000) {
+            alert("Salário inicial deve ser maior que R$3000");
+            return;
+        }
+
+        if (SalarioMax <= SalarioMin) {
+            alert("Salário final deve ser maior que o inicial");
+            return;
+        }
+
+        if (SalarioMax >= SalarioMin * 4) {
+            erro1.innerHTML = "Salário final não pode ser 4x maior";
+            return;
+        }
+
+        erro1.innerHTML = "<br><b>CADASRO REALIZADO COM SUCESSO!</b>";
+    }
+
+    function analise() {
+
+        let nome = ipt_nome.value.trim();
+        let mes = Number(sel_mes.value);
+        let salario = SalarioAtual;
+
+        let praia = Number(sel_praia.value);
+        let jardim = Number(sel_jardim.value);
+        let pesca = Number(sel_pesca.value);
+
+        // preços
+        let pPraia = 100;
+        let pJardim = 120;
+        let pPesca = 80;
+
+        let totalP = praia * pPraia;
+        let totalJ = jardim * pJardim;
+        let totalPe = pesca * pPesca;
+        let descJ = 0;
+        let descPe = 0;
+
+        // desconto jardim
+        if (mes <= 4 || mes >= 10) {
+            descJ = totalJ * 0.072;
+        }
+
+        // desconto pesca
+        if (mes >= 4 && mes <= 10 && pesca > 3) {
+            descPe = totalPe * 0.0609;
+        }
+
+        totalJ -= descJ;
+        totalPe -= descPe;
+
+        let totalCompra = totalP + totalJ + totalPe;
+
+        let descExtra = 0;
+
+        if (totalCompra > 400 && praia == 0 && pesca > 0) {
+            descExtra += totalCompra * 0.025;
+        }
+
+        if (totalJ > totalP && totalJ > totalPe) {
+            descExtra += totalCompra * 0.055;
+        }
+
+        totalCompra -= descExtra;
+
+        let limite = salario <= SalarioMax ? 0.305 : 0.2075;
+
+        if (totalCompra > salario * limite) {
+            div_msg.innerHTML = "Compra excede limite";
+            return;
+        }
+
+        let liquido = SalarioAtual - totalCompra;
+        SalarioAtual = liquido;
+
+        totalPraia += praia;
+        totalJardim += jardim;
+        totalPesca += pesca;
+        valorPraia += totalP;
+        valorJardim += totalJ;
+        valorPesca += totalPe;
+        div_msg.innerHTML += `
+    
+        <h3>Extrato</h3>
+    Cliente: ${nome} <br>
+    Salário: ${salario} <br>
+    Líquido: ${liquido.toFixed(2)} <br><br>
+    Quantidades compradas<br>
+    Praia: ${praia} <br>
+    Jardim: ${jardim} <br>
+    Pesca: ${pesca} <br>
+    `;
+
+        limparCampos();
+    }
+
+    function encerrar() {
+
+        let totalQtd = totalPraia + totalJardim + totalPesca;
+        let totalValor = valorPraia + valorJardim + valorPesca;
+
+        let nomes = "";
+
+        for (let i = 0; i < listaClientes.length; i++) {
+            nomes += listaClientes[i] + "<br>";
+        }
+
+        div_msg.innerHTML = `
+    <h2>Resumo</h2>
+    Clientes atendidos:<br>
+    ${nomes}<br>
+    Praia: ${totalPraia} <br>
+    Jardim: ${totalJardim} <br>
+    Pesca: ${totalPesca} <br><br>
+    Total vendido: R$ ${totalValor.toFixed(2)}
+    `;
+    }
+</script>
+
+</html>

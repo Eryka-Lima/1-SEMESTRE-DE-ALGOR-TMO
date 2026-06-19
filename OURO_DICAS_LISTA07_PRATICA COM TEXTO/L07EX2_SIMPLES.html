@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercico 02</title>
+</head>
+
+<body>
+    <h1>Índices Reveladores</h1>
+    Informe uma frase de sua preferência:<br>
+    <input id="ipt_frase2" placeholder="Digite uma frase"><br>
+    Informe a LETRA que quer procurar:<br>
+    <input id="ipt_letra" placeholder="Letra"><br><br>
+
+    <button onclick="buscar()">Revelar Índices</button><br>
+
+    <div id="res2"></div>
+
+
+</body>
+
+</html>
+
+
+<script>
+    function buscar() {
+        let frase = ipt_frase2.value.toLowerCase();
+        let letraDigitada = ipt_letra.value.toLowerCase();
+
+        let i = 0;
+        let contador = 0;
+        let texto = "";
+
+        while (i < frase.length) {
+
+            if (frase[i] === letraDigitada) {
+                texto += i + "<br>";
+                contador++;
+            }
+
+            i++;
+        }
+
+        if (contador === 0) {
+            res2.innerHTML = "Não existe!";
+        } else {
+            res2.innerHTML = texto + "Total: " + contador;
+        }
+    }
+</script>

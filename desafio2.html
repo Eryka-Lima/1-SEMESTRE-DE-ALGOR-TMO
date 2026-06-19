@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OURO ODIER</title>
+
+</head>
+
+<body>
+    <div id="container">
+        <h1>PAGAMENTOS OURO ODIER</h1>
+        <input id="input_nome" type="text" placeholder="Digite seu nome">
+        <br><br>
+        <input id="input_dinheiro" type="number" placeholder="Valor Poupança">
+        <br><br>
+        <input id="input_pedras" type="number" placeholder="Pedras de Ouro">
+        <br><br>
+        <input id="input_aluguel" type="number" placeholder="Valor do seu Aluguel">
+        <br><br>
+        <input id="input_meses" type="number" placeholder="Meses do Aluguel">
+        <br><br>
+        <input id="input_vida" type="number" placeholder="Quantos anos quer viver?">
+        <br><br>
+        <button onclick="Resultado()">Resultado</button>
+        <div id="div_output"></div>
+    </div>
+</body>
+
+<script>
+function Resultado() {
+
+    div_output.innerHTML = "";
+    div_output.style.display = "block";
+
+    let dinheiro = Number(input_dinheiro.value);
+    let pedras = Number(input_pedras.value);
+    let aluguel = Number(input_aluguel.value);
+    let meses = Number(input_meses.value);
+    let anos = Number(input_vida.value);
+
+    let totalMeses = 0;
+    let faliu = false;
+
+    for (let ano = 1; ano <= anos; ano++) {
+
+        div_output.innerHTML += `<br><b>Ano ${ano}</b><br><br>`;
+
+        for (let mes = 1; mes <= meses; mes++) {
+
+            let saldoInicial = dinheiro;
+
+            // Se não tiver dinheiro, vende pedra
+            if (dinheiro < aluguel) {
+                if (pedras > 0) {
+                    pedras--;
+                    dinheiro += 10000;
+                } else {
+                    faliu = true;
+                    break;
+                }
+            }
+
+            dinheiro -= aluguel;
+            totalMeses++;
+
+            div_output.innerHTML += `<br>
+            Mês ${mes} saldo inicial no banco R$ ${saldoInicial.toFixed(2)} <br>
+            - saldo de pedras = ${pedras} <br>
+            - saldo final no banco R$ ${dinheiro.toFixed(2)}<br><br>`;
+        }
+
+        if (faliu) break;
+    }
+
+    div_output.innerHTML += "<br><br>";
+
+    if (faliu) {
+        div_output.innerHTML += `<b>Após ${totalMeses} meses de aluguel você faliu!!!!</b>`;
+    } else {
+        div_output.innerHTML += `<b>Foram pagos ${totalMeses} meses de aluguel e você ficou com R$ ${dinheiro.toFixed(2)} no banco e ${pedras} pedras de ouro</b>`;
+    }
+}
+</script>
+
+</html>

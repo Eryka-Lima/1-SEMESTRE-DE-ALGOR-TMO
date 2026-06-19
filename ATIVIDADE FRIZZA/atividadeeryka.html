@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ATIVIDADE AVALIATIVA</title>
+</head>
+
+<body>
+
+    <h1>CSP Central de Serviços Públicos</h1>
+
+
+    Categoria: <br>
+    <input id="input_categoria"><br>
+
+    Serviço:<br>
+    <input id="input_servico"><br>
+
+    Valor: <br>
+    <input id="input_valor"><br><br>
+
+    <button onclick="cadastrar()">Cadastar</button><br><br>
+
+    <hr>
+    Valor que deseja alterar:<br>
+    <input id="input_de"><br><br>
+
+    Insira o percentual de ajuste:<br>
+    <input id="input_ajuste"><br><br>
+    <button onclick="ajustar()">Ajustar</button><br><br>
+
+    <hr>
+    <button onclick="encerrar()">Encerrar</button>
+
+    <div id="output"></div>
+</body>
+
+</html>
+
+<script>
+
+    let vetor = [];
+    let servico = [];
+    let valor = [];
+    let categoria = [1, 2, 3, 4, 5];
+
+    function cadastrar() {
+
+        categoria = [1, 2, 3, 4, 5];
+
+        for (let i = 0; i < categoria.length; i++) {
+            if (categoria == 1) {
+                categoria.push = input_categoria.value.trim();
+            } else if (categoria <= 5) {
+                categoria.push = input_categoria.value.trim();
+            } else {
+                alert = ("Selecione uma categoria entre '1' e '5' por gentileza!!");
+                input_categoria.value = "";
+            }
+
+        }
+
+
+        for (let i = 0; i < servico.length; i++) {
+            if (servico != 5) {
+                servico.push = input_servico.value.trim();
+                input_servico.value = "";
+            } else {
+                alert = ("Digitar uma categoria com mais de '5' caracteres");
+            }
+
+        }
+
+
+        for (let i = 0; i < valor.length; i++) {
+            if (valor != 0) {
+                alert = ("Valor inválido! Adicionar valor entre R$1,00 e R$40,00");
+            } else if (valor != Number) {
+                alert = ("Aceitável apenas 'Valor Numerico'");
+            } else if (valor <= 40) {
+                valor.push = input_valor.value;
+            } else {
+                alert = ("Valor está acima do permitido!!");
+            }
+        }
+
+        output.innerHTML += `Foi cadastrado<br> 
+                            Serviço ${servico[i]}<br>
+                            Categoria ${categoria[i]}<br>
+                            Valor R$ ${input_valor.value}<br>
+                            Até o momento.`;
+
+
+    }
+
+
+
+    function ajustar() {
+
+        for (let i = 0; i <= valor; i++);
+        if (valor == input_de.value) {
+            let ajuste = Number(input_ajuste.value);
+            let resultado = (valor.length[i] * ajuste) / 100;
+            let percentual = resultado;
+
+        }
+
+        output.innerHTML += `Foi Ajustado<br> 
+                            Valor R$ ${valor[i]} <br>
+                            No percentual de ${percentual}.`;
+    }
+
+
+
+    function encerrar() {
+
+        input_categoria.value = "";
+        input_servico.value = "";
+        input_valor.value = "";
+        output.innerHTML += "";
+        output.innerHTML += `Quantidade de Serviços Cadastrado: <br>
+                             Serviço mais caro:
+                             Serviço mais barato:
+                             Média:
+                             `;
+
+    }
+
+</script>

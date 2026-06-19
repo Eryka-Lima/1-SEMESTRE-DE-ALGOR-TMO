@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EXERCICIO 03</title>
+</head>
+
+<body>
+
+    <h2>3. Frase Numerada</h2>
+
+    <button onclick="frase()">Frase Numerada</button>
+
+    <div id="res3"></div>
+
+
+</body>
+
+</html>
+
+<script>
+    function frase() {
+
+        let i = 1, txt = "";
+
+        while (i <= 7) {
+            txt += i + ". Jesus é Bom!! e o Diabo não presta!! <br>";
+            i++;
+        }
+        res3.innerHTML = txt;
+    }
+
+</script>

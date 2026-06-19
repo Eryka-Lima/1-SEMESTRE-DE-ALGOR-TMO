@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EXERCÍCIO 11</title>
+</head>
+<body>
+    <h2>ANÁLISE DA FAMILIA</h2>
+    Qual a quantidade de filhos? <input id="ipt_filhos"> <br><br>
+
+    <button onclick="analise()">ANALISAR FAMILIA</button><br>
+    <div id="div_msg"></div>
+</body>
+
+<script>
+
+    function analise() {
+
+        if(ipt_filhos.value == 1) {
+            div_msg.innerHTML = `NÃO TEM TV.`;
+
+            } else if(ipt_filhos.value == 2) {
+            div_msg.innerHTML = `NÃO TEM INTERNET.`;
+            }else if(ipt_filhos.value == 3){
+            div_msg.innerHTML = `NÃO TEM VÍDEO GAME.`;
+            }else{
+            div_msg.innerHTML = `NÃO TEM TV. <BR>
+                NÃO TEM INTERNET. <BR>
+                NÃO TEM VIDEO GAME. <BR>`;
+            }
+            }
+</script>
+</html>

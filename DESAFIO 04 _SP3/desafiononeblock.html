@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>DESAFIOSP3</title>
+</head>
+
+<body>
+
+
+    <!-- ================= TELA 1 ================= -->
+    <div id="TELA1" class="card">
+
+        <h2>Manutenção de Notas</h2>
+
+        R.A:
+        <input id="ra">
+
+        NOTA:
+        <input id="nota">
+
+        <br><br>
+
+        NOVA NOTA:
+        <input id="novaNota"><br><br>
+
+        <button onclick="incluir()">Incluir</button>
+        <button onclick="excluir()">Excluir</button>
+        <button onclick="alterar()">Alterar</button><br><br>
+
+        <button onclick="irConsulta()">Consultar</button>
+        <button onclick="irAjuste()">Ajustar Notas</button>
+
+        <h3>Cadastramentos Efetuados</h3>
+        <div id="saida1"></div>
+
+    </div>
+
+    <!-- ================= TELA 2 ================= -->
+    <div id="TELA2" style="display:none" class="card">
+
+        <h2>Consulta de Notas</h2>
+
+        Tipo:
+        <select id="tipo">
+            <option value="ra">R.A</option>
+            <option value="nota">Nota</option>
+        </select><br><br>
+
+
+        RA:
+        <input id="aluno">
+
+        <br><br>
+
+
+        DE:
+        <input id="de">
+
+        ATÉ:
+        <input id="ate"><br><br>
+
+        <button onclick="consultar()">Consultar</button>
+        <button onclick="voltar1()">Voltar</button>
+
+        <div id="saida2"></div>
+
+    </div>
+
+    <!-- ================= TELA 3 ================= -->
+    <div id="TELA3" style="display:none" class="card">
+
+        <h2>Ajuste de Notas</h2>
+
+        R.A.<br>
+        DE:
+        <input id="deRA">
+
+        ATÉ:
+        <input id="ateRA"><br><br>
+        <button onclick="bonus()">Bônus</button><br>
+        PONTOS:
+        <input id="pontosBonus">
+
+        %:
+        <input id="percBonus">
+        <br>
+        OU
+        <br>
+        <button onclick="reduz()">Redução</button><br>
+        PONTOS:
+        <input id="pontos">
+        %:
+        <input id="perc"><br><br>
+
+
+        <button onclick="voltar1()">Voltar</button>
+        <br><br>
+
+
+        <b>Lista de Cadastro</b>
+        <div id="saida3"></div>
+
+    </div>
+
+</body>
+
+</html>
+
+<script>
+
+
+    let alunos = [];
+
+    // ================= MOSTRAR TELA 1 =================
+    function mostrar1() {
+
+        let txt = "";
+        let ordem = 1;
+
+        for (let i = alunos.length - 1; i >= 0; i--) {
+            txt += ordem + "º - " + alunos[i][0] + " - " + alunos[i][1] + "<br>";
+            ordem++;
+        }
+
+        saida1.innerHTML = txt;
+    }
+
+    // ================= INCLUIR =================
+    function incluir() {
+
+        let r = Number(ra.value);
+        let n = Number(nota.value);
+
+        if (r < 2000 || r > 3000) {
+            alert("R.A inválido");
+        }
+        else if (n < 0 || n > 10) {
+            alert("Nota inválida");
+        }
+        else {
+            alunos[alunos.length] = [r, n];
+            mostrar1();
+        }
+    }
+
+    // ================= EXCLUIR =================
+    function excluir() {
+
+        let r = Number(ra.value);
+        let achou = 0;
+
+        for (let i = 0; i < alunos.length; i++) {
+
+            if (alunos[i][0] == r) {
+                alunos.splice(i, 1);
+                achou = 1;
+                break;
+            }
+        }
+
+        if (achou == 0) alert("Não encontrado");
+
+        mostrar1();
+    }
+
+    // ================= ALTERAR =================
+    function alterar() {
+
+        let r = Number(ra.value);
+        let n = Number(novaNota.value);
+        let achou = 0;
+
+        if (n < 0 || n > 10) {
+            alert("Nota inválida");
+        }
+
+        for (let i = 0; i < alunos.length; i++) {
+
+            if (alunos[i][0] == r) {
+                alunos[i][1] = n;
+                achou = 1;
+                break;
+            }
+        }
+
+        if (achou == 0) alert("Não encontrado");
+
+        mostrar1();
+    }
+
+    // ================= TROCA DE TELA =================
+    function irConsulta() {
+
+        TELA1.style.display = "none";
+        TELA2.style.display = "block";
+    }
+
+    function irAjuste() {
+
+        TELA1.style.display = "none";
+        TELA3.style.display = "block";
+    }
+
+    function voltar1() {
+
+        TELA2.style.display = "none";
+        TELA3.style.display = "none";
+        TELA1.style.display = "block";
+    }
+
+
+    // ================= TELA 02 PARA NÃO ME PERDER =================
+    // ================= CONSULTA =================
+    function consultar() {
+
+        let tipoValor = tipo.value;
+        let raValor = Number(aluno.value);
+        let deValor = Number(de.value);
+        let ateValor = Number(ate.value);
+
+        let txt = "";
+        let cont = 0;
+        let soma = 0;
+
+        if (tipoValor == "ra") {
+
+            for (let i = 0; i < alunos.length; i++) {
+
+                let r = alunos[i][0];
+                let n = alunos[i][1];
+
+                if (r == raValor) {
+                    txt += "RA: " + r + " - Nota: " + n + "<br>";
+                    cont++;
+                    soma += n;
+                }
+            }
+
+        } else {
+
+            if (ateValor < deValor) {
+                saida2.innerHTML = "Intervalo inválido";
+            }
+
+            for (let i = 0; i < alunos.length; i++) {
+
+                let r = alunos[i][0];
+                let n = alunos[i][1];
+
+                if (n >= deValor && n <= ateValor) {
+                    txt += "RA: " + r + " - Nota: " + n + "<br>";
+                    cont++;
+                    soma += n;
+                }
+            }
+        }
+
+        if (cont == 0) {
+            saida2.innerHTML = "Nenhum resultado";
+        }
+
+        txt += "<br>Resumo da Consulta:<br>";
+        txt += "Quantidade: " + cont + "<br>";
+        txt += "Média: " + (soma / cont);
+
+        saida2.innerHTML = txt;
+    }
+
+
+    // ================= TELA 03 PARA NÃO ME PERDER =================
+    // ================= AJUSTE =================
+    function ajustar(tipo) {
+
+        let de = Number(deRA.value);
+        let ate = Number(ateRA.value);
+
+        let p = Number(pontosBonus.value);
+        let per = Number(percBonus.value);
+
+        let achou = 0;
+
+        if (ate < de) {
+            alert("O intervalo de R.A. deve ser crescente");
+        }
+            for (let i = 0; i < alunos.length; i++) {
+
+                let ra = alunos[i][0];
+
+                if (ra >= de && ra <= ate) {
+
+                    let ajuste = 0;
+                    let temPontos = !isNaN(p) && p > 0;
+                    let temPerc = !isNaN(per) && per > 0;
+
+                    // ================= REGRA DOS PONTOS =================
+                    if (temPontos && !temPerc) {
+
+                        if (p < 0.5 || p > 1.5) continue;
+
+                        ajuste = p;
+                    }
+
+                    // ================= REGRA DO % =================
+                    else if (!temPontos && temPerc) {
+
+                        if (per < 3 || per > 13) continue;
+
+                        ajuste = alunos[i][1] * (per / 100);
+                    }
+
+                    // ================= SORTEIO =================
+                    
+
+                    // ================= APLICAÇÃO =================
+                   
+                }
+            }
+
+        if (achou == 0) {
+            alert("Nenhum aluno encontrado no intervalo");
+        }
+
+        mostrarAjuste();
+    }
+
+
+    // ================= MOSTRAR AJUSTE =================
+    function mostrarAjuste() {
+
+    let txt = "";
+
+    for (let i = alunos.length - 1; i >= 0; i--) {
+        txt += alunos[i][0] + " - " + alunos[i][1] + "<br>";
+    }
+
+    saida3.innerHTML = txt;
+}
+</script>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EXERCÍCIO 01</title>
+</head>
+
+<body>
+    <h1>Caça às Frutas: Descubra se está na Lista</h1>
+
+    Qual sua fruta favorita? <input id="ipt_fruta"><br>
+    <button onclick="analise()">PESQUISAS</button><br><br>
+    <div id="div_msg"></div>
+
+</body>
+
+<script>
+
+    let vetor = ['Banana', 'Morango', 'Abacaxi']
+
+    function analise() {
+
+        let fruta = ipt_fruta.value;
+
+        if(vetor.includes(fruta)) {
+            div_msg.innerHTML = `A fruta ${fruta} existe na lista.`;
+        } else {
+            div_msg.innerHTML = `A fruta ${fruta} não existe na lista.`;
+        }
+    }
+</script>
+</html>

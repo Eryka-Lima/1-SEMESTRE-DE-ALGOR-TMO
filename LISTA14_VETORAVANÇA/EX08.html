@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EXERCICIO 08</title>
+</head>
+
+<body>
+
+    <h1>Alterando e Eliminando elementos do vetor</h1>
+    Manutenção de Produtos
+
+    Número do produto:<br>
+    <input id="input_produto"><br>
+
+    Valor do produto:<br>
+    <input id="input_valor"><br>
+
+    <button onclick="registrar()">Registrar</button><br><br>
+
+    <hr>
+
+    Intervalo para aumento:<br>
+    De: <input id="input_de"><br>
+    Até: <input id="input_ate"><br>
+    Percentual (%): <input id="input_percentual"><br>
+
+    <button onclick="aumentar()">Aumentar Valor</button><br><br>
+
+    <hr>
+
+    Intervalo para excluir:<br>
+    De: <input id="input_de_excluir"><br>
+    Até: <input id="input_ate_excluir"><br>
+
+    <button onclick="eliminar()">Eliminar Produto</button><br><br>
+
+    <div id="output"></div>
+
+</body>
+
+</html>
+
+<script>
+
+    let produtos = [];
+let valores = [];
+
+function registrar() {
+
+    let numero = Number(input_produto.value);
+    let valor = Number(input_valor.value);
+
+    if (numero < 6000 || numero > 7000) {
+        alert('Produto deve estar entre 6000 e 7000');
+    } else if (valor <= 10 || valor >= 1000) {
+        alert('Valor deve ser maior que 10 e menor que 1000');
+    } else {
+
+        let existe = false;
+
+        for (let i = 0; i < produtos.length; i++) {
+            if (produtos[i] == numero) {
+                valores[i] = valor;
+                existe = true;
+                break;
+            }
+        }
+
+        if (existe == false) {
+            produtos.push(numero);
+            valores.push(valor);
+        }
+
+        listar();
+    }
+}
+</script>

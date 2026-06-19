@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EXERCICIO 02</title>
+</head>
+
+<body>
+    <h2>AUXILIO COVID-19: Você tem Direito ao Beneficio</h2>
+    Qual sua renda: <input id="ipt_renda"> <br>
+    Qual a renda total da sua familia: <input id="ipt_familia"> <br><br>
+
+    <button onclick="analise()"> VERIFICAR AJUDA</button>
+    <div id="div_msg"></div>
+</body>
+    <script>
+
+        function analise(){
+            if (ipt_renda.value <= 1050 && ipt_familia.value <=2100) {
+                alert ("VOCÊ TEM DIREITO!!");
+            }else{
+                alert ("VOCÊ NÃO TEM DIREITO!!");
+            }
+        }
+    </script>
+</html>

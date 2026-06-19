@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AlterarVetor</title>
+</head>
+
+<body>
+    <h2>Alterando valores numéricos do vetor</h2>
+
+    Informe o valor a ser somado: <input id="ipt_add" type="number"> <br>
+    Informe a posição para somar: <input id="ipt_pos"> 
+    <button onclick="somar()">Somar</button> <b>OU</b> 
+    <button onclick="todos()">SOMAR EM TODAS OCORRÊNCIAS</button><br><br>
+    <b>Assim está o vetor</b>
+    <div id="div_txt"></div>
+
+</body>
+<script>
+    var vt_num = [10, 15, 20, 25, 30];
+    div_txt.innerHTML = vt_num;
+    
+    function somar() {
+        ax_add = Number(ipt_add.value);
+        //vt_num[ipt_pos.value] += ax_add;
+        vt_num[ipt_pos.value] = vt_num[ipt_pos.value] + ax_add;
+        div_txt.innerHTML = vt_num;
+        
+    }
+    
+    function todos() {
+        var ax_add = Number(ipt_add.value);
+        for (var i = 0; i < vt_num.length; i++) {
+            vt_num[i] += ax_add;
+        }
+            div_txt.innerHTML = vt_num;
+    }
+
+</script>
+
+</html>

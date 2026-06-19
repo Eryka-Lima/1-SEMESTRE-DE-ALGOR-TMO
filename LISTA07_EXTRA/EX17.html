@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 17</title>
+</head>
+
+<body>
+    <h1>Divisibilidade </h1>
+
+    Informe um número inicial:
+    <input id="ipt_inicio" placeholder="Início">
+    Informe um número final:
+    <input id="ipt_fim" placeholder="Fim"><br><br>
+    Insira o número para dividir:
+    <input id="ipt_divisor" placeholder="Divisor (3 a 13)"><br><br>
+    <button onclick="verificar()">Divisível</button>
+
+    <div id="resultado"></div>
+
+    
+
+</body>
+
+</html>
+
+<script>
+    function verificar() {
+        let inicio = Number(ipt_inicio.value);
+        let fim = Number(ipt_fim.value);
+        let divisor = Number(ipt_divisor.value);
+
+        let i = inicio;
+        let soma = 0;
+        let qtd = 0;
+        let texto = "";
+
+        while (i <= fim) {
+            if (i % divisor !== 0) {
+                texto += i + "<br>";
+            } else {
+                soma += i;
+                qtd++;
+            }
+            i++;
+        }
+
+        let media = qtd > 0 ? (soma / qtd).toFixed(2) : 0;
+
+        resultado.innerHTML = texto +
+            `<br>A soma de todos os divisíveis do intervalo é: ${soma}` +
+            `<br>A média de todos os divisíveis do intervalo é: ${media}`;
+    }
+</script>

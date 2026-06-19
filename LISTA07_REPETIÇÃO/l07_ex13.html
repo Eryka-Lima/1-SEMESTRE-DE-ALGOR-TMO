@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EXERCICIO 13</title>
+</head>
+
+<body>
+    <h1>PAPAGAIO REPETITIVO</h1>
+
+    Insira a quantidade de repetição:<br>
+    <input id="ipt_vezes" type="number"><br>
+    Insira uma frase:<br>
+    <input id="ipt_frase"><br>
+
+    <button onclick="analise()">Papagaio Repetitivo</button><br>
+    <div id="div_msg"></div>
+
+</body>
+
+</html>
+
+<script>
+
+    function analise() {
+        let frase = ipt_frase.value.trim();
+        let num = Number(ipt_vezes.value);
+        let ind = 0;
+        let erro = '';
+        let literal = '';
+
+        //Como saber se tem algum ponto ou não ali?
+        // SÓ PODE entrar com números inteiros
+
+        if (num < 1 || num > 20 || num % 1 != 0) {
+            alert(`entre com um número inteiro entre 1 e 20`);
+            erro = true;
+        }
+        if (frase.length == 0) {
+            alert(`entre com algo na frase para ser repetida`);
+            erro = true;
+        }
+
+        // Aqui você limitou a parte da da condição do contador
+        //limitador para validar
+
+        if (erro == false) {
+            div_msg.innerHTML = ``;
+
+            while (ind < num) {
+                ind = ind + 1;
+                literal += (frase + ' ');
+                div_msg.innerHTML += `<br> ${ind} - ${literal} `
+
+
+
+            }
+        }
+
+    }
+</script>

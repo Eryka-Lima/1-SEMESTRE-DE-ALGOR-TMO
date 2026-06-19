@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Exercicio 10</title>
+</head>
+<body>
+
+  <h2>Registro de Linhas de Ônibus</h2>
+
+  <input id="input_linha" placeholder="Digite a linha">
+  <button onclick="gravar()">Gravar busão</button>
+
+  <div id="lista"></div>
+
+  <hr>
+  <input id="input_pesquisa" placeholder="Pesquisar linha">
+  <button onclick="pesquisar()">Pesquisar</button>
+
+  <div id="resultado"></div>
+
+</body>
+</html>
+
+<script>
+  let linhas = [];
+
+  function gravar() {
+    let linha = input_linha.value;
+
+    if (linha === "") return;
+
+    linhas.push(linha);
+
+    // Exibir lista em ordem inversa
+    lista.innerHTML = "";
+    for (let i = linhas.length - 1; i >= 0; i--) {
+      lista.innerHTML += `${linhas[i]}<br>`;
+    }
+
+    input_linha.value = "";
+  }
+
+  function pesquisar() {
+    let busca = input_pesquisa.value;
+    let posicoes = [];
+
+    // Procurar ocorrências
+    for (let i = 0; i < linhas.length; i++) {
+      if (linhas[i] === busca) {
+        posicoes.push(i + 1); // +1 porque o enunciado começa do 1
+      }
+    }
+
+    if (posicoes.length === 0) {
+      resultado.innerHTML = "Você nunca pegou essa linha";
+    } else {
+      resultado.innerHTML = `Você já pegou essa linha ${posicoes.length} vezes, nessa ordem: ${posicoes.join(", ")}`;
+    }
+  }
+</script>

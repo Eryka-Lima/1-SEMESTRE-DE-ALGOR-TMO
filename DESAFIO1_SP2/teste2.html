@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DESAFIO SPRINT 02</title>
+</head>
+
+<body>
+    <h1 style="color: rgb(93, 152, 175);">ANIL OSAG</h1>
+
+
+    <h2>Faturamento criado para controle de vendas do posto da Familia Osag.</h2>
+    Qual a quantidade vendida (L)? <input id="ipt_vendas">
+    Horário da venda (formato 24 horas): <input id="ipt_horario"><br><br>
+     Qual combustível vendido?<br>
+    <button onclick="escolher('gasolina')" style="background-color: rgb(186, 247, 247);">GASOLINA</button>
+    <button onclick="escolher('etanol')" style="background-color:pink ;">ETANOL</button>
+    <button onclick="escolher('diesel')" style="background-color: rgb(223, 231, 153);">DIESEL</button><br><br>
+    
+    <button onclick="analise()">ANALISE VENDAS</button><br>
+    <div id="div_msg"></div>
+
+    <button onclick="encerrar()">ENCERRAR O DIA</button><br>
+</body>
+<script>
+   
+let combustivel = "";
+let ordem = 0;
+let desconto = 0;
+let total = 0;
+
+function escolher(tipo) {
+    combustivel = tipo;
+}
+
+function analise() {
+
+    ordem++;
+
+    let litros = Number(ipt_vendas.value);
+    let hora = Number(ipt_horario.value);
+    let valorVenda = 0;
+    desconto = 0;
+
+    if (combustivel == "gasolina") {
+
+        valorVenda = litros * 6.49;
+
+        if (litros >= 20 && (hora >= 21 || hora <= 6)) {
+            desconto = valorVenda * 0.0505;
+            valorVenda -= desconto;
+        }
+
+    } else if (combustivel == "etanol") {
+
+        valorVenda = litros * 4.44;
+
+        if (litros >= 20 && (hora >= 21 || hora <= 6)) {
+            desconto = valorVenda * 0.048;
+            valorVenda -= desconto;
+        }
+
+    } else if (combustivel == "diesel") {
+
+        valorVenda = litros * 4.39;
+
+        if (litros >= 20 && (hora >= 21 || hora <= 6)) {
+            desconto = valorVenda * 0.0439;
+            valorVenda -= desconto;
+        }
+
+    }
+
+    // SOMA NO TOTAL ACUMULADO
+    total += valorVenda;
+
+    // MOSTRA A VENDA + TOTAL ACUMULADO
+    div_msg.innerHTML += `
+    ${ordem}º venda: ${litros}L de ${combustivel.toUpperCase()} <br>
+    Valor da venda: R$ ${valorVenda.toFixed(2)} <br>
+    Total acumulado: R$ ${total.toFixed(2)} <br><br>
+    `;
+}
+</script>
+</html>

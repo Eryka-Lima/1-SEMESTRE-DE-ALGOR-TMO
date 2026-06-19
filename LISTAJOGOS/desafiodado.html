@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Jogo de Dados</title>
+</head>
+
+<body>
+
+    <h1>JOGO DE DADOS</h1>
+
+    Número escolhido (1 a 6):
+    <input id="dado"><br><br>
+
+    Quantidade de rodadas (10 a 20):
+    <input id="rodadas"><br><br>
+
+    <button onclick="jogar()">JOGAR</button>
+
+    <div id="output"></div>
+
+</body>
+
+</html>
+
+<script>
+
+    function jogar() {
+
+        let n = Number(dado.value);
+        let r = Number(rodadas.value);
+
+        let pontosUsuario = 0;
+        let pontosMaquina = 0;
+
+        output.innerHTML = "";
+
+        // validações básicas
+        if (n < 1 || n > 6) {
+            alert("Escolha um número entre 1 e 6!");
+            return;
+        }
+
+        if (r < 10 || r > 20) {
+            alert("A quantidade de rodadas deve ser entre 10 e 20!");
+            return;
+        }
+
+        let ponto = 0;
+
+        for (let i = 1; i <= r; i++) {
+            let resultado = (Math.random() * (6 - 1) + 1).toFixed(0);
+            let msg = "";
+            if (resultado == n) {
+                ponto = ponto +1;
+                pontosUsuario = ponto * 5;
+                msg = "Usuário ganhou!";
+            } else {
+
+                pontosMaquina += 1;
+                msg = "Máquina ganhou!";
+            }
+
+            output.innerHTML += `
+            <br>
+            <b>${i}ª Rodada</b><br>
+            Número sorteado: ${resultado}<br>
+            Número do usuário: ${n}<br>
+            ${msg}
+            <hr>
+        `;
+        }
+
+        output.innerHTML = `
+        <h2>Placar Final</h2>
+        Usuário: ${pontosUsuario}<br>
+        Máquina: ${pontosMaquina}<br>
+        <hr>
+    `+output.innerHTML
+    }
+
+</script>

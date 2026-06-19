@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt_br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 07</title>
+</head>
+<body style="background-color:#62a2eb;">
+    <h2 style="background-color: #681ec9; color: rgb(252, 248, 248);">MEDIA SPTECH</h2>
+    Você é estudante, vamos ver suas notas?<br>
+    Nome do Aluno: <input  id= "ipt_nome"> <br><br>
+    Nota continuada: <input  id="ipt_nota1"> <br>
+    Nota semestral: <input  id="ipt_nota2"> <br><br>
+
+    <button style="background-color: #681ec9; color: rgb(252, 248, 248);" 
+    onclick="mostrar('media')">MEDIA</button>
+    <div id="div_media"></div> <br>
+
+</body>
+
+<Script>
+    function mostrar(operacoes) {
+
+        document.getElementById("div_media").innerHTML = "";
+
+    
+        if (operacoes === "media") {
+            let num1 = Number(ipt_nota1.value);
+            let num2 = Number(ipt_nota2.value);
+
+            let nota1 = num1 * .4;
+            let nota2 = num2 * .6;
+            let resultado = nota1 + nota2;
+        
+            document.getElementById("div_media").innerHTML = 
+            "A média de  " + ipt_nome.value + " será de " + resultado; 
+           
+        ipt_nota1.value = '';
+        ipt_nota2.value = '';
+        ipt_nome.value = '';
+        }
+    }
+
+
+</Script>
+</html>

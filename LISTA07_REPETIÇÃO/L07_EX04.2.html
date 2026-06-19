@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EXERCICIO 04</title>
+</head>
+
+<body>
+    <h1> EXPRESSAR O AMOR</h1>
+
+    Insira o nome da pessoa que você mais ama:<br>
+    <input id="input_amor"><br>
+
+    Quantos Números você ama essa pessoa:<br>
+    <input id="input_numero"><br><br><br>
+
+
+    <button onclick="amor()">EXPRESSAR O AMOR</button>
+    <hr>
+    <div id="output"></div>
+    <br>
+</body>
+
+</html>
+
+
+<script>
+
+    function amor() {
+
+        let nome = input_amor.value.trim();
+        let qtd = Number(input_numero.value);
+        let cont = 1, txt = "";
+
+        if(nome == "" || nome.length <= 3 ){
+            alert("Cadastre um valor corretamente");
+
+        
+        }else if(qtd <=0 ) {
+            alert("Numero deve ser Inteiro");
+        
+        }else{
+
+        while (cont <= qtd) {
+            txt += cont + " - " + nome + ", eu te amo!<br>";
+            cont++;
+        }
+        output.innerHTML = txt;
+    }
+    }
+
+
+</script>

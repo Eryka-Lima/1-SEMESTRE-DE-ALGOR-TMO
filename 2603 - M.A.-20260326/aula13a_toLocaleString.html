@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt_br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>toLocale</title>
+</head>
+<body>
+    <h2>Emitir em formato de moeda</h2>
+    entre com o valor: <input id="ipt_valor">
+    <button onclick="emitir()">Emitir</button>
+</body>
+</html>
+<script>
+    function emitir() {
+        /*
+        O Metodo toLocalestring retorna um valor que é sensibilizado pelo idioma, ele pode ser 
+        utilizado para formatar separadores numéricos, data, e moeda.
+
+        No comando abaixo temos a utilização do metodo para formatar a moeda (simbolo e pontuação)
+        */
+        let ax_valor = Number(ipt_valor.value);
+        alert (ax_valor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }))
+    }
+    
+</script>

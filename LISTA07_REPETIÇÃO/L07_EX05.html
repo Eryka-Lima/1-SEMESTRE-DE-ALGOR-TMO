@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 05</title>
+</head>
+
+<body>
+    <h1>5. Corrida</h1>
+    Qual a quantidade de voltas: <input id="ipt_voltas" type="number"><br>
+
+    <button onclick="corrida()">Iniciar Corrida</button>
+    <div id="res5"></div>
+</body>
+
+</html>
+
+<script>
+
+    function corrida() {
+        let voltas = Number(ipt_voltas.value);
+        let cont = 1;
+        let txt = "";
+
+        while (cont < voltas) {
+            txt += "Carro dando a " + cont + " ° volta <br>";
+            cont++;
+        }
+        txt += "Corrida Finalizada!";
+        res5.innerHTML = txt;
+    }
+</script>

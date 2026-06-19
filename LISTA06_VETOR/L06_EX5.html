@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EXERCICIO 04</title>
+</head>
+
+<body>
+    <h1>Painel de Favoritos: Seus Filmes em Destaque</h1>
+
+    Qual seu filme favorito: <input id="ipt_favorito"><br>
+    <button onclick="cadastrar()">CADASTRE O FILME</button><br>
+    <div id="div_msg"></div>
+
+</body>
+<script>
+    let vetor = [];
+
+    function cadastrar() {
+        vetor.push(ipt_favorito.value);
+
+        div_msg.innerHTML = "";
+
+        if (vetor.length > 0) {
+            div_msg.innerHTML += `Seu 1° filme favorito é: ${vetor[0]} <br>`;
+        }
+        if (vetor.length >= 3) {
+            div_msg.innerHTML += `Seu 3° filme favorito é: ${vetor[2]} <br>`;
+        }
+        if (vetor.length >= 5) {
+            div_msg.innerHTML += `Seu 5° filme favorito é: ${vetor[4]} <br>`;
+        }else{
+            div_msg.innerHTML += `Não tem filme cadastrado!! <br>`;
+        }
+    }
+</script>
+
+</html>

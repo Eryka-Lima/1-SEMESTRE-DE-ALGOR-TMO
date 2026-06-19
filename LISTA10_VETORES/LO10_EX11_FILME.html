@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EXERCICIO 02</title>
+</head>
+
+<body>
+
+    <h1>Catálogo de Filmes</h1>
+
+    Cadastre todos os filmes que você ja assistiu:<br>
+    <input id="input_filme"><br><br>
+
+    <button onclick="cadastrar()">Cadastrar</button>
+    <button onclick="listar()">Listar Filmes</button><br>
+    <hr>
+    <br>
+    Filtre seus filmes favoritas<br>
+    Minimo: <input id="input_min"> Máximo: <input id="input_max">
+    <button onclick="filtrar()">Filtrar Filmes</button><br>
+    <br>
+
+    <div id="output"></div>
+    <hr>
+
+</body>
+
+</html>
+
+<script>
+
+    let filmes = [];
+
+    function cadastrar() {
+        let nome = input_filme.value;
+
+        if (nome == "") {
+            alert("Digite o nome do filme");
+        } else {
+            filmes.push(nome);
+
+            output.innerHTML = "Você já assistiu " + filmes.length + " filmes";
+
+            input_filme.value = "";
+
+        }
+
+    }
+
+    function listar() {
+        output.innerHTML = "";
+
+        if (filmes.length == 0) {
+            alert("Nenhum filme cadastrado!");
+        } else {
+            for (let i = filmes.length - 1; i >= 0; i--) {
+                output.innerHTML += filmes[i] + "<br>";
+            }
+
+        }
+
+    }
+
+    function filtrar() {
+        output.innerHTML = "";
+
+        let min = Number(input_min.value);
+        let max = Number(input_max.value);
+
+        if (filmes.length == 0) {
+            alert("Nenhum filme cadastrado!");
+        } else if (input_min.value == "" || input_max.value == "") {
+            alert("Preencha os dois campos de filtro!");
+        } else if (min <= 0 || max <= 0) {
+            alert("Os números devem ser maiores que zero!");
+        } else if (min > max) {
+            alert("O número mínimo deve ser menor que o máximo!");
+        } else if (max > filmes.length) {
+            alert("O valor máximo ultrapassa a quantidade de filmes!");
+        } else {
+            output.innerHTML = "";
+
+            for (let i = max - 1; i >= min - 1; i--) {
+                output.innerHTML += filmes[i] + "<br>";
+            }
+        }
+    }
+
+</script>

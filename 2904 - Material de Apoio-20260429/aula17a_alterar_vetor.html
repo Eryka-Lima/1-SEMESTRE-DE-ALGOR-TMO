@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AlterarVetor</title>
+</head>
+<body>
+    <h2>Alterando as ocorrências de um vetor</h2>
+
+    Informe a posição: <input type="number" id="ipt_pos"> <br>
+    Informe o novo nome: <input id="ipt_nome"> 
+    <button onclick="alterar()">Alterar</button><br><br>
+    <b>Assim está o vetor</b>
+    <div id="div_txt"></div>
+
+</body>
+<script>
+    var nomes = ['tom', 'bob', 'mel', 'dan'];
+    div_txt.innerHTML = nomes;
+    
+    function alterar() {
+        nomes[ipt_pos.value] = ipt_nome.value;
+        div_txt.innerHTML = nomes;
+
+    }
+/*
+    console.log(`VETOR ANTES DE ALTERAR: ${nomes}`);
+
+    var nomeAlterar = 'bob';
+    var nomeNovo = 'teste';
+
+    for(var i = 0; i < nomes.length; i++){
+        if(nomes[i] == nomeAlterar){
+            nomes[i] = nomeNovo;
+        }
+    }
+
+    console.log("VETOR DEPOIS DE ALTERAR: ", nomes);
+*/
+</script>
+</html>

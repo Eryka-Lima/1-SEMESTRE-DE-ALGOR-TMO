@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>EXERCICIO 17</title>
+    </head>
+    <body>
+        <h1>Divisibilidade </h1>
+        DE:
+        <input id="ipt_num1">
+        ATÉ:
+        <input id="ipt_num2"><br><br>
+        Insira um número para teste, ele tem que estar entre 3 e 13:<br>
+        <input id="ipt_divisibilidade"><br><br>
+        <button onclick="analise()">DIVISIVEL</button><br>
+        <div id="div_msg"></div>
+
+    </body>
+</html>
+<script>
+
+    function analise(){
+        let num1 = Number(ipt_num1.value);
+        let num2 = Number(ipt_num2.value);
+        let intervalo = Number(ipt_divisibilidade.value);
+        let cont = 0;
+
+
+       if (num1 < 1 || num1 % 1 != 0) {
+            alert(`Entre com um valor númerico!! NO PRIMEIRO NÚMERO!! `);
+    }
+
+       if (num2 < 1 || num2 % 1 != 0) {
+            alert(`Entre com um valor númerico!! NO SEGUNDO NÚMERO!! `);
+    }
+
+       if ((intervalo < 1 && intervalo <= 13) || intervalo % 1 != 0) {
+            alert(`Entre com um valor númerico!! DEVE SER ENYTRE 1 E 13!! `);
+    }
+
+        while ( num1 < intervalo){
+            let soma = num1 + intervalo;
+
+
+        }
+
+}
+
+</script>

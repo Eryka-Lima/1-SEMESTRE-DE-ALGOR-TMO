@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt_br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 09</title>
+</head>
+<body>
+    <h2>CONTROLE DO PESO DO ELEVADOR</h2>
+    Quantidade de Homens que entraram: <input id="ipt_homem"> <br>
+    Quantidade de Mulheres que entraram: <input id="ipt_mulher"> <br><br>
+    <button style="background-color: #ce35bf; color: rgb(252, 248, 248);" 
+    onclick="analisar()">ANÁLISAR PESO</button> <br>
+    <div id="div_msg"></div>
+   
+</body>
+</html>
+
+<script>
+    
+    function analisar() {
+
+        let homem = Number(ipt_homem.value);
+        let mulher = Number(ipt_mulher.value);
+        let cargah = homem * 80;
+        let cargam = mulher * 60;
+
+        let resultado = cargah + cargam;
+
+          if (resultado >= 800) {
+           div_msg.innerHTML = `Será necessário que alguém desça para que o elevador se movimente.`;
+
+        } else {
+            div_msg.innerHTML = `Este elevador suporta 800 Kg e o peso estimado desta lotação é de ${resultado} Kg .`;;
+
+        }
+
+
+    }
+
+</script>

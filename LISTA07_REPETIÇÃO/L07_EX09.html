@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 09</title>
+</head>
+
+<body>
+
+    <h2>9. Viva o 7</h2>
+
+     Insira um número (tem que estar entre 0 e 200); <br>
+    <input id="num7" type="number">
+    <button onclick="mult7()">Viva o 7</button>
+    <div id="res9"></div>
+
+
+</body>
+
+</html>
+
+<script>
+
+    function mult7() {
+        let n = Number(num7.value);
+        let i = 0, txt = "";
+        while (i <= n) {
+            if (i % 7 == 0) {
+                txt += i + "<br>";
+            }
+            i++;
+        }
+        res9.innerHTML = txt;
+    }
+
+</script>

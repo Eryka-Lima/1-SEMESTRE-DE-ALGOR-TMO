@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 19</title>
+</head>
+
+<body>
+
+    <h1>NUMEROS PRIMOS </h1>
+    Insira um número:<br>
+    <input id="ipt_numero"><br><br>
+
+    <button onclick="analise()">DIVISORES</button><br>
+    <div id="res"></div>
+
+</body>
+
+</html>
+
+<script>
+
+    function analise() {
+        let n = Number(ipt_numero.value);
+        let texto = `Divisores do Número ${n}:<br>`;
+        let contador = 0;
+
+        let i = 1; // inicia o contador
+
+        if (n <= 0) {
+            res.innerHTML = "Digite um número válido!";
+        }
+
+        while (i <= n) {
+            if (n % i === 0) {
+                texto += i + "<br>";
+                contador++;
+            }
+            i++;
+        }
+
+        if (contador === 2) {
+            texto += `O número ${n} é um número primo.`;
+        }
+
+        res.innerHTML = texto;
+    }
+
+</script>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt_br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 12 </title>
+</head>
+<body>
+    <h2>ANÁLISE DE CNH</h2>
+    Qual o seu nome: <input id="ipt_nome"> <br>
+    Qual sua idade: <input id="ipt_idade"> <br><br>
+    <button style="background-color: #ce35bf; color: rgb(252, 248, 248);" 
+    onclick="analisar()">AVALIAR ALUNO</button> <br>
+    <div id="div_msg"></div>
+   
+</body>
+</html>
+
+<script>
+
+    function analisar() {
+
+        div_msg.innerHTML = '';
+
+        if (ipt_idade.value >= 18) {
+           div_msg.innerHTML = ` ${ipt_nome.value} vamos tirar a CNH?`;
+        } else {
+            div_msg.innerHTML = `${ipt_nome.value}, vai jogar PlayStation!`;
+        }
+    }
+</script>

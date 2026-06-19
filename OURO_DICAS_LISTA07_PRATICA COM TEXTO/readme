@@ -1,0 +1,14 @@
+
+/*
+<!--RESUMO PRA PROVA (OURO)
+Percorrer string:
+let i = 0;
+while (i < frase.length) {
+   let letra = frase[i];
+   i++;
+}
+ Ver vogal:
+"aeiou".includes(letra)
+Último caractere:
+frase.endsWith("!") 
+*/

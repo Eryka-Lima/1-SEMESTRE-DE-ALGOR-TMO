@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EXERCICIO 05</title>
+</head>
+<body>
+    <H2>CLASSIFICAÇÃO DE ALUNOS: Como está seu desempenho?</H2>
+    Informe sua nota: <input id="ipt_nota"> <br>
+
+    <button onclick="analise()">CLASSIFICAR ALUNO</button>
+    <div id="div_msg"></div>
+</body>
+
+    <script> 
+
+        function analise() {
+            if (ipt_nota.value < 5) {
+                 alert (" Aluno precisa de muita ajuda.");
+            }
+            else if (ipt_nota.value <5 && ipt_nota.value <= 7) {
+                alert (" Aluno na media.");
+            }
+            else if (ipt_nota.value > 7 && ipt_nota.value <= 9.5) {
+                alert (" Aluno acima da media.");
+            }
+             else if (ipt_nota.value > 9.5) {
+                alert (" Aluno fora da curva.");
+            }
+        }
+
+    </script>
+</html>

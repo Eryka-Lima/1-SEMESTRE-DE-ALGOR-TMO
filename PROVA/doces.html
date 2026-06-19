@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AVALIATIVA</title>
+</head>
+
+<body>
+
+    <h1>Gourmet</h1>
+
+    <b>Informe o Doce e a quantidade de cada um:</b><br>
+
+    Macarons: <input id="ipt_macarons"><br>
+    Brigadeiros: <input id="ipt_brigadeiro"><br>
+    Cupcakes: <input id="ipt_cupcakes"><br>
+    Cheesecakes: <input id="ipt_cheesecakes"><br><br>
+
+    <b>PREÇOS DE CADA DOCE</b><BR>
+    Macarons preço: <input id="ipt_macaronsp"><br>
+    Brigadeiros preço: <input id="ipt_brigadeirop"><br>
+    Cupcakes preço: <input id="ipt_cupcakesp"><br>
+    Cheesecakespreço : <input id="ipt_cheesecakesp"><br><br>
+
+
+    <button onclick="analise()">VERIFICAR VENDAS</button>
+    <div id="msg"></div>
+</body>
+
+</html>
+
+<script>
+    function analise() {
+
+        // PEGAR VALORES DENTRO DA FUNÇÃO
+        let Macarons = Number(ipt_macarons.value);
+        let Brigadeiros = Number(ipt_brigadeiro.value);
+        let Cupcakes = Number(ipt_cupcakes.value);
+        let Cheesecakes = Number(ipt_cheesecakes.value);
+
+        let pMacarons = Number(ipt_macaronsp.value);
+        let pBrigadeiros = Number(ipt_brigadeirop.value);
+        let pCupcakes = Number(ipt_cupcakesp.value);
+        let pCheesecakes = Number(ipt_cheesecakesp.value);
+
+        let total = 0;
+
+        msg.innerHTML = ""; // limpa antes
+        // VALIDAÇÃO
+        if (
+            ipt_macarons.value == "" ||
+            ipt_brigadeiro.value == "" ||
+            ipt_cupcakes.value == "" ||
+            ipt_cheesecakes.value == "" ||
+            ipt_macaronsp.value == "" ||
+            ipt_brigadeirop.value == "" ||
+            ipt_cupcakesp.value == "" ||
+            ipt_cheesecakesp.value == ""
+        ) {
+            alert("Preencha todos os campos!");
+        }
+
+        if (
+            isNaN(Macarons) || isNaN(Brigadeiros) ||
+            isNaN(Cupcakes) || isNaN(Cheesecakes) ||
+            isNaN(pMacarons) || isNaN(pBrigadeiros) ||
+            isNaN(pCupcakes) || isNaN(pCheesecakes)
+        ) {
+            alert("Digite apenas números!");
+        }
+
+        if (
+            Macarons < 0 || Brigadeiros < 0 ||
+            Cupcakes < 0 || Cheesecakes < 0
+        ) {
+            alert("Quantidade não pode ser negativa!");
+        }
+
+        if (
+            pMacarons <= 0 || pBrigadeiros <= 0 ||
+            pCupcakes <= 0 || pCheesecakes <= 0
+        ) {
+            alert("Preço deve ser maior que zero!");
+        }
+
+
+        // MACARONS
+        if (Macarons > 0) {
+            for (let i = 1; i <= Macarons; i++) {
+                msg.innerHTML += `Venda ${i} - Macaron: R$ ${pMacarons}<br>`;
+                total += pMacarons;
+            }
+        }
+
+        // BRIGADEIROS
+        if (Brigadeiros > 0) {
+            for (let i = 1; i <= Brigadeiros; i++) {
+                msg.innerHTML += `Venda ${i} - Brigadeiro: R$ ${pBrigadeiros}<br>`;
+                total += pBrigadeiros;
+            }
+        }
+
+        // CUPCAKES
+        if (Cupcakes > 0) {
+            for (let i = 1; i <= Cupcakes; i++) {
+                msg.innerHTML += `Venda ${i} - Cupcake: R$ ${pCupcakes}<br>`;
+                total += pCupcakes;
+            }
+        }
+
+        // CHEESECAKES
+        if (Cheesecakes > 0) {
+            for (let i = 1; i <= Cheesecakes; i++) {
+                msg.innerHTML += `Venda ${i} - Cheesecake: R$ ${pCheesecakes}<br>`;
+                total += pCheesecakes;
+            }
+        }
+
+        // TOTAL FINAL
+        msg.innerHTML += `<br><b>Total da venda: R$ ${total.toFixed(2)}</b>`;
+    }
+</script>

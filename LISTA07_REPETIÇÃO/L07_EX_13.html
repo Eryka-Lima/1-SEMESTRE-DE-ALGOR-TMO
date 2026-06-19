@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 13</title>
+</head>
+
+<body>
+    <h2>13. Papagaio Repetitivo</h2>
+
+    Insira um número:<br>
+    <input id="nPap2" type="number"><br>
+    Insira uma frase para repetir:<br>
+    <input id="frasePap2"><br><br>
+    <button onclick="papagaio2()">Papagaio Repetitivo</button>
+    <div id="res13"></div>
+
+
+</body>
+
+</html>
+
+<script>
+
+    function papagaio2() {
+
+        let n = Number(nPap2.value);
+        let f = frasePap2.value;
+        let i = 1, txt = "";
+
+
+        if(n.length < 1 || n <= 0){
+            alert('Indique a quantidade a partir de 1!!');
+        }
+        while (i <= n) {
+            txt += i + " - " + f.repeat(i) +  "<br>";
+            i++;
+        }
+        res13.innerHTML = txt;
+    }
+
+</script>

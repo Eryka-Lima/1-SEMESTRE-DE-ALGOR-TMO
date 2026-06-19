@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DESAFIO SPRINT 02</title>
+</head>
+
+<body>
+    <h1 style="color: rgb(93, 152, 175);">ANIL OSAG</h1>
+    <img src="Posto_ANILOSAG.png"><br><br>
+
+    <h2>Faturamento criado para controle de vendas do posto da Familia Osag.</h2>
+    Qual a quantidade vendida (L)? <input id="ipt_vendas">
+    Horário da venda (formato 24 horas): <input id="ipt_horario"><br><br>
+    Qual combustível vendido?<br>
+    <button style="background-color: rgb(186, 247, 247);" onclick="escolher('gasolina')">GASOLINA</button>
+    <button style="background-color:pink ;" onclick="escolher('etanol')">ETANOL</button>
+    <button style="background-color: rgb(223, 231, 153);" onclick="escolher('diesel')">DIESEL</button><br><br>
+
+    <button style="background-color: rgb(165, 231, 187);" onclick="analise()">ANALISE VENDAS</button><br>
+    <div id="div_msg"></div>
+    <br><br>
+
+    <button style="background-color: rgb(223, 202, 179);" onclick="encerrar()">ENCERRAR O DIA</button><br>
+    <div id="faturamento"></div>
+
+</body>
+<script>
+
+    let combustivel = "";
+    let ordem = 0;
+    let desconto = 0;
+    let total = 0;
+
+    function escolher(tipo) {
+        combustivel = tipo;
+    }
+
+    function analise() {
+
+        ordem++;
+
+        let litros = Number(ipt_vendas.value);
+        let hora = Number(ipt_horario.value);
+        let valorVenda = 0;
+        desconto = 0;
+
+        if (combustivel == "gasolina") {
+
+            valorVenda = litros * 6.49;
+
+            if (litros >= 20 && (hora >= 21 || hora <= 6)) {
+                desconto = valorVenda * 0.0505;
+                valorVenda -= desconto;
+            }
+
+        } else if (combustivel == "etanol") {
+            valorVenda = litros * 4.44;
+
+            if (litros >= 20 && (hora >= 21 || hora <= 6)) {
+                desconto = valorVenda * 0.048;
+                valorVenda -= desconto;
+            }
+
+        } else if (combustivel == "diesel") {
+            valorVenda = litros * 4.39;
+
+            if (litros >= 20 && (hora >= 21 || hora <= 6)) {
+                desconto = valorVenda * 0.0439;
+                valorVenda -= desconto;
+            }
+
+        }
+
+        total += valorVenda;
+
+        div_msg.innerHTML += `<br>
+    ${ordem}º venda: ${litros}L de ${combustivel} <br>
+    Valor da venda: R$ ${valorVenda.toFixed(2)} <br>
+    Horário da venda: ${hora}:00:00 <br>
+    Desconto: ${desconto.toFixed(2)} <br>
+    Total acumulado: R$ ${total.toFixed(2)} <br><br>
+    `;
+    }
+
+    function encerrar() {
+
+        faturamento.innerHTML = `
+    <b>DIA ENCERRADO!</b><br>
+    Total de vendas: ${ordem}<br>
+    Faturamento total: R$ ${total.toFixed(2)}
+    `;
+
+        div_msg.innerHTML = "";
+        ipt_vendas.value = "";
+        ipt_horario.value = "";
+
+        total = 0;
+        ordem = 0;
+        desconto = 0;
+        combustivel = "";
+    }
+
+</script>
+
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt_br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>primeiroVetor</title>
+</head>
+
+<body>
+    <h2>Eliminando o conteúdo do vetor</h2>
+
+    Informe o nome a ser eliminado do vetor: <input id="ipt_nome"> <br>
+    <button onclick="primeiro()">Eliminar o Primeiro</button>
+    <button onclick="todos()">Eliminar Todos</button><br><br>
+    <b>Assim está o vetor</b>
+    <div id="div_txt"></div>
+
+</body>
+</html>
+<script>
+    var nomes = ['tom', 'bob', 'mel', 'dan', 'isa', 'tom', 'bob', 'mel', 'dan', 'ze','tom', 'bob', 'mel', 'dan'];
+    div_txt.innerHTML = nomes;
+
+    function primeiro() {
+
+        let ax_achou = false;
+        for (var i = 0; i < nomes.length; i++) {
+            if (nomes[i] == ipt_nome.value) {
+                nomes.splice(i, 1);
+                ax_achou = true;
+                break;
+            }
+        }
+        if (ax_achou == false) {
+            alert(ipt_nome.value + ' não foi encontrado na lista')
+        } else {
+            div_txt.innerHTML = nomes;
+        }
+    }
+    function todos() {
+
+        let ax_cont = 0;
+        for (var i = 0; i < nomes.length; i++) {
+            if (nomes[i] == ipt_nome.value) {
+                nomes.splice(i, 1);
+                ax_cont++;
+            }
+        }
+        if (ax_cont == 0) {
+            alert(ipt_nome.value + ' não foi encontrado na lista')
+        } else {
+            div_txt.innerHTML = nomes + ' - Total de ocorrências eliminadas = ' + ax_cont;
+        }
+    }
+
+</script>
+

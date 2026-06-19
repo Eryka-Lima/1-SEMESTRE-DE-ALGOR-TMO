@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt_br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select</title>
+</head>
+<body>
+    <h2>Time Preferido</h2>
+    Entre com o seu time do coração:
+    <select id="sel_time">
+        <option value="0">selecione...</option>
+        <option value="1">Juventus</option>
+        <option value="2">Corinthians</option>
+        <option value="3">Palmeiras</option>
+        <option value="9">outro</option>
+    </select> <br><br>
+    <button onclick="analisar()">Ver a opção</button>
+    <!-- 
+    A tag <select> plota uma "combo box" ou "lista suspensa" na tela 
+
+    Cada tag <option> é uma das opções da <select> 
+
+    Para recuperar o valor de uma tag <select>, fazemos exatamente como 
+        numa <input> id_da_tag_select.value    
+    
+    O CORPO da tag <option> é o que aparece para o usuário,
+        o valor do atributo "value" é o valor real do campo da tag <select>
+
+    No "value" pode ter letras, números, palavras etc...
+
+    NÃO COLOCAMOS "id" nas <option> NÃO FAZ SENTIDO!!!
+        
+    É possível criar uma "orientação" numa select.
+      1.Nada mais é que uma option sem valor (ou com valor 0, por exemplo)
+        com um texto de orientação no CORPO da tag, como no exemplo acima
+        "selecione..."
+      2.Além disso podemos ordenar manualmenteas options na sequência 
+        alfabética, numérica ou de importância de acordo com o nosso 
+        processo e com o conteúdo das opções
+
+    -->
+</body>
+<script>
+    function analisar() {
+        var axTime = Number(sel_time.value);
+        if (axTime == 0) {
+            alert ("Favor selecionar um dos times da lista")
+        } else {
+            alert ('o seu time é o ' + axTime + 'º no coração')
+        }
+        
+    }
+</script>
+</html>

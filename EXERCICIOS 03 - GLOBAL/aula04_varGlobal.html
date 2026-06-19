@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt_br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>varGlobal</title>
+</head>
+
+<body>
+    <h2>Cofrinho do Prof. Frizza</h2>
+    Entre com o valor poupado: <input id="ipt_valor">
+    <button onclick="depositar()">Depositar</button> <br><br>
+    <b>Extrato dos Depósitos</b> <br>
+    <div id="div_msg"></div>
+    <!--
+    Criar um programa que dado o HTML acima crie uma lista de depósitos, sendo
+    que para cada depósito entrado seja gerada uma nova linha na lista como o
+    exemplo abaixo e que  mostre  
+            1º depósito no valor de R$ 25.88 a economia total é de R$ 25.88
+            2º depósito no valor de R$ 37.95 a economia total é de R$ 63.83
+            3º depósito no valor de R$ 88.01 a economia total é de R$ 151.84
+            4º depósito no valor de R$ 12.64 a economia total é de R$ 164.48
+    
+    -->
+</body>
+
+</html>
+<script>
+
+
+    let ax_qtde = 0;
+    
+    function depositar() {
+            let ax_total = 0;
+            ax_qtde = ax_qtde + 1;
+            ax_total = ax_total + Number(ipt_valor.value);
+            div_msg.innerHTML += `${ax_qtde}º depósito no valor de R$ ${(ipt_valor.value)}
+                a economia total é de R$ ${ax_total.toFixed(2)}<br>`;
+            ipt_valor.value = '';
+        }
+
+
+    /*
+        Ao manipularmos o innerHTML de algum elemento HTML, estamos mexendo diretamente no conteúdo daquele elemento.
+        Por isso, precisamos sempre pensar em 2 possibilidades ao manipular esse conteúdo: 
+            - Podemos SOBRESCREVER todo o conteúdo da div, ao deixá-lo IGUAL a um novo valor.
+            - Podemos INCREMENTAR o conteúdo da div, apenas adicionando mais algum trecho dentro do seu conteúdo atual.
+
+        Exemplo de SOBRESCREVER o conteúdo da div: 
+
+            1. O elemento deve estar identificado com um id, para ser manipulado pelo script, como o "id_da_div" no exemplo abaixo.
+        
+                <div id="id_da_div"> ESTE É O CONTEÚDO ORIGINAL DA DIV </div>
+            
+            2. Para atualizar/sobrescrever o conteúdo atual da div através do JS, usamos: 
+            
+                id_da_div.innerHTML = "<h1>novo conteúdo</h1>";      // por ser HTML, interpretará a tag <h1> e aplicará o comportamento da tag
+            
+            3. Com esse comando acima, o conteúdo da div será apagado e sobrescrito para "<h1>novo conteúdo</h1>"
+            
+                <div id="id_da_div"> <h1>novo conteúdo</h1> </div>
+            
+                
+        Exemplo de INCREMENTAR o conteúdo da div: 
+            
+            1. O elemento deve estar identificado com um id, para ser manipulado pelo script, como o "id_da_div" no exemplo abaixo.
+                
+                <div id="id_da_div"> ESTE É O CONTEÚDO ORIGINAL DA DIV </div>
+
+            2. Para incrementar o conteúdo atual da div através do JS, usamos algum dos três comandos abaixo, que tem exatamente o mesmo comportamento: 
+                
+                id_da_div.innerHTML += "<h1>novo conteúdo</h1>";                          // por ser HTML, interpretará a tag <h1> e aplicará o comportamento da tag
+                id_da_div.innerHTML = id_da_div.innerHTML + "<h1>novo conteúdo</h1>";     // por ser HTML, interpretará a tag <h1> e aplicará o comportamento da tag
+                id_da_div.innerHTML = `${id_da_div.innerHTML} <h1>novo conteúdo</h1>`;    // por ser HTML, interpretará a tag <h1> e aplicará o comportamento da tag
+            
+            3. Com esse comando acima, o conteúdo da div será INCREMENTADO, preservando o conteúdo anterior e apenas adicionando um novo conteúdo, como:
+                
+                <div id="id_da_div"> ESTE É O CONTEÚDO ORIGINAL DA DIV <h1>novo conteúdo</h1> </div>
+    */
+    
+    /* 
+        A variável criada fora de uma função é chamada de VARIÁVEL GLOBAL.
+    
+        Ela é criada imediatamente quando a página é carregada.
+        
+        A VARIÁVEL GLOBAL deve ser usada quando:
+            O seu valor é COMPARTILHADO com outras funções;
+            Quando o seu valor deve persistir mesmo quando a função é encerrada. 
+        
+        NÃO devemor criar variáveis locais com o mesmo nome da variável Global
+    */
+    /*
+    let ax_qtde = 0;
+    let ax_total = 0;
+
+    function depositar() {
+        ax_qtde = ax_qtde + 1;
+        ax_total = ax_total + Number(ipt_valor.value);
+        //      OBSERVAÇÃO
+        //   Com o += o conteúdo já existente na tag não é substituido, 
+        //   sendo que, o novo conteúdo é concatenado no final da tag
+        //
+        div_msg.innerHTML += `${ax_qtde}º depósito no valor de R$ ${(ipt_valor.value)}
+            a economia total é de R$ ${ax_total.toFixed(2)}<br>`;
+        ipt_valor.value = '';
+    }
+*/
+
+/*
+    function limpar() {
+        div_msg.innerHTML = ""
+        ax_qtde = 0;
+        ax_total = 0;
+    }
+*/
+</script>

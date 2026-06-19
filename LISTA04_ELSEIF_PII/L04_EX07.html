@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EXERCICIO 07</title>
+</head>
+<body>
+    <H2>CONSUMO DE CALORIAS: Sua Dieta Está Saudável?</H2>
+        Quantos pães franceses você come por dia? <input id="ipt_paes"> <br><br>
+        Quantos pacotes de bolacha recheada você come por da? <input id="ipt_bolacha"> <br><br>
+        Quantos copos de achocolatado você toma por dia? <input id="ipt_achocolatado"> <br><br>
+
+        <button onclick="analise()">VERIFICAR CALORIAS</button>
+        <div id="div_msg"></div>
+</body>
+
+<script>
+
+    function analise() {
+
+        let paes = ipt_paes.value * 50;
+        let bolacha = ipt_bolacha.value * 80;
+        let achocolatado = ipt_achocolatado.value * 70;
+        let resultado =  paes + bolacha + achocolatado;
+
+        if (resultado < 200) {
+            div_msg.innerHTML = `Parabéns, vai ficar em forma!`;
+        }
+        else if (resultado > 200 && resultado < 400) {
+            div_msg.innerHTML = `Cuidado, vai ficar menos saudável!`;
+        }
+        else if (resultado > 400) {
+            div_msg.innerHTML = `Alerta critico à saúde!`;
+        }
+    }
+
+</script>
+</html>

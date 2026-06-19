@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt_br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 13 </title>
+</head>
+<body>
+    <h2>VERIFICAÇÃO DAS FINANÇAS</h2>
+    Qual o valor do saldo na conta: <input id="ipt_saldo"> <br>
+    Qual sua idade: <input id="ipt_idade"> <br><br>
+    <button style="background-color: #ce35bf; color: rgb(252, 248, 248);" 
+    onclick="analisar()">VERIFICAR FINANÇAS</button> <br>
+    <div id="div_msg"></div>
+   
+</body>
+</html>
+
+<script>
+
+    function analisar() {
+
+        div_msg.innerHTML = '';
+
+        if (ipt_idade.value >= 18) {
+           div_msg.innerHTML = ` ${ipt_nome.value} vamos tirar a CNH?`;
+        } else {
+            div_msg.innerHTML = `${ipt_nome.value}, vai jogar PlayStation!`;
+        }
+    }
+</script>

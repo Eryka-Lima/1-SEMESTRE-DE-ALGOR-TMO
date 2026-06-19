@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Jogo de Dados</title>
+</head>
+
+<body>
+
+    <h1>JOGO DE DADOS</h1>
+
+    Número escolhido (1 a 6):
+    <input id="dado"><br><br>
+
+    Quantidade de rodadas (10 a 20):
+    <input id="rodadas"><br><br>
+
+    <button onclick="jogar()">JOGAR</button>
+
+    <div id="output"></div>
+
+</body>
+
+</html>
+
+<script>
+
+function jogar() {
+
+    let n = Number(dado.value);
+    let r = Number(rodadas.value);
+
+    let pontosUsuario = 0;
+    let pontosMaquina = 0;
+
+    let creditos = r; // créditos iniciais = rodadas
+
+    let historico = [];
+
+    output.innerHTML = "";
+
+    if (n < 1 || n > 6) {
+        alert("Escolha um número entre 1 e 6!");
+        return;
+    }
+
+    if (r < 10 || r > 20) {
+        alert("Rodadas devem ser entre 10 e 20!");
+        return;
+    }
+
+    for (let i = 1; i <= r; i++) {
+
+        if (creditos <= 0) break;
+
+        creditos--;
+
+        let maquina = Math.floor(Math.random() * 6) + 1;
+
+        let msg = "";
+
+        // cabeça (acerto)
+        if (n == maquina) {
+            pontosUsuario += 5;
+            msg = "Cabeça! +5 pontos";
+        }
+
+        // ➕ adjacente (±1)
+        else if (n == maquina - 1 || n == maquina + 1) {
+            pontosUsuario += 2;
+            pontosMaquina += 1;
+            msg = "Adjacente! +2 pontos usuário / +1 máquina";
+        }
+
+        // ➖ erro comum
+        else {
+            pontosUsuario -= 1;
+            pontosMaquina += 1;
+            msg = "Errou! -1 usuário / +1 máquina";
+        }
+
+        historico.push(`
+            <b>${i}ª Rodada</b><br>
+            Usuário: ${n}<br>
+            Máquina: ${maquina}<br>
+            ${msg}<br>
+            Créditos restantes: ${creditos}
+            <hr>
+        `);
+    }
+
+    historico.reverse();
+
+    output.innerHTML = historico.join("");
+
+    output.innerHTML += `
+        <h2>Resultado Final</h2>
+        Usuário: ${pontosUsuario}<br>
+        Máquina: ${pontosMaquina}<br>
+    `;
+}
+
+</script>

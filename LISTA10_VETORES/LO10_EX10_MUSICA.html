@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EXERCICIO 01</title>
+</head>
+
+<body>
+
+    <h1>CAIXA DE MÚSICAS</h1>
+
+    Cadastre suas músicas:<br>
+    <input id="input_musica"><br>
+
+    <button onclick="cadastrar()">Cadastrar</button>
+    <button onclick="exibir()">Exibir</button><br><br>
+
+    <hr>
+    Filtre suas músicas favoritas<br>
+    De: <input id="input_de"> Até: <input id="input_ate">
+    <button onclick="filtrar()">Filtrar</button> <br><br>
+
+    <hr>
+    <div id="output"></div>
+
+</body>
+
+</html>
+
+<script>
+
+    let musicas = [];
+
+    function cadastrar() {
+
+        let musica = input_musica.value.trim();
+
+        if (musica.length < 3) {
+            alert("Musica Invalida! Porfavor digitar uma musica correta.");
+        } else {
+            musicas.push(musica);
+            input_musica.value = "";
+
+        }
+    }
+
+    function exibir() {
+
+        for (let i = 0; i < musicas.length; i++) {
+            output.innerHTML += `${musicas[i]}<br>`;
+        }
+    }
+
+
+    function filtrar() {
+
+
+        let de = Number(input_de.value);
+        let ate = Number(input_ate.value);
+
+
+        if (de < musicas.length && ate > musicas.length) {
+            alert("Informe valores válidos!");
+        } else {
+            for (let i = de - 1; i <= ate -1; i++) {
+                output.innerHTML += `${musicas[i]}<br>`;
+
+            }
+
+        }
+    }
+
+
+
+</script>

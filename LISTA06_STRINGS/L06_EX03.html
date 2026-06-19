@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EXERCICIO 03</title>
+</head>
+<body>
+    <h1> PRIMEIRA E ULTIMA LETRA</h1>
+
+    Escreva uma frase: <input id="ipt_frase"><br>
+    Escreva uma palavra: <input id="ipt_palavra"><br>
+
+    <button onclick="analise()">ANALISAR FRASE</button><br><br>
+    <div id="div_msg"></div>
+</body>
+
+<script>
+
+    function analise(){
+        let frase = ipt_frase.value;
+        let palavra = ipt_palavra.value;
+
+             if (frase.startsWith('ZZZ') && palavra.endsWith('ZZZ')) {
+         div_msg.innerHTML += `Frase Começa e termina com ZZZ! Sendo ZZZ a primeira palavra <br>`;
+            }else if(frase.startsWith('ZZZ')) {
+         div_msg.innerHTML += `Frase Começa com ZZZ! Sendo ZZZ a palavra informada!<br>`;
+            }else if(frase.endsWith('ZZZ')) {
+         div_msg.innerHTML += `Frase termina com ZZZ! Sendo ZZZ a primeira palavra <br>`;
+            }else{
+         div_msg.innerHTML += `Frase NÃO começa e nem termina com ZZZ! Sendo ZZZ a palavra informada. <br>`;
+            }
+    }
+
+</script>
+</html>

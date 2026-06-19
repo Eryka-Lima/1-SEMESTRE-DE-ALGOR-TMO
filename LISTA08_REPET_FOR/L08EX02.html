@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EXERCICIO 02</title>
+</head>
+<body>
+
+    <h1>CAPACIDADE FLEXÍVEL</h1>
+
+     Quantas pessoas vão pegar carona no carro: <br>
+    <input id="ipt_corrida"><br>
+
+
+     Qual capacidade máxima: <br>
+    <input id="ipt_passageiro"><br>
+
+    <button onclick="analise()">#PARTIU CARONA</button><br>
+    <div id="div"></div>
+    
+    
+</body>
+</html>
+
+<script>
+function analise(){
+    let c = Number(ipt_corida.value);
+    let p = Number(ipt_passageiro.value);
+
+     for(let cont = 0; cont < c; cont++){
+            if(cont == 1){
+                div.innerHTML += `Entrou o motorista.<br>`;
+            }else if (cont > 1 && cont <= p){
+                div.innerHTML += `Entrou o ${cont} passageiro<br>`;
+            }else if (cont > p){
+                div.innerHTML += `Entrou o ${cont} passageiro tem que esperar<br>`;
+        }
+
+    }
+}
+
+</script>

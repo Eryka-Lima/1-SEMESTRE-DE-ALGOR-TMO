@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EXERCICIO 06</title>
+</head>
+
+<body>
+    <h2>Calculadora de Cansaço do Aluno SPTech</h2>
+    Meio de Transporte
+    <button onclick="escolher(onibus)">Ônibus</button>
+    <button onclick="escolher(metro)">Metrô</button>
+    <button onclick="escolher(carro)">Carro</button>
+    <button onclick="escolher(bicicleta)">Bicicleta</button>
+    <button onclick="escolher(uber)">Uber</button><br><br>
+
+    <button onclick="analise()">Calcular Cansaço</button>
+    <div id="div_msg"></div>
+
+</body>
+<script>
+
+    function escolher(tipo){
+        transporte = tipo;
+
+    }
+
+    function analise() {
+        if (transporte == "carro" || transporte == "uber") {
+            alert ("TA TRANQUILO!");
+        } else if (transporte == "metro" || transporte == "onibus") {
+            alert ("UM POUCO CANSADO");
+        } else {
+            alert ("VISH VIVE CANSADO");
+        }
+    }
+</script>
+
+</html>

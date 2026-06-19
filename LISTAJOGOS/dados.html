@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Jogo de Dados</title>
+
+    <style>
+        body {
+            background-image: url("https://img.magnific.com/fotos-gratis/o-passado-do-jogo-de-dados-de-sorte_23-2150971899.jpg?semt=ais_hybrid&w=740&q=80");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+    </style>
+</head>
+
+
+
+<body>
+
+    <h1>JOGO DE DADOS</h1>
+
+    Quantidade de vidas iniciais (10 a 20):
+    <input id="vidas"><br><br>
+
+    Quantidade de rodadas (15 a 30):
+    <input id="rodadas"><br><br>
+
+    Escolha um número do dado (1 a 6):
+    <input id="numero"><br><br>
+
+    <button onclick="jogar()">JOGAR</button>
+
+    <button onclick="limparTela()">LIMPAR</button>
+
+    <div id="output"></div>
+
+</body>
+
+</html>
+
+<script>
+
+    function jogar() {
+
+        let vidasIniciais = Number(vidas.value);
+        let qtdRodadas = Number(rodadas.value);
+        let numeroUsuario = Number(numero.value);
+
+        output.innerHTML = "";
+
+        // VALIDAÇÕES
+        if (vidasIniciais < 10 || vidasIniciais > 20) {
+            alert("As vidas iniciais devem estar entre 10 e 20!");
+            return;
+        }
+
+        if (qtdRodadas < 15 || qtdRodadas > 30) {
+            alert("As rodadas devem estar entre 15 e 30!");
+            return;
+        }
+
+        if (numeroUsuario < 1 || numeroUsuario > 6) {
+            alert("Escolha um número entre 1 e 6!");
+            return;
+        }
+
+        let saldoVidas = vidasIniciais;
+
+        let historico = "";
+
+        let mensagemFinal = "";
+
+        // LOOP DAS RODADAS
+        for (let rodada = 1; rodada <= qtdRodadas; rodada++) {
+
+            let dado1 = Math.floor(Math.random() * 6) + 1;
+            let dado2 = Math.floor(Math.random() * 6) + 1;
+
+            let alteracaoVidas = 0;
+
+            // VERIFICAÇÕES
+            if (dado1 == numeroUsuario) {
+                alteracaoVidas++;
+            }
+
+            if (dado2 == numeroUsuario) {
+                alteracaoVidas++;
+            }
+
+            // Se os dois forem iguais ao número escolhido
+            if (dado1 == numeroUsuario && dado2 == numeroUsuario) {
+                alteracaoVidas++;
+            }
+
+            // Se nenhum acertar
+            if (dado1 != numeroUsuario && dado2 != numeroUsuario) {
+                alteracaoVidas = -1;
+            }
+
+            saldoVidas += alteracaoVidas;
+
+            // HISTÓRICO EM ORDEM INVERSA
+            historico =
+                `${rodada}ª Rodada
+                <br> Dado1 = ${dado1}, 
+                <br> Dado2 = ${dado2}, <br> ` +
+                `Seu número = ${numeroUsuario}, 
+                <br> Vidas = ${alteracaoVidas}<br> ` +
+                `Saldo de vidas = ${saldoVidas}<hr>`
+                + historico;
+
+            // ENCERRA SE ACABAREM AS VIDAS
+            if (saldoVidas <= 0) {
+                mensagemFinal = "Sinto muito, suas vidas acabaram, tente novamente.";
+                break;
+            }
+        }
+
+        // FINALIZAÇÃO
+        if (saldoVidas > 0) {
+
+            if (saldoVidas > vidasIniciais) {
+                mensagemFinal = "Parabéns você é um bom jogador, ganhou de mim....";
+            }
+            else if (saldoVidas < vidasIniciais) {
+                mensagemFinal = "Você saiu dessa mais fraquinho....";
+            }
+            else {
+                mensagemFinal = "Uiaaa!!! empatamos... Vamos tentar novamente?";
+            }
+        }
+
+        // EXIBIÇÃO FINAL
+        output.innerHTML = `
+            <h2>Resultado Final</h2>
+
+            Vidas iniciais: ${vidasIniciais}<br>
+            Saldo final de vidas: ${saldoVidas}<br><br>
+
+            <b>${mensagemFinal}</b>
+
+            <hr>
+
+            <h3>Histórico das Rodadas</h3>
+
+            ${historico}
+        `;
+    }
+
+    function limparTela() {
+
+        vidas.value = "";
+        rodadas.value = "";
+        numero.value = "";
+
+        output.innerHTML = "";
+    }
+
+</script>

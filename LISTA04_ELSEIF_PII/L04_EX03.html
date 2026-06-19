@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EXERCICIO 03</title>
+</head>
+<body>
+    <h2>SENSAÇÃO TÉRMICA</h2>
+    Como o corpo Humano percebe a temperatura. <br>
+    Informe sua temperatura: <input id="ipt_temperatura"> <br><br>
+
+    <button onclick="analise()">SENSAÇÃO TERMICA</button>
+    <div id="div_msg"></div>
+    
+</body>
+
+<script>
+
+        function analise() {
+            if (ipt_temperatura.value <= 14) {
+                div_msg.innerHTML = `Congelante.`;
+            }
+            else if (ipt_temperatura.value > 14 && ipt_temperatura.value <= 21) {
+                div_msg.innerHTML = `Com frio.`;
+            }
+            else if (ipt_temperatura.value <= 24) {
+                div_msg,innerHTML = `Confortável`;
+            }
+            else if (ipt_temperatura.value <= 31) {
+                div_msg.innerHTML = `Com Calor.`;
+            }
+            else if (ipt_temperatura.value > 31) {
+                div_msg.innerHTML = `Calor Escaldante`;
+            }
+        }
+</script>
+</html>

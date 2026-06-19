@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt_br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 09</title>
+</head>
+<body style="background-color:#819ce9;">
+    <h2 style="background-color: #371683; color: rgb(252, 249, 249);"> RECOMENDAÇÃO DE CLIMA</h2>
+    Temperatura atual (em grus): <input  id= "ipt_tempA"> <br>
+    Condição do tempo (Nublado, Ensolarado): <input id="ipt_temp"> <br><br>
+    <button style="background-color: #4d37af; color: rgb(252, 249, 249);" onclick="mostra()">VER DICA</button>
+     <div id="div_temp"></div>
+</body>
+
+<script>
+    function mostra() {
+
+        alert ("Está fazendo " +  ipt_tempA.value +  " graus  e o dia está " + ipt_temp.value + ".");
+     div_temp.innerHTML ="Lembre-se de se proteger e se atualiza, o tempo está " + ipt_temp.value;
+
+        ipt_tempA.value = '';
+        ipt_temp.value = '';
+    }
+</script> 
+</html>

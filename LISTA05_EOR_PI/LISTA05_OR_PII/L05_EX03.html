@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EXERCICIO 03</title>
+</head>
+<body>
+    <h2>Auxílio Emergencial Covid-19</h2>
+    Qual o valor da sua renda individual? <input id="ipt_renda"><br>
+    Qual o valor da renda da sua familia? <input id="ipt_familia"><br><br>
+
+    <button onclick="analise()">TEREI O BENEFÍCIO</button><br><br>
+    <div id="div_msg"></div>    
+</body>
+
+<script>
+    function analise() {
+
+    if(ipt_renda.value <= 2000 || ipt_familia.value <=3000){
+        div_msg.innerHTML = `VOCÊ TERÁ DIREITO AO AUXILIO`;
+    }else {
+        div_msg.innerHTML = `SEM DIREITO AO BENEFICIO`;
+    }
+ }
+</script>
+</html>

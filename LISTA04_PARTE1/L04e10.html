@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt_br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 10</title>
+</head>
+<body>
+    <h2>CONTROLE DE HORAS ASSISTTINDO STREAMING</h2>
+    Qual ultima seria (SITCOM) que você assistiu: <input id="ipt_serie"> <br>
+    Quantos episodios você já assistiu: <input id="ipt_episodio"> <br><br>
+    <button style="background-color: #ce35bf; color: rgb(252, 248, 248);" 
+    onclick="analisar()">VERIFICAR NÍVEL</button> <br>
+    <div id="div_msg"></div>
+   
+</body>
+</html>
+
+<script>
+
+    function analisar(){
+
+        let episodio = Number(ipt_episodio.value);
+        let tempo = 22;
+
+        let resultado = episodio * tempo;
+
+          if (resultado >= 1800) {
+           div_msg.innerHTML = `Você realmente gosta da série ${ipt_serie.value}.`;
+
+        } else {
+            div_msg.innerHTML = `Você gosta de Serie.`;;
+
+        }
+    }
+
+
+</script>

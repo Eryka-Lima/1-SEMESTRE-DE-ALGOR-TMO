@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt_br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Depositos</title>
+</head>
+
+<body>
+    <h2 style="background-color: #681ec9; color: rgb(252, 248, 248);"
+    >Olá, Nicollas!!! <p> Auxilio para Depósito e Retirada de Dinehiro</h2>
+
+    Inserir  o Valor do Depósito: <input id="ipt_deposito"> <br>
+    Inserir  da retirada: <input id="ipt_retirada"> <br><br>
+
+    <button style="background-color: #681ec9; color: rgb(252, 248, 248);" 
+    onclick="depositar()">DEPOSITAR</button> <br><br>
+    <button style="background-color: #681ec9; color: rgb(252, 248, 248);" 
+    onclick="retirar()">RETIRAR</button> <br><br>
+
+    <b>Extrato dos Depósitos</b> <br>
+    <div id="div_msg"></div
+    
+</body>
+
+</html>
+<script>
+
+
+    let ax_qtde = 0;
+    let ax_total = 0;
+
+    function depositar() {
+            ax_qtde = ax_qtde + 1;
+            ax_total = ax_total + Number(ipt_deposito.value);
+
+            div_msg.innerHTML += `${ax_qtde}º depósito no valor de R$ ${(ipt_deposito.value)}
+                o seu total é de R$ ${ax_total.toFixed(0)}<br>`;
+            ipt_deposito.value = '';
+        }
+
+    
+    function retirar() {
+            ax_qtde = ax_qtde - 1;
+            ax_total = ax_total - Number(ipt_retirada.value);
+
+            div_msg.innerHTML += `${ax_qtde}º depósito no valor de R$ ${(ipt_retirada.value)}
+                o seu total é de R$ ${ax_total.toFixed(0)}<br>`;
+            ipt_retirada.value = '';
+        }
+
+</script>

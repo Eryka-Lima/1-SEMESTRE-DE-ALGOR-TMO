@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ATIVIDADE AVALIATIVA</title>
+</head>
+
+<body>
+
+    <h1>OS CELTAS</h1>
+
+    <p>
+        A Idade Média foi marcada por povos militaristas e expansões territoriais.
+    </p>
+
+    <hr>
+
+    <b>REGISTRO DE ARMAS</b><br><br>
+    ARMA:
+    <input id="input_arma"><br><br>
+    PONTOS:
+    <input id="input_pontos"><br><br>
+    <button onclick="registrar()">REGISTRAR</button>
+    <div id="output_armas"></div>
+    <hr>
+
+    <b>REGISTRO DOS GUERREIROS</b><br><br>
+    NOME DO GUERREIRO:
+    <input id="input_nome"><br><br>
+    PONTOS:
+    <input id="input_pontosG"><br><br>
+
+    ID DA ARMA:
+    <input id="input_id"><br><br>
+    <button onclick="selecionar()">SELECIONAR ARMA</button>
+    <div id="output_guerreiro"></div>
+
+    <hr>
+
+    <b>CHECAGEM</b><br><br>
+    <button onclick="checagem()">CHECAGEM</button>
+    <div id="output_final"></div>
+
+</body>
+
+</html>
+
+<script>
+
+    // ARRAYS
+    let armas = [];
+    let pontosArmas = [];
+
+    let guerreiros = [];
+    let pontosGuerreiros = [];
+    let idsArmas = [];
+
+    // FUNÇÃO REGISTRAR ARMAS
+    function registrar() {
+
+        let arma = input_arma.value.trim();
+        let ponto = Number(input_pontos.value);
+
+        // VALIDAÇÃO NOME
+        if (arma.length < 3) {
+            alert("O nome da arma deve possuir pelo menos 3 letras.");
+            return;
+        }
+
+        if (!isNaN(arma)) {
+            alert("O nome da arma não pode ser número.");
+            return;
+        }
+
+        if (armas.includes(arma)) {
+            alert("Essa arma já foi cadastrada.");
+            return;
+        }
+
+        // VALIDAÇÃO PONTOS
+        if (ponto < 10) {
+            alert("A pontuação mínima é 10.");
+            return;
+        }
+
+        if (ponto > 100) {
+            alert("A pontuação máxima é 100.");
+            return;
+        }
+
+        // CADASTRO
+        armas.push(arma);
+        pontosArmas.push(ponto);
+
+        output_armas.innerHTML = `
+            <b>Cadastro realizado com sucesso!</b><br>
+            ID da arma: ${armas.length - 1}
+        `;
+
+        input_arma.value = "";
+        input_pontos.value = "";
+    }
+
+    // FUNÇÃO SELECIONAR ARMA
+    function selecionar() {
+
+        let nome = input_nome.value.trim();
+        let pontos = Number(input_pontosG.value);
+        let id = Number(input_id.value);
+
+        // VALIDAÇÕES
+        if (nome.length < 3) {
+            alert("Nome inválido.");
+            return;
+        }
+
+        if (isNaN(pontos) || pontos < 10 || pontos > 100) {
+            alert("Pontuação inválida.");
+            return;
+        }
+
+        if (id < 0 || id >= armas.length) {
+            alert("ID da arma não existe.");
+            return;
+        }
+
+        // CADASTRO GUERREIRO
+        guerreiros.push(nome);
+        pontosGuerreiros.push(pontos);
+        idsArmas.push(id);
+
+        output_guerreiro.innerHTML = `
+            Guerreiro cadastrado com sucesso!<br><br>
+
+            Guerreiro: <b>${nome}</b><br>
+            Arma escolhida: <b>${armas[id]}</b><br>
+            Pontos da arma: <b>${pontosArmas[id]}</b>
+        `;
+
+        input_nome.value = "";
+        input_pontosG.value = "";
+        input_id.value = "";
+    }
+
+    // FUNÇÃO CHECAGEM
+    function checagem() {
+
+        let lista = "";
+
+        for (let i = 0; i < guerreiros.length; i++) {
+
+            lista += `
+                <hr>
+                Guerreiro: <b>${guerreiros[i]}</b><br>
+                Pontos: ${pontosGuerreiros[i]}<br>
+                Arma: ${armas[idsArmas[i]]}<br>
+                Pontos da arma: ${pontosArmas[idsArmas[i]]}<br>
+            `;
+        }
+
+        output_final.innerHTML = `
+            <h2>LISTA DE GUERREIROS</h2>
+            ${lista}
+        `;
+    }
+
+</script>

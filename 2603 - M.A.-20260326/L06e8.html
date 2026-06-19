@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt_br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>L06e08</title>
+</head>
+
+<body>
+    <h2>Frutas</h2>
+    Entre com o nome do fruta: <input id="ipt_fruta">
+    <button onclick="cadastrar()">Cadastrar</button><br>
+    <button onclick="pesquisar()">Pesquisar</button><br>
+    <div id="div_msg"></div>
+</body>
+
+</html>
+<script>
+
+    let ax_frutas = [];
+
+    function cadastrar() {
+        let ax_nome_fruta = ipt_fruta.value.trim();
+        if (ax_nome_fruta.length == 0) {
+            alert('Por favor digite o nome do fruta')
+        } else {
+            if (ax_frutas.indexOf(ax_nome_fruta) >= 0) {
+                alert('Essa fruta já foi cadstrada')
+            } else {
+                ax_frutas.push(ax_nome_fruta);
+                ipt_fruta.value = '';
+            }
+        }
+    }
+
+    function pesquisar() {
+        if (ax_frutas.includes(ipt_fruta.value)) {
+            div_msg.innerHTML = 'A fruta' + ipt_fruta.value + 'existe na lista';
+        } else {
+            div_msg.innerHTML = 'A fruta ' + ipt_fruta.value + ' NÃO existe na lista';
+            
+        }
+    }
+
+</script>

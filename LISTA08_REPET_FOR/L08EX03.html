@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EXERCICIO 03</title>
+</head>
+<body>
+
+    <h1>Contador de Coca-Colas </h1>
+
+    Quantas coca-cola você acha que bebeu na vida?<br>
+    <input id="ipt_coca"><br>
+
+    <button onclick="analise()">VER QUANTIDADE</button>
+
+    <div id="div"></div>
+</body>
+</html>
+
+<script>
+
+    function analise(){
+        let refri = Number(ipt_coca.value);
+
+        for( let cont = 0; cont <= refri; cont++){
+
+            div.innerHTML += `${cont} Garrafas de coca-cola. `;
+        }
+    }
+</script>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt_br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>display</title>
+</head>
+<body>
+    <h2>Mostranto e Escondendo telas</h2>
+    <div id="div_tela1" style="display: block;">
+        <h2>Tela Principal</h2>
+        mostrando um campo: <input id="ipt_campo"><br>
+        <button onclick="chama_tela2()">Camando a outra tela</button>
+    </div>
+    <div id="div_tela2" style="display: none;">
+        <h2>Tela secundária</h2>
+        aqui também pode ter campos: <input id="ipt_valor"> <br>
+        <button onclick="chama_tela1()">Voltar para a Principal</button>
+    </div>
+</body>
+</html>
+<script>
+    /* Escondendo e mostrando elementos do HTML
+
+    style="display: block;" faz com que o elemento do HTML apareça na tela
+        portanto ele é o default, ou seja, se nada for informado, esse valor
+        é assumido    
+
+    style="display: none;" faz com que o elemento do HTML NÃO apareça na tela
+
+    Abaixo é mostrado como esse parametro pode ser alterado dentro da tag 
+        <script>, ou seja no JavaScript   
+    */
+
+    function chama_tela1() {
+        div_tela1.style.display = 'block';
+        div_tela2.style.display = 'none';
+    }
+
+    function chama_tela2() {
+        div_tela1.style.display = 'none';
+        div_tela2.style.display = 'block';
+    }
+</script>

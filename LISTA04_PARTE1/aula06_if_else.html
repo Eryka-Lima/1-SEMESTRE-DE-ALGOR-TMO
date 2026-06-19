@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt_br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IF ELSE</title>
+</head>
+<body>
+    <h2>Estrutura de decisão - IF ELSE</h2>
+    Entre com a idade: <input id="ipt_idade"> <br>
+    <button onclick="analisar()">Analisar</button> <br>
+    <div id="div_msg"></div>
+</body>
+</html>
+<script>
+    function analisar() {
+
+        /*
+            "else" significa "senão" em português, uma palavra que normalmente indica alguma condição.
+            Nós a utilizamos no nosso dia-a-dia em situações que temos duas condições, sendo normalmente associada à segunda condição, como: 
+                - "se eu tiver dinheiro, vou ao shopping, SENÃO vou à praça";
+                - "se estiver frio, vou usar tênis, SENÃO vou usar sandália;
+                - "se minha mãe deixar, vou brincar, SENÃO vou estudar";
+            Como podemos analisar, o "SE" da condição está atrelado a tomada da primeira decisão.
+            E o "SENÃO", está atrelado a outra tomada de decisão, normalmente CONTRÁRIA a condição do "SE".
+
+
+            Composição da estrutura de decisão "if else":
+                if (condicao) { 
+                    ...comandos primeiro cenário...   
+                } else {   
+                    ...comandos segundo cenário...   
+                }
+
+                - if: palavra-chave que indica a definição de uma estrutura de decisão;
+                - (condicao): validação que será realizada, onde:
+                    -- caso a condição seja VERDADEIRA, executará o bloco de comandos "IF", ignorando o bloco "ELSE" 
+                    -- caso a condição seja FALSA, ignorará o bloco "IF" e executará somente o bloco de comandos do "ELSE";
+                - {}: as chaves indicam onde nosso bloco de instruções começa e termina, delimitando o seu conteúdo;
+                - else: palavra-chave que indica a continuação de uma estrutura de decisão, representando o cenário contrário do "IF";
+                    -- não existe condição para o ELSE, afinal, está implícito que ele é o contrário do IF
+        */
+
+
+        div_msg.innerHTML = '';
+        if (ipt_idade.value >= 16) {
+           div_msg.innerHTML = 'Você já pode votar';
+        } else {
+            div_msg.innerHTML = 'Você ainda não pode votar';
+        }
+    }
+</script>

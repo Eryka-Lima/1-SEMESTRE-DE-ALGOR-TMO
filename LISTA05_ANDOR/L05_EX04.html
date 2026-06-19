@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EXERCICIO 04</title>
+</head>
+<!-- Um novo banco eletrônico, o Banco Melete possui um sistema diferenciado de autenticação no qual pede um login, uma senha e uma 3ª informação pessoal, que pode ser o ano de nascimento ou o nome do animal de estimação do cliente. Crie um protótipo que simule a autenticação de um determinado cliente, o qual: 
+
+a) Solicite o login, a senha e a informação pessoal ao usuário 
+
+b) Ao clicar num botão "Autenticar", exiba uma dessas frases abaixo do botão: 
+
+     b.1.) "Usuário autenticado", caso o login seja "ana", a senha "braga" e a informação pessoal for ou "1949" ou "louro josé" 
+
+     b.2.) "Falha na autenticação", caso as regras de verificação em b.1) falhem  -->.
+<body>
+    <h1>Autenticação Segura: Acesso ao Banco Melete</h1>
+    Login <input id="ipt_login"><br>
+    Senha <input id="ipt_senha"><br>
+    Informação Pessoal <input id="ipt_informacao"><br><br>
+
+    <button onclick="analise()">AUTENTICAR</button><br><br>
+    <div id="div_msg"></div>
+</body>
+    <script>
+        function analise(){
+            let login = ipt_login.value;
+            let senha = ipt_senha.value;
+            let info = ipt_informacao.value;
+
+            if(login != 'eryka' &&  senha == 'braga' ||  (info != '1996' && info != 'kiara')){
+                alert("Falha na autenticação");
+            }else{
+                 div_msg.innerHTML = `<b> LOGAGO COM SUCESSO!!
+                                    <br><img src="Feliz.jfif"><br><br>`;
+            }
+
+            ipt_login.value = ' ';
+            ipt_senha.value = ' ';
+            ipt_informacao.value = ' ';
+        }
+    </script>
+</html>

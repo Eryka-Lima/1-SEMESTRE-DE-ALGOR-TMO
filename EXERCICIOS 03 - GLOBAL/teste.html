@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt_br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>varGlobal</title>
+</head>
+
+<body>
+    <h2>Saldo Bancário</h2>
+    <b>Clique no botão Abaixo e atualize seu saldo</b> <br>
+    <button onclick="receber()">Receber 100</button> <br>
+    <button onclick="pagar()">Pagar 50</button> <br><br>
+
+    <b>Extrato dos Depósitos</b> <br>
+    <div id="div_msg"></div>
+
+</body>
+
+</html>
+<script>
+
+     let ax_qtde = 0;
+    
+    function depositar() {
+            let ax_total = 0;
+            ax_qtde = ax_qtde + 1;
+            ax_total = ax_total + Number(100);
+
+            
+            div_msg.innerHTML += `Transferência de R$ 100,00 recebida!
+            Seu saldo atual é de R$ ${ax_total.toFixed(2)}<br>`;  
+        }
+
+</script>

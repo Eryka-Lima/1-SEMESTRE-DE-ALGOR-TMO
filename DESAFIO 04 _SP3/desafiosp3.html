@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>DESAFIO SPRINT 03</title>
+</head>
+
+<body>
+
+    <div id="TELA01" class="card"class="card">
+
+        <div id="incluir">
+
+            <h1 class="text title">Desafio da Semana</h1>
+            MANUTENÇÃO DE NOTAS<br><br>
+
+            R.A: <input id="input_ra" placeholder="Digite aqui"> NOTA: <input id="input_nota"
+                placeholder="Digite aqui"><br><br>
+
+
+            <button onclick="incluir()">Incluir</button>
+            <button onclick="excluir()">Excluir</button><br><br>
+            <button onclick="alterar()">Alterar</button>
+
+            NOTA: <input id="input_newnota" placeholder="Digite aqui"><br><br>
+
+            <button onclick="ajustar()">Ajustar Notas</button>
+            <button onclick="consultar()">Consultar</button><br><br>
+            <h2>Cadastramentos Efetuados</h2>
+            <div id="output1"></div>
+
+        </div>
+
+    </div>
+
+
+    <div id="TELA02" class="card" style="display:none">
+
+        <h1 class="text title">Tela de Consulta</h1><br><br>
+
+        <button onclick="aluno()">Por R.A.</button><br>
+        DE: <input id="input_nota1" placeholder="Digite aqui">
+        PARA: <input id="input_nota2" placeholder="Digite aqui"><br><br>
+
+        <button onclick="nota()">Por NOTA.</button><br>
+        DE: <input id="input_nota3" placeholder="Digite aqui">
+        PARA: <input id="input_nota4" placeholder="Digite aqui"><br><br>
+
+        <button onclick="voltar()">Voltar</button><br><br>
+
+
+        <h2>Cadastros Selecionados</h2>
+        <div id="output2"></div>
+
+    </div>
+
+
+    <div id="TELA03" class="card" style="display:none">
+
+        <h1 class="text title">Tela de Ajuste de Notas</h1><br><br>
+
+        DE: <input id="input_ajuste1" placeholder="Digite aqui">
+        ATÉ: <input id="input_ajuste2" placeholder="Digite aqui"><br><br><br>
+
+        <button onclick="bonus()">Bônus</button><br>
+        PONTOS: <input id="input_pontos" placeholder="Digite aqui">
+        OU %: <input id="input_porcentagem" placeholder="Digite aqui"><br><br>
+        OU<br><br>
+
+        <button onclick="reduzir()">Redução</button><br>
+        PONTOS: <input id="input_pontos1" placeholder="Digite aqui">
+        OU %: <input id="input_porcentagem1" placeholder="Digite aqui"><br><br>
+
+        <button onclick="voltar()">Voltar</button><br><br>
+
+        <h2>Lista de Cadastros </h2>
+        <div id="output3"></div>
+
+    </div>
+
+
+</body>
+<!-- 
+//EXPLICAÇÃO DO CÓDIGO PARA FAZER EM CASA
+
+/*
+
+Exercicio grande
+
+
+---------------------------------------
+TELA 01
+ORDEM INVERTIDA
+
+Intervalo deve ser CRESCENTE
+Tanto pelo RA quanto por NOTAS
+
+PODENDO CONSULTAR POR NOTA OU POR RA
+Listando na ordem NOTAL
+
+---------------------------------------
+TELA 02
+Lista de menor e maior
+Lista de ocorrências
+PASSO A PASSO
+
+Total de ocorrências do vetor
+TOTAL DE ALUNOS ACIMA DE 8,0
+TOTAL DE ALUNOS ABAIXO DE 4,0
+
+----------------------------------------
+TELA 03 - Ajustar
+USAR NONE E BLOCK
+
+Pode fazer uma redução ou o percentual para ostrar
+Que é o mais chato de analizar
+BOTÃO VOLTAR
+tem que voltar
+
+Vai e volta
+
+*/-->
+
+</html>
+
+<script>
+    let alunos = [];
+
+// ================= INCLUIR =================
+function incluir(ra, nota) {
+
+    if (ra >= 2000 && ra <= 3000) {
+
+        if (nota >= 0 && nota <= 10) {
+            alunos[alunos.length] = [ra, nota];
+            mostrar1();
+        }
+    }else{
+        output1.innerHTML = "RA ou nota inválidos!";
+    }
+}
+
+// ================= EXCLUIR =================
+function excluir(ra) {
+
+    let achou = 0;
+
+    for (let i = 0; i < alunos.length; i++) {
+
+        if (alunos[i][0] == ra) {
+            alunos.splice(i, 1);
+            achou = 1;
+        }
+    }
+
+    if (achou == 0) {
+        alert("R.A não encontrado");
+    }
+
+    mostrar1();
+}
+
+// ================= ALTERAR =================
+function alterar(ra, nova) {
+
+    let achou = 0;
+
+    for (let i = 0; i < alunos.length; i++) {
+
+        if (alunos[i][0] == ra) {
+
+            if (nova >= 0 && nova <= 10) {
+                alunos[i][1] = nova;
+            }
+
+            achou = 1;
+        }
+    }
+
+    if (achou == 0) {
+        alert("R.A não encontrado");
+    }
+
+    mostrar1();
+}
+
+// ================= CONSULTA =================
+function consultar(de, ate) {
+
+    if (de <= ate) {
+
+        let txt = "";
+        let achou = 0;
+
+        for (let i = 0; i < alunos.length; i++) {
+
+            if (alunos[i][0] >= de && alunos[i][0] <= ate) {
+                txt = txt + alunos[i][0] + " - " + alunos[i][1] + "<br>";
+                achou = 1;
+            }
+        }
+
+        if (achou == 0) {
+            alert("Nada encontrado");
+        }
+
+        output2.innerHTML = txt;
+    }
+}
+
+// ================= AJUSTE =================
+function bonus(de, ate, pontos, percent) {
+    ajustar("bonus", de, ate, pontos, percent);
+}
+
+function reduzir(de, ate, pontos, percent) {
+    ajustar("reduzir", de, ate, pontos, percent);
+}
+
+function ajustar(tipo, de, ate, pontos, percent) {
+
+    if (de <= ate) {
+
+        let valor;
+        let usarPercent = 0;
+
+        if (pontos >= 0.5 && pontos <= 1.5) {
+            valor = pontos;
+        } else if (percent >= 3 && percent <= 13) {
+            valor = percent;
+            usarPercent = 1;
+        } else {
+            valor = Math.floor(Math.random() * 11) + 5;
+            usarPercent = 1;
+        }
+
+        for (let i = 0; i < alunos.length; i++) {
+
+            if (alunos[i][0] >= de && alunos[i][0] <= ate) {
+
+                if (tipo == "bonus") {
+
+                    if (usarPercent == 1) {
+                        alunos[i][1] = alunos[i][1] + (alunos[i][1] * valor / 100);
+                    } else {
+                        alunos[i][1] = alunos[i][1] + valor;
+                    }
+
+                } else {
+
+                    if (usarPercent == 1) {
+                        alunos[i][1] = alunos[i][1] - (alunos[i][1] * valor / 100);
+                    } else {
+                        alunos[i][1] = alunos[i][1] - valor;
+                    }
+                }
+
+                if (alunos[i][1] > 10) {
+                    alunos[i][1] = 10;
+                }
+
+                if (alunos[i][1] < 0) {
+                    alunos[i][1] = 0;
+                }
+            }
+        }
+
+        mostrar3();
+    }
+}
+
+// ================= MOSTRAR =================
+function mostrar1() {
+
+    let txt = "";
+
+    for (let i = alunos.length - 1; i >= 0; i--) {
+        txt = txt + alunos[i][0] + " - " + alunos[i][1] + "<br>";
+    }
+
+    out1.innerHTML = txt;
+}
+
+function mostrar3() {
+
+    let txt = "";
+
+    for (let i = alunos.length - 1; i >= 0; i--) {
+        txt = txt + alunos[i][0] + " - " + alunos[i][1] + "<br>";
+    }
+
+    out3.innerHTML = txt;
+}
+
+// ================= TELAS =================
+function irConsulta() {
+    TELa01.style.display = "none";
+    TELa02.style.display = "block";
+}
+
+function irAjuste() {
+    TELa01.style.display = "none";
+    TELa03.style.display = "block";
+}
+
+function voltar() {
+    TELa02.style.display = "none";
+    TELa03.style.display = "none";
+    TELa01.style.display = "block";
+}
+</script>

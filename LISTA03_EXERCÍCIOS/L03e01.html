@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt_br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 01</title>
+</head>
+<body style="background-color:#bfdbe0;">
+    <h2>CALCULADORA BÁSICA</h2>
+    Para iniciar as operações matemáticas, preencha: <br>
+    Número: <input  id= "ipt_num1"> <br>
+    Número: <input id="ipt_num2"> <br><br>
+
+    <button style="background-color: #6b35ce; color: rgb(252, 248, 248);" 
+    onclick="mostrar('adicao')">ADIÇÃO</button>
+    <div id="div_adicao"></div> <br>
+
+    <button style="background-color: #6b35ce; color: rgb(252, 248, 248);" 
+    onclick="mostrar('subtracao')">SUBTRAÇÃO</button>
+    <div id="div_subtracao"></div> <br>
+
+    <button style="background-color: #6b35ce; color: rgb(252, 248, 248);" 
+    onclick="mostrar('mutiplicacao')">MUTIPLICAÇÃO</button>
+    <div id="div_mutiplicacao"></div> <br>
+
+    <button style="background-color: #6b35ce; color: rgb(252, 248, 248);" 
+    onclick="mostrar('divisao')">DIVISÃO</button>
+    <div id="div_divisao"></div> <br>
+
+</body>
+
+<Script>
+    function mostrar(operacoes) {
+
+        document.getElementById("div_adicao").innerHTML = "";
+        document.getElementById("div_subtracao").innerHTML = "";
+        document.getElementById("div_mutiplicacao").innerHTML = "";
+        document.getElementById("div_divisao").innerHTML = "";
+
+
+        if (operacoes === "adicao") {
+            let num1 = Number(ipt_num1.value);
+            let num2 = Number(ipt_num2.value);
+
+            let resultado = num1 + num2;
+
+            document.getElementById("div_adicao").innerHTML = "Soma de " + ipt_num1.value  + " + " + ipt_num2.value + " = " + resultado;
+    
+        }
+
+        if (operacoes === "subtracao") {
+            let num3 = Number(ipt_num1.value);
+            let num4 = Number(ipt_num2.value);
+
+            let resultado = num3 - num4;
+            document.getElementById("div_subtracao").innerHTML = "A diferença de " + ipt_num1.value  + " - " + ipt_num2.value + " = " + resultado;
+        }
+
+        if (operacoes === "mutiplicacao") {
+             let num5 = Number(ipt_num1.value);
+            let num6 = Number(ipt_num2.value);
+
+            let resultado = num5 * num6;
+            document.getElementById("div_mutiplicacao").innerHTML = "O produto de " + ipt_num1.value  + " * " + ipt_num2.value + " = " + resultado;
+        }
+
+        if (operacoes === "divisao") {
+             let num7 = Number(ipt_num1.value);
+            let num8 = Number(ipt_num2.value);
+
+            let resultado = num7 / num8;
+            document.getElementById("div_divisao").innerHTML = "A razão de " + ipt_num1.value  + " / " + ipt_num2.value + " = " + resultado;
+        }
+    }
+
+
+</Script>
+</html>

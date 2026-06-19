@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Cadastrar PRODUTOS</h1>
+
+    Insira um produto:<br>
+    <input id="input_nome"><br>
+    Insira o valor do produto:<br>
+    <input id="input_valor"><br>
+
+    <button onclick="cadastrar()">CADASTRAR</button>
+    <button onclick="relatorio()">RELATORIO ESTOQUE</button>
+    <div id="output"></div>
+</body>
+
+</html>
+
+
+<script>
+
+    let nomes = [];
+    let precos = [];
+
+
+    function cadastrar() {
+
+        let nome = input_nome.value.trim();
+        let preco = Number(input_valor.value);
+
+        if (nome === "" || isNan(preco) || preco <= 0) {
+            output.innerHTML = "<p style='color:red'> Dados Inválidos!</p>";
+
+        } else {
+
+            nomes.push(nome);
+            precos.push(preco);
+
+
+            output.innerHTML = "<p style='color:green'>Produto cadastrado!</p>";
+
+
+            nome = "";
+            preco = 0;
+
+        }
+    }
+
+
+    function relatorio() {
+
+        let texto = "<h2>RELATÓRIO DE ESTOQUE</h2>";
+
+        let somaCompra = 0;
+        let somaVenda = 0;
+
+        let maiorPreco = precos[0];
+        let menorPreco = precos[0];
+
+        let nomeMaior = nomes[0];
+        let nomeMenor = nomes[0];
+
+
+        if (nomes.length === 0) {
+            output.innerHTML = "<p>NENHUM! Produto cadastrado.</p>"
+        } else {
+
+            for (let i = 0; i < nomes.length; i++) {
+
+                let compra = precos[i];
+                let venda = compra * 1.25;
+
+
+                somaCompra += compra;
+                somaVenda += venda;
+
+
+                if (compra > maiorPreco) {
+                    maiorPreco = compra;
+                    nomeMaior = nomes[i];
+                }
+
+                if (compra < manorPreco) {
+                    menorPreco = compra;
+                    nomeMenor = nomes[i];
+                }
+
+                texto += `
+                
+                <p>
+                    <b>${nomes[i]}</b><br>
+                    Compra: R$ ${compra.toFixed(2)}<br>
+                    Venda: R$ ${venda.toFixed(2)}
+                </p>
+                <hr>
+                `;
+            }
+
+            let mediaVenda = somaVenda / nomes.length;
+
+
+            texto += `
+            <h3>Estatísticas</h3>
+            <P>Mais Caro: ${nomeMaior}</p>
+            <p>Mais barato: ${nomeMenor}</p>
+            <p>Soma compras: R$ ${somaCompra.toFixed(2)}</p>
+            <p>Média Venda: R$ ${mediaVenda.tofixed(2)}</p>
+            `;
+
+            output.innerHTML = texto;
+        }
+    }
+
+</script>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt_br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 01</title>
+</head>
+<body>
+    <h2>PERMISSÃO PARA FESTA</h2>
+    Qual a sua idade: <input id="ipt_idade"> <br>
+    <button style="background-color: #6b35ce; color: rgb(252, 248, 248);" onclick="analisar()">PARTIU FESTA</button> <br>
+    <div id="div_msg"></div>
+</body>
+</html>
+
+<script>
+    function analisar() {
+
+        div_msg.innerHTML = '';
+        if (ipt_idade.value >= 16) {
+           div_msg.innerHTML = '#PARTIUFESTA';
+        } else {
+            div_msg.innerHTML = 'VOCÊ NÃO TEM PERMISSÃO';
+        }
+    }
+</script>

@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>Controle de Estoque</title>
+
+<style>
+body{
+    font-family: Arial;
+    background:#f4f4f4;
+    margin:0;
+    padding:20px;
+}
+
+.container{
+    width:900px;
+    margin:auto;
+    background:white;
+    padding:20px;
+    border-radius:10px;
+    box-shadow:0px 0px 10px #999;
+}
+
+h1{
+    text-align:center;
+    color:#333;
+}
+
+.area{
+    margin-bottom:20px;
+}
+
+label{
+    display:block;
+    margin-top:10px;
+    font-weight:bold;
+}
+
+input, select{
+    width:100%;
+    padding:10px;
+    margin-top:5px;
+    border:1px solid #ccc;
+    border-radius:5px;
+    font-size:16px;
+}
+
+button{
+    padding:10px 20px;
+    margin-top:15px;
+    margin-right:10px;
+    border:none;
+    border-radius:5px;
+    background:#1976d2;
+    color:white;
+    cursor:pointer;
+    font-size:15px;
+}
+
+button:hover{
+    background:#0d47a1;
+}
+
+#mensagens{
+    margin-top:20px;
+    color:red;
+    font-weight:bold;
+}
+
+#resultado{
+    margin-top:20px;
+    background:#fafafa;
+    padding:15px;
+    border:1px solid #ccc;
+    min-height:100px;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:15px;
+}
+
+table th{
+    background:#1976d2;
+    color:white;
+    padding:10px;
+    border:1px solid #ccc;
+}
+
+table td{
+    padding:10px;
+    border:1px solid #ccc;
+    text-align:center;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Controle de Estoque</h1>
+
+<div class="area">
+
+<label>Identificação do Produto</label>
+<input type="text" id="produto">
+
+<label>Quantidade</label>
+<input type="number" id="quantidade">
+
+<label>Categoria</label>
+<select id="categoria">
+    <option value="">Selecione</option>
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+</select>
+
+<label>Preço Unitário</label>
+<input type="number" step="0.01" id="preco">
+
+<button onclick="comprar()">Compra</button>
+<button onclick="vender()">Venda</button>
+
+<div id="mensagens"></div>
+
+</div>
+
+<hr>
+
+<button onclick="listaPromocional()">Lista Venda Promocional</button>
+<button onclick="listaGeral()">Lista Geral</button>
+<button onclick="listaCategoria()">Lista por Categoria</button>
+<button onclick="listaProduto()">Lista Produto</button>
+
+<div id="resultado"></div>
+
+</div>
+
+<script>
+
+var estoque = [];
+var promocionais = [];
+
+function calcularPVM(pme, categoria){
+
+    var acrescimo = 0;
+
+    if(categoria == 1){
+        acrescimo = 0.10;
+    }
+    else{
+        if(categoria == 2){
+            acrescimo = 0.205;
+        }
+        else{
+            if(categoria == 3){
+                acrescimo = 0.175;
+            }
+            else{
+                acrescimo = 0.32;
+            }
+        }
+    }
+
+    return pme * (1 + acrescimo);
+}
+
+function validar(){
+
+    var erros = [];
+
+    var id = document.querySelector("#produto").value;
+    var qtd = document.querySelector("#quantidade").value;
+    var categoria = document.querySelector("#categoria").value;
+    var preco = document.querySelector("#preco").value;
+
+    if(id == ""){
+        erros.push("A Identificação do Produto é obrigatória.");
+    }
+
+    if(qtd == "" || qtd <= 0){
+        erros.push("A Quantidade deve ser um número inteiro positivo.");
+    }
+
+    if(categoria != 1 && categoria != 2 && categoria != 3 && categoria != 4){
+        erros.push("A Categoria deve ser 1, 2, 3 ou 4.");
+    }
+
+    if(preco == "" || preco <= 0){
+        erros.push("O Preço Unitário deve ser positivo.");
+    }
+
+    document.querySelector("#mensagens").innerHTML = erros.join("<br>");
+}
+
+function comprar(){
+
+    validar();
+
+    var mensagens = document.querySelector("#mensagens").innerHTML;
+
+    if(mensagens == ""){
+
+        var id = document.querySelector("#produto").value;
+        var qtd = parseInt(document.querySelector("#quantidade").value);
+        var categoria = parseInt(document.querySelector("#categoria").value);
+        var preco = parseFloat(document.querySelector("#preco").value);
+
+        var posicao = -1;
+
+        for(var i = 0; i < estoque.length; i++){
+
+            if(estoque[i][0] == id){
+                posicao = i;
+                break;
+            }
+        }
+
+        if(posicao == -1){
+
+            estoque.push([
+                id,
+                qtd,
+                preco,
+                categoria
+            ]);
+
+            document.querySelector("#mensagens").innerHTML =
+            "Produto " + id + " cadastrado e estoque atualizado.";
+        }
+        else{
+
+            if(estoque[posicao][3] != categoria){
+
+                document.querySelector("#mensagens").innerHTML =
+                "Categoria diferente da cadastrada.";
+            }
+            else{
+
+                var qtdAntiga = estoque[posicao][1];
+                var pmeAntigo = estoque[posicao][2];
+
+                var novoPME =
+                ((qtdAntiga * pmeAntigo) + (qtd * preco))
+                /
+                (qtdAntiga + qtd);
+
+                estoque[posicao][1] =
+                qtdAntiga + qtd;
+
+                estoque[posicao][2] =
+                novoPME;
+
+                document.querySelector("#mensagens").innerHTML =
+                "Compra registrada. Novo estoque: "
+                + estoque[posicao][1]
+                + " | Novo PME: "
+                + novoPME.toFixed(2);
+            }
+        }
+    }
+}
+
+function vender(){
+
+    validar();
+
+    var mensagens = document.querySelector("#mensagens").innerHTML;
+
+    if(mensagens == ""){
+
+        var id = document.querySelector("#produto").value;
+        var qtd = parseInt(document.querySelector("#quantidade").value);
+        var categoria = parseInt(document.querySelector("#categoria").value);
+        var preco = parseFloat(document.querySelector("#preco").value);
+
+        var posicao = -1;
+
+        for(var i = 0; i < estoque.length; i++){
+
+            if(estoque[i][0] == id){
+                posicao = i;
+                break;
+            }
+        }
+
+        if(posicao == -1){
+
+            document.querySelector("#mensagens").innerHTML =
+            "Produto não encontrado.";
+        }
+        else{
+
+            if(estoque[posicao][3] != categoria){
+
+                document.querySelector("#mensagens").innerHTML =
+                "Categoria diferente da cadastrada.";
+            }
+            else{
+
+                if(qtd > estoque[posicao][1]){
+
+                    document.querySelector("#mensagens").innerHTML =
+                    "Quantidade excede o estoque.";
+                }
+                else{
+
+                    var pme = estoque[posicao][2];
+                    var pvm = calcularPVM(pme, categoria);
+
+                    if(preco >= pvm){
+
+                        estoque[posicao][1] =
+                        estoque[posicao][1] - qtd;
+
+                        document.querySelector("#mensagens").innerHTML =
+                        "Venda realizada. Estoque atualizado para "
+                        + estoque[posicao][1];
+                    }
+                    else{
+
+                        var confirmar =
+                        confirm(
+                        "Preço abaixo do mínimo. Confirmar venda promocional?"
+                        );
+
+                        if(confirmar){
+
+                            promocionais.push([
+                                id,
+                                categoria,
+                                estoque[posicao][1],
+                                qtd,
+                                pme,
+                                pvm,
+                                preco
+                            ]);
+
+                            estoque[posicao][1] =
+                            estoque[posicao][1] - qtd;
+
+                            document.querySelector("#mensagens").innerHTML =
+                            "Venda promocional realizada.";
+                        }
+                        else{
+
+                            document.querySelector("#mensagens").innerHTML =
+                            "Venda cancelada.";
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+function listaPromocional(){
+
+    var html = "";
+
+    html += "<table>";
+    html += "<tr>";
+    html += "<th>ID</th>";
+    html += "<th>Categoria</th>";
+    html += "<th>Qtd Estoque</th>";
+    html += "<th>Qtd Vendida</th>";
+    html += "<th>PME</th>";
+    html += "<th>PVM</th>";
+    html += "<th>Preço Venda</th>";
+    html += "</tr>";
+
+    for(var i = 0; i < promocionais.length; i++){
+
+        html += "<tr>";
+
+        html += "<td>" + promocionais[i][0] + "</td>";
+        html += "<td>" + promocionais[i][1] + "</td>";
+        html += "<td>" + promocionais[i][2] + "</td>";
+        html += "<td>" + promocionais[i][3] + "</td>";
+        html += "<td>" + promocionais[i][4].toFixed(2) + "</td>";
+        html += "<td>" + promocionais[i][5].toFixed(2) + "</td>";
+        html += "<td>" + promocionais[i][6].toFixed(2) + "</td>";
+
+        html += "</tr>";
+    }
+
+    html += "</table>";
+
+    document.querySelector("#resultado").innerHTML = html;
+}
+
+function listaGeral(){
+
+    var total = 0;
+
+    for(var i = 0; i < estoque.length; i++){
+        total = total + estoque[i][1];
+    }
+
+    var html = "";
+
+    html += "<table>";
+    html += "<tr>";
+    html += "<th>ID</th>";
+    html += "<th>Categoria</th>";
+    html += "<th>Quantidade</th>";
+    html += "<th>PME</th>";
+    html += "<th>PVM</th>";
+    html += "<th>% Participação</th>";
+    html += "</tr>";
+
+    for(var i = 0; i < estoque.length; i++){
+
+        var pvm = calcularPVM(
+            estoque[i][2],
+            estoque[i][3]
+        );
+
+        var percentual =
+        (estoque[i][1] * 100) / total;
+
+        html += "<tr>";
+
+        html += "<td>" + estoque[i][0] + "</td>";
+        html += "<td>" + estoque[i][3] + "</td>";
+        html += "<td>" + estoque[i][1] + "</td>";
+        html += "<td>" + estoque[i][2].toFixed(2) + "</td>";
+        html += "<td>" + pvm.toFixed(2) + "</td>";
+        html += "<td>" + percentual.toFixed(2) + "%</td>";
+
+        html += "</tr>";
+    }
+
+    html += "</table>";
+
+    document.querySelector("#resultado").innerHTML = html;
+}
+
+function listaCategoria(){
+
+    var total = 0;
+
+    for(var i = 0; i < estoque.length; i++){
+        total = total + estoque[i][1];
+    }
+
+    var html = "";
+
+    html += "<table>";
+    html += "<tr>";
+    html += "<th>ID</th>";
+    html += "<th>Categoria</th>";
+    html += "<th>Quantidade</th>";
+    html += "<th>PME</th>";
+    html += "<th>PVM</th>";
+    html += "<th>% Total</th>";
+    html += "<th>% Categoria</th>";
+    html += "</tr>";
+
+    for(var categoria = 1; categoria <= 4; categoria++){
+
+        var totalCategoria = 0;
+
+        for(var i = 0; i < estoque.length; i++){
+
+            if(estoque[i][3] == categoria){
+                totalCategoria =
+                totalCategoria + estoque[i][1];
+            }
+        }
+
+        for(var i = 0; i < estoque.length; i++){
+
+            if(estoque[i][3] == categoria){
+
+                var pvm =
+                calcularPVM(
+                    estoque[i][2],
+                    estoque[i][3]
+                );
+
+                var percentualTotal =
+                (estoque[i][1] * 100) / total;
+
+                var percentualCategoria =
+                (estoque[i][1] * 100) / totalCategoria;
+
+                html += "<tr>";
+
+                html += "<td>" + estoque[i][0] + "</td>";
+                html += "<td>" + estoque[i][3] + "</td>";
+                html += "<td>" + estoque[i][1] + "</td>";
+                html += "<td>" + estoque[i][2].toFixed(2) + "</td>";
+                html += "<td>" + pvm.toFixed(2) + "</td>";
+                html += "<td>" + percentualTotal.toFixed(2) + "%</td>";
+                html += "<td>" + percentualCategoria.toFixed(2) + "%</td>";
+
+                html += "</tr>";
+            }
+        }
+    }
+
+    html += "</table>";
+
+    document.querySelector("#resultado").innerHTML = html;
+}
+
+function listaProduto(){
+
+    var busca = prompt("Digite o ID do produto");
+
+    var html = "";
+
+    var total = 0;
+
+    for(var i = 0; i < estoque.length; i++){
+        total = total + estoque[i][1];
+    }
+
+    for(var i = 0; i < estoque.length; i++){
+
+        if(estoque[i][0] == busca){
+
+            var totalCategoria = 0;
+
+            for(var j = 0; j < estoque.length; j++){
+
+                if(estoque[j][3] == estoque[i][3]){
+                    totalCategoria =
+                    totalCategoria + estoque[j][1];
+                }
+            }
+
+            var pvm =
+            calcularPVM(
+                estoque[i][2],
+                estoque[i][3]
+            );
+
+            var percentualTotal =
+            (estoque[i][1] * 100) / total;
+
+            var percentualCategoria =
+            (estoque[i][1] * 100) / totalCategoria;
+
+            html += "<table>";
+
+            html += "<tr><th>ID</th><td>"
+            + estoque[i][0] +
+            "</td></tr>";
+
+            html += "<tr><th>Quantidade</th><td>"
+            + estoque[i][1] +
+            "</td></tr>";
+
+            html += "<tr><th>PME</th><td>"
+            + estoque[i][2].toFixed(2) +
+            "</td></tr>";
+
+            html += "<tr><th>PVM</th><td>"
+            + pvm.toFixed(2) +
+            "</td></tr>";
+
+            html += "<tr><th>% Total</th><td>"
+            + percentualTotal.toFixed(2) +
+            "%</td></tr>";
+
+            html += "<tr><th>% Categoria</th><td>"
+            + percentualCategoria.toFixed(2) +
+            "%</td></tr>";
+
+            html += "</table>";
+        }
+    }
+
+    document.querySelector("#resultado").innerHTML = html;
+}
+
+</script>
+
+</body>
+</html>

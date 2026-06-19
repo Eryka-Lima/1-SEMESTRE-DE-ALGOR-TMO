@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>EXERCICIO 04</title>
+</head>
+
+<body>
+
+<h2>Análise de Parcelamento de Compra</h2>
+
+QUAL O MEIO DE PAGAMENTO?
+
+<button onclick="escolher('dinheiro')">DINHEIRO</button>
+<button onclick="escolher('credito')">CARTÃO DE CRÉDITO</button>
+<button onclick="escolher('debito')">CARTÃO DE DÉBITO</button>
+<button onclick="escolher('boleto')">BOLETO</button>
+<button onclick="escolher('pix')">PIX</button>
+
+<br><br>
+
+<button onclick="analise()">ANALISAR COMPRA</button> <br><br>
+
+<div id="div_msg"></div>
+
+<script>
+
+let pagamento = "";
+
+function escolher(tipo){
+    pagamento = tipo;
+}
+
+function analise(){
+
+    if(pagamento == "dinheiro" || pagamento == "debito" || pagamento == "pix"){
+        div_msg.innerHTML = "VOCÊ TERÁ DE PAGAR À VISTA.";
+    }
+
+    else if(pagamento == "credito" || pagamento == "boleto"){
+        div_msg.innerHTML = "PAGAMENTO PODE SER PARCELADO.";
+    }
+
+    else{
+        div_msg.innerHTML = "ESCOLHA UM MEIO DE PAGAMENTO.";
+    }
+
+}
+
+</script>
+
+</body>
+</html>

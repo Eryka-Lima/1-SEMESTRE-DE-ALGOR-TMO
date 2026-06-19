@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EXERCICIO 03</title>
+</head>
+
+<body>
+
+    <h1>REGISTRO DE PRODUTOS</h1>
+
+    Digite o nome do produto:<br>
+    <input id="input_nome"><br>
+    Preço:<br>
+    <input id="input_preco" type="number"><br><br>
+    <hr>
+    <br>
+    Cadastre e Atualize<br><br>
+    <button onclick="cadastrar()">Cadastrar</button>
+    <button onclick="atualizar()">Atualizar Estoque</button>
+
+    <br><br>
+    <hr>
+
+    Digite um valor:<br>
+    <input id="input_valor" type="number">
+
+     <select id="select_filtro">
+        <option value="selecione">Selecione</option>
+        <option value="acima">Preços acima</option>
+        <option value="abaixo">Preços abaixo</option>
+    </select>
+    <br><br>
+
+    <button onclick="filtrar()">Filtrar Produtos</button>
+    <br><br>
+    <hr>
+
+
+    <div id="output"></div>
+
+    
+
+</body>
+
+</html>
+
+<script>
+    let nomes = [];
+    let precos = [];
+
+    function cadastrar() {
+        let nome = input_nome.value.trim();
+        let preco = Number(input_preco.value);
+
+        let repetido = false;
+
+        for (let i = 0; i < nome.length; i++) {
+            if (nomes[i] == nome) {
+                repetido = true;
+            }
+        }
+
+
+        if (preco <= 0) {
+            alert("Preço deve ser positivo!");
+        } else if (nome.length < 3) {
+            alert("Nome de ter pelo menos 3 letras!");
+        } else if (repetido == true) {
+            alert("Produto já cadastrado!");
+        } else {
+            nomes.push(nome);
+            precos.push(preco);
+
+            alert("Produto cadastrado com Sucesso!!");
+
+            input_nome.value = "";
+            input_preco.value = "";
+        }
+    }
+
+    function atualizar() {
+        if (nomes.length == 0) {
+            alert("Nenhum produto cadastrado!");
+        } else {
+            output.innerHTML = "";
+
+            let soma = 0;
+
+            output.innerHTML += "Você tem " + nomes.length + " produtos cadastrados em estoque: <br><br>";
+
+            for (let i = 0; i < nomes.length; i++) {
+                output.innerHTML += (i + 1) + " . " + nomes[i] + "  -R$" + precos[i] + "<br>";
+                soma += precos[i];
+            }
+
+            output.innerHTML += "<br> Seu estoque vale R$" + soma;
+        }
+
+    }
+
+    function filtrar() {
+        let tipo = select_filtro.value;
+        let valor = Number(input_valor.value);
+
+        if (nomes.length == 0) {
+            alert("Nenhum produto cadastrado!");
+        } else if (input_valor.value == "") {
+            alert("Digite um valor para filtrar!");
+        } else {
+            output.innerHTML = "";
+
+
+            for (let i = 0; i < nomes.length; i++) {
+
+                if (precos[i] > valor) {
+                    output.innerHTML += nomes[i] + " - R$" + precos[i] + "<br>";
+                }
+                else {
+                    if (precos[i] < valor) {
+                        output.innerHTML += nomes[i] + " - R$" + precos[i] + "<br>";
+                    }
+                }
+            }
+        }
+    }
+</script>

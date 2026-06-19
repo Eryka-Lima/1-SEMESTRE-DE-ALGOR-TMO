@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt_br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AlterarVetor</title>
+</head>
+
+<body>
+    <h2>Trocando o conteúdo do vetor</h2>
+
+    Informe o nome a ser trocado: <input id="ipt_de"> <br>
+    Informe o novo nome: <input id="ipt_para">
+    <button onclick="alterar()">Alterar</button><br><br>
+    <b>Assim está o vetor</b>
+    <div id="div_txt"></div>
+
+</body>
+<script>
+    var nomes = ['tom', 'bob', 'mel', 'dan'];
+    div_txt.innerHTML = nomes;
+
+    function alterar() {
+
+        for (var i = 0; i < nomes.length; i++) {
+            if (nomes[i] == ipt_de.value) {
+                nomes[i] = ipt_para.value;
+                break;
+            }
+        }
+        if (i == nomes.length) {
+            alert(ipt_de.value + ' não foi encontrado na lista')
+        } else {
+            div_txt.innerHTML = nomes;
+        }
+    }
+
+</script>
+
+</html>

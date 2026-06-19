@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EXERCICO 02</title>
+</head>
+<body>
+    <h2>Processo Seletivo Mentes Brilhantes</h2>
+        Qual foi sua nota do ENEM? <input id="ipt_nota"> <br><br>
+        Qual foi sua nota no VESTIBULAR? <input id="ipt_vestibular"><br><br>
+
+    <button onclick="analise()">AVALIAÇÃO</button>
+    <div id="div_msg"></div>
+    
+</body>
+
+    <script>
+        function analise() {
+            if(ipt_nota.value > 800 || ipt_vestibular.value >= 700) {
+                alert ("PARABENS! APROVADO");
+            }else{
+                alert ("TENTE SEMESTRE QUE VEM!");
+            }
+        }
+    </script>
+</html>

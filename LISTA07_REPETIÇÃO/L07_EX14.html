@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EXERCICIO 13</title>
+</head>
+
+<body>
+    <h1>TRI PENSA</h1>
+    Informe o intervalo do seu programa <br>
+    Insira valor 1:<br>
+    <input id="ipt_num1" type="number"><br>
+    Insira valor 2<br>
+    <input id="ipt_num2" type="number"><br>
+
+    <button onclick="analise()">CURTO 3 E 5</button><br>
+    <div id="div_msg"></div>
+
+</body>
+
+</html>
+
+<script>
+
+    function analise() {
+        let num1 = Number(ipt_num1.value);
+        let num2 = Number(ipt_num2.value);
+        let cont = 0;
+        let erro = '';
+
+        if (num1 < 1 || num1 % 1 != 0) {
+            alert(`entre com um número inteiro entre 1 e 20`);
+            erro = true;
+        }
+        if (num2 < 1 || num2 % 1 != 0) {
+            alert(`entre com um número inteiro entre 1 e 20`);
+            erro = true;
+        }
+
+        if (erro == false) {
+            div_msg.innerHTML = ``;
+
+            while (num1 < num2) {
+                num1 +1;
+
+            } if(num1 % 3 == 0 && num1% 5 == 0){
+                div_msg.innerHTML += `<br>TRI PENTA`;
+                
+            }else if(num1 % 3 == 0) {
+                div_msg.innerHTML += `<br>TRI`;
+
+            }else if(num1 % 5 == 0) {
+                div_msg.innerHTML += `<br>PENTA`;
+
+            }else{
+                div_msg.innerHTML += `<br> ${num1}`;
+
+            }
+        }}
+
+</script>

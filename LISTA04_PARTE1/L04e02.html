@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt_br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 02</title>
+</head>
+<body>
+    <h2>CONTROLE DE REFRIGERANTE</h2>
+    Quantas Latas de Refrigerante (por dia): <input id="ipt_latas"> <br>
+    <button style="background-color: #6b35ce; color: rgb(252, 248, 248);" onclick="analisar()">QUANTOS REFRIS</button> <br>
+    <div id="div_msg"></div>
+    <p> SEU RESULTADO</p>
+</body>
+</html>
+
+<script>
+    function analisar() {
+
+        let soma = 365 * ipt_latas.value;
+
+        div_msg.innerHTML = '';
+
+
+        if (soma >= 500) {
+           div_msg.innerHTML = `Você bebe ${soma} por ano. CUIDADO COM O DIABETES`;
+        } else {
+            div_msg.innerHTML = 'VAMOS BEBER SUCO?';
+        }
+    }
+</script>

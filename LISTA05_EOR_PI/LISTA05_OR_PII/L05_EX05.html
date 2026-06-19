@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EXERCICIO 05</title>
+</head>
+<body>
+    <h2>Alerta de Desconforto Térmico</h2>
+    Qual a temperatura atual? <input id="ipt_temperatura"><br><br>
+
+    <button onclick="analise()">ANALISE CLIMA</button><br><br>
+    <div id="div_msg"></div>   
+</body>
+<script>
+
+    function analise(){
+        alert ("ALERTA DE DESCONFORTO");
+
+        if(ipt_temperatura.value <=21 || ipt_temperatura.value <=24){
+            div_msg.innerHTML = `As pessoas vão ter hipotermia.`;
+        } else if( ipt_temperatura.value >24) {
+            div_msg.innerHTML = `As pessoas vão derreter!!`;
+        }
+    }
+</script>
+</html>

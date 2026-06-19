@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EXERCICIO 04</title>
+</head>
+
+<body>
+
+    <h2>4. Expressar Amor</h2>
+
+    Qual o nome do seu amor?<br>
+    <input id="ipt_nome"><br>
+    Quantas vezes você quer demonstrar o amor por essa pessoa?<br>
+    <input id="ipt_qtd" type="number"><br><br>
+
+    <button onclick="amor()">Expressar amor</button>
+    <div id="res4"></div>
+
+
+</body>
+
+</html>
+
+<script>
+
+    function amor() {
+        let nome = ipt_nome.value.trim();
+        let qtd = Number(ipt_qtd.value);
+        let cont = 1, txt = "";
+
+        while (cont <= qtd) {
+            txt += cont + " - " + nome + ", eu te amo!<br>";
+            cont++;
+        }
+        res4.innerHTML = txt;
+    }
+
+</script>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DESAFIO 02 SPRINT 02</title>
+</head>
+
+<body>
+    <h1 style="color: rgb(50, 85, 99);">RECOMPENSAS E DESCONTOS</h1>
+
+    <h2>Sistema de Recompensas e Descontos</h2>
+    <!--
+    
+    Você está criando um sistema de recompensas e descontos para um cliente que compra produtos em uma loja. 
+O sistema precisa calcular o desconto e a recompensa com base em uma série de condições complexas, 
+utilizando tanto os operadores lógicos and quanto or.
+
+Desconto:
+Se o cliente comprar mais de 10 produtos e gastar mais de R$ 1000,00, e for cliente VIP, ele recebe um desconto extra de 15%.
+Se o cliente comprar mais de 10 produtos e gastar mais de R$ 500,00 ou for VIP, ele recebe 10% de desconto.
+Se o cliente comprar entre 6 e 10 produtos e gastar mais de R$ 200,00, ou for VIP, ele recebe 5% de desconto.
+Se o cliente comprar 5 produtos ou menos ele não recebe desconto.
+Importante: os descontos podem ser acumulados
+
+Recompensa:
+O cliente recebe uma recompensa de 50 pontos se comprar mais de 5 produtos e gastar mais de R$ 200,00 ou se for cliente VIP.
+Se o cliente gastar mais de R$ 500,00 e comprar mais de 10 produtos, ele ganha uma recompensa extra de 100 pontos.
+O cliente não recebe recompensa se comprar 5 produtos ou menos.
+Entrada de Dados:
+
+
+-->
+
+    Qual quantidade da compra? <input id="ipt_quantidade_produtos"> <br>
+    Qual o valor total? <input id="ipt_valor_total"><br>
+    Cliente VIP? <input id="ipt_cliente_vip"><br><br>
+
+
+    <button style="background-color: rgb(104, 153, 185);" onclick="analise()">ANALISE VENDAS</button><br>
+    <div id="div_msg"></div>
+
+    <br><br>
+
+</body>
+<script>
+function analise() {
+
+    let produto = Number(ipt_quantidade_produtos.value);
+    let gastos = Number(ipt_valor_total.value);
+    let cliente = ipt_cliente_vip.value.toUpperCase();
+
+    let desconto = 0;
+    let pontos = 0;
+
+    // Validação
+    if (cliente != "SIM" && cliente != "NAO") {
+        alert("Digite apenas SIM ou NAO para cliente VIP!");
+        ipt_cliente_vip.value = "";
+        return;
+    }
+
+    let vip = cliente === "SIM";
+
+    // ---------------- DESCONTOS ----------------
+
+    if (produto > 10 && gastos > 1000 && vip) {
+        desconto += 0.15;
+    }
+
+    if ((produto > 10 && gastos > 500) || vip) {
+        desconto += 0.10;
+    }
+
+    if ((produto >= 6 && produto <= 10 && gastos > 200) || vip) {
+        desconto += 0.05;
+    }
+
+    // ---------------- RECOMPENSAS ----------------
+
+    if (produto > 5 && (gastos > 200 || vip)) {
+        pontos += 50;
+    }
+
+    if (produto > 10 && gastos > 500) {
+        pontos += 100;
+    }
+
+    // ---------------- RESULTADO ----------------
+
+    let valorDesconto = gastos * desconto;
+    let total = gastos - valorDesconto;
+
+    div_msg.innerHTML = `
+        Quantidade de produtos: ${produto} <br>
+        Valor total: R$ ${gastos.toFixed(2)} <br>
+        Cliente VIP: ${vip} <br><br>
+
+        Desconto total: ${(desconto * 100).toFixed(0)}% <br>
+        Valor com desconto: R$ ${total.toFixed(2)} <br><br>
+
+        Pontos acumulados: ${pontos}
+    `;
+}
+</script>
+
+</html>
+
+
+

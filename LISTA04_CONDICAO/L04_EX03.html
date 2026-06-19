@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><h1>EXERCICIO 03</h1></title>
+</head>
+<body>
+    <h2>CONTROLE DE NOTAS</h2>
+    Entre com suas notas. <br>
+    Qual sua Nota 01?: <input id="ipt_nota1"> <br>
+    Qual sua Nota 02?: <input id="ipt_nota2"> <br>
+    Qual sua Nota 03?: <input id="ipt_nota3"><br> <br>
+
+    <button onclick="analisar()">ANALISAR DESEMPENHO</button>
+    <div id="div_msg"></div>
+</body>
+
+
+<script>
+
+        function analisar () {
+            e_resultado = (ipt_nota1.value + ipt_nota2.value + ipt_nota3.value)/3;
+         
+            if (e_resultado > 9.4) {
+                div_msg.innerHTML = 'Parabêns, você é fora de série!';
+                
+            } else {
+                div_msg.innerHTML = ' ';
+                
+            }
+        
+        }
+
+
+
+
+
+</script>
+</html>

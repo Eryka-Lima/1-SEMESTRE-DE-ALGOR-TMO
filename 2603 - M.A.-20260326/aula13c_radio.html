@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt_br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>radio</title>
+</head>
+
+<body>
+    <h2>Escolha a forma de pagamento:</h2>
+
+    <input name="pagamento" type="radio" id="rad_debito"> Débito
+    <input name="pagamento" type="radio" id="rad_boleto"> Boleto
+    <input name="pagamento" type="radio" id="rad_credito"> Crédito   
+    <input name="pagamento" type="radio" id="rad_dinheiro"> Dinheiro <br>
+
+    <button onclick="analisar()">Analisar Pagamento</button>
+
+<!--type="radio" 
+    é um botão de seleção para entrada de dados, normalmente ele 
+    tem a aparencia de um botão.
+
+    Os botões são agrupados usado o mesmo name para a tag input.
+
+    Quando os botões estão agrupados somente um deles pode ser 
+    selecionado
+-->
+</body>
+
+<script>
+    function analisar() {
+        /*  o checked nos casos abaixo trará true ou false, true se
+            o botão foi selecionado e false caso o botão não tenha 
+            sido selecionado
+        */
+        var debito =  rad_debito.checked;
+        var boleto = rad_boleto.checked;
+        var credito = rad_credito.checked;
+        var dinheiro = rad_dinheiro.checked;
+
+        /* só para testar
+
+            console.log semelhante ao alert, só que é exibido na console do navegador
+        */
+        console.log("Deb: ", debito); 
+        console.log("Bol: ", boleto);
+        console.log("Cre: ", credito);
+        console.log("Din", dinheiro);
+        
+
+        if (dinheiro || debito) {
+            alert("Não pode parcelar");
+        } else if (boleto || credito){
+            alert("pode parcelar");
+        }else{
+            alert("forma de pagamento inválida");
+        }
+    }
+
+</script>
+
+</html>

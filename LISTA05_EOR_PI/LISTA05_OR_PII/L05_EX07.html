@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EXERCICIO 07</title>
+</head>
+<body>
+    <h2>"Calculadora de cansaço aprimorada do aluno SPTech" </h2>
+    <h3>MEIO DE TRANSPORTE</h3>
+    Como você vem para SPTech? <input id="transporte"><br>
+    Qual a distância da sua casa para SPTech? <input id="km"><br><br>
+
+    <button onclick="calcular()">CALCULAR CANSAÇO</button><br>
+    <div id="div_msg"></div>
+    
+</body>
+<script>
+
+    function calcular(){
+        if(ipt_km.value <=10){
+            if(ipt_transporte.value == "Carro" || ipt_transporte.value == "Metro" || ipt_transporte.value =="Ônibus") {
+                alert ("Ta Thanks...");
+            }else{
+                alert ("É... um pouco cansado...");
+            }
+        }else if(ipt_km.value >10) {
+            if(ipt_transporte.value =="Carro"){
+                alert ("Ta Thanks...");
+            }else if(ipt_transporte.value == "Metro" ){
+
+            }
+        }
+    }
+</script>
+</html>

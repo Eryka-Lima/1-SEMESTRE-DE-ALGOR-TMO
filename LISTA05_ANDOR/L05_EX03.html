@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EXERCICIO 03</title>
+</head>
+<body>
+    <h1>Simulador de Preço do Bilhete Único de São Paulo</h1>
+    Qual tipo de passageiro? <input id="ipt_passageiro"><br>
+    Qual o tipo da passagem? <input id="ipt_passagem"><br>
+
+    <button onclick="analise()">SIMULAR PREÇO</button><br>
+    <div id="div_msg"></div>
+
+</body>
+
+    <script>
+        function analise(){
+            let passageiro = ipt_passageiro.value;
+            let passagem = ipt_passagem.value;
+
+            if(passageiro != 'Comum' && passageiro != 'Estudante' && passageiro != 'Idoso' && passageiro != 'PNE'){
+                alert ("Digite o passageito corretamente!");
+            }else if(passagem != 'Unica' &&  passagem != 'Integração'){
+                 alert ("Digite a passagem corretamente!");
+            }else{
+                if(passageiro == 'Comum'){
+                    if(passagem == 'Unica'){
+                        div_msg.innerHTML = `Valor da passagem escolhida: R$4,40. `;
+                    }else{
+                        div_msg.innerHTML = `Valor da passagem escolhida: R$5,90. `;
+                    }
+                }else if(passageiro == 'Estudante'){
+                    if(passagem == 'Unica'){
+                        let valor = 4.40 / 2; 
+                        div_msg.innerHTML = `Valor da passagem escolhida: R$ ${valor.toFixed(2)}. `;
+                    }else{
+                        let valor = 5.90 / 2; 
+                        div_msg.innerHTML = `Valor da passagem escolhida: R$ ${valor.toFixed(2)}. `;
+                     }
+                }else if(passageiro == 'Idoso' || passageiro == 'PNE'){
+                    if(passagem == 'Unica' || passagem == 'Integração'){
+                        div_msg.innerHTML = `Você não paga passagem!! :). `;
+                    }else{
+                        div_msg.innerHTML = ` `;
+                     }
+        }}}
+    </script>
+</html>
